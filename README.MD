@@ -4,18 +4,25 @@
 
 ### Problem Statement
 
-Cats sometimes display odd behavioral patterns that can 
-entertain, trouble, or just plain mystify their owners. 
+Cats will occasionally display odd behavioral patterns that can 
+entertain, mystify, or cause concern. 
 When it comes to attaining answers about these 
 behaviors, pet owners have several options: 
-1. Search forums, whether specialized or general(e.g. Reddit) 
-2. Bug your veterinarian 
-3. Comb youtube or video-friendly social media sites for similar cat-tivity.
+1. Consult existing user forums, whether specialized or general in nature, in hopes finding the correct audience for their query.
+2. Bug their veterinarian.
+3. Post to, or search on, YouTube or other video-enabled social media sites in hopes of finding matching cat-tivities.
 
-
-Additionally, internet users seem to demonstrate an 
-insatiable lust for cat videos in general, and 
-this app helps to satisfy a more universal 
+Additionally, current trends suggest that internet users have an 
+insatiable lust for cat videos in general.
+---
+This application aims to provide a useful and user-friendly
+solution to the two problems outlined above by
+offering a platform upon which users can:
+* Author videos of their cat exhibiting unusual behavior and request
+answers or advice from other users
+* Search efficiently within application and on other social media platforms utilizing media tags and keywords
+* Comment on user videos
+* (Stretch) Read 'expert' comments. (by users with elevated 'rank')
 
 
 
