@@ -8,7 +8,7 @@ Cats will occasionally display odd behavioral patterns that can
 entertain, mystify, or cause concern. 
 When it comes to attaining answers about these 
 behaviors, pet owners have several options: 
-1. Consult existing user forums, whether specialized or general in nature, in hopes finding the correct audience for their query.
+1. Consult existing user forums, whether specialized or general in nature, in hopes of finding the correct audience for their query.
 2. Bug their veterinarian.
 3. Post to, or search on, YouTube or other video-enabled social media sites in hopes of finding matching cat-tivities.
 
