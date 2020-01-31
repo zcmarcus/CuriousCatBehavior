@@ -15,7 +15,7 @@ behaviors, pet owners have several options:
 Additionally, current trends suggest that internet users have an 
 insatiable lust for cat videos in general.
 
----
+***
 
 This application aims to provide a useful and user-friendly
 solution to the two problems outlined above by
