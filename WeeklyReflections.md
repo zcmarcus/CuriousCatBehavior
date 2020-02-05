@@ -40,7 +40,7 @@
     [1/26/2020]: Completed Week 2 exercise - (1 hr) 
     
 
-#### Week 2 (*Week of 01/28/2020*)
+#### Week 2 (*Week of 01/27/2020*)
 
 ###### Individual Project
 
@@ -54,3 +54,20 @@
 
     [1/29/2020]: Completed Activity 3 by initiating planning phase and adding
     link to project to IndividualProjects document in student repo. (1 hr)
+    
+    [2/2/2020]: Began Week 3 exercise, which offers some solid practice with unit testing (JUnit 5) 
+    and logging (Log4J2).
+    
+#### Week 3 (*Week of 02/03/2020*)
+
+###### Individual Project
+
+    [2/4/2020]: Created partial Project Plan. Laid out tasks to complete for this week, including
+    all parts Checkpoint 1. Having done little more than create project structure last week, this week
+    will be all about crafting a concrete, detailed design and gameplan for the coming weeks. 
+    
+###### Enterprise Java Work
+
+    [2/4/2020]: Completed Week 3 exercise. Feel much more comfortable writing unit tests and
+    utilizing those tests to create higher-quality code. Learned at least one or two ways to test
+    for exceptions in a method.
