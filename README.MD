@@ -12,10 +12,9 @@ behaviors, pet owners have several options:
 2. Bug their veterinarian.
 3. Post to, or search on, YouTube or other video-enabled social media sites in hopes of finding matching cat-tivities.
 
-Additionally, current trends suggest that internet users have an 
-insatiable lust for cat videos in general.
+(_Additionally, current trends suggest that internet users have an 
+insatiable lust for cat videos in general._)
 
-***
 
 This application aims to provide a useful and user-friendly
 solution to the two problems outlined above by
@@ -24,7 +23,7 @@ offering a platform upon which users can:
 answers or advice from other users
 * Search efficiently within application and on other social media platforms utilizing media tags and keywords
 * Comment on user videos
-* (Stretch) Read 'expert' comments  (allow users with elevated 'rank')
+* (Stretch) View 'expert' comments. {Implement user role with elevated 'rank' (badge next to username?)}
 
 
 
@@ -81,11 +80,11 @@ answers or advice from other users
 
 #### Design
 
-+ [User Stories](link to user stories)
++ [User Stories](UserStories.md)
 + [Screen Design](link to screen design)
 + [Application Flow](link to application flow)
 + [Database Design](link to database design)
 
-#### [Project Plan](link to project plan)
+#### [Project Plan](ProjectPlan.md)
 
-#### [Weekly Reflections](link to weekly reflections)  
+#### [Weekly Reflections](WeeklyReflections.md)  
