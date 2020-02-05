@@ -7,17 +7,17 @@
     at various times during the week when I had some idle time on my hands (e.g. stuck in traffic). - (1.5 Hrs)
 
 ###### Enterprise Java work
-    [1/15/2020]: In order to jump back into the fray feeling somewhat prepared, I made sure to get my dev
+    [01/15/2020]: In order to jump back into the fray feeling somewhat prepared, I made sure to get my dev
     environment set up and tested this week. - (1.5 hrs)
     
-    [1/19/2020]: Took my time working through Week 1 exercise, being sure to poke around in Maven to get a better
+    [01/19/2020]: Took my time working through Week 1 exercise, being sure to poke around in Maven to get a better
     feel for dependency management, goals, etc. - (1.5 hrs)
 
 #### Week 1 (*Week of 01/20/2020*)
 
 ###### Individual Project
     
-    [1/21/2020, 1/25/2020, 1/27/2020]: Spent several days tossing around different variations on a concept
+    [01/21/2020, 01/25/2020, 01/27/2020]: Spent several days tossing around different variations on a concept
     for the indie project. I was nearly set on creating an app which would allow student developers to 
     craft personal profile pages on which they could link to current project in GitHub, detail current
     courses and independent learning ventures, connect with other students and collaborate, and ultimately
@@ -31,43 +31,45 @@
 
 ###### Enterprise Java work
 
-    [1/22/2020]: Pulled down Week 2 exercise and got the application working. Added code to UserData allowing
+    [01/22/2020]: Pulled down Week 2 exercise and got the application working. Added code to UserData allowing
     for user searches based on first name, last name and username. - (1.5 hrs)
     
-    [1/23/2020]: Brushed up on git commands and completed Activity 2, which offered
+    [01/23/2020]: Brushed up on git commands and completed Activity 2, which offered
     additional practice with git.
     
-    [1/26/2020]: Completed Week 2 exercise - (1 hr) 
+    [01/26/2020]: Completed Week 2 exercise - (1 hr) 
     
 
 #### Week 2 (*Week of 01/27/2020*)
 
 ###### Individual Project
 
-    [1/28/2020]: Created git repo for project and completed some initial project set up. - (0.5 hrs)
+    [01/28/2020]: Created git repo for project and completed some initial project set up. - (0.5 hrs)
 
-    [1/29/2020]: Added README, Weekly Reflections (this document), and 
+    [01/29/2020]: Added README, Weekly Reflections (this document), and 
     Project Plan to project. Added journal entries documenting work done up until
     this point.
     
 ###### Enterprise Java Work
 
-    [1/29/2020]: Completed Activity 3 by initiating planning phase and adding
+    [01/29/2020]: Completed Activity 3 by initiating planning phase and adding
     link to project to IndividualProjects document in student repo. (1 hr)
     
-    [2/2/2020]: Began Week 3 exercise, which offers some solid practice with unit testing (JUnit 5) 
+    [02/02/2020]: Began Week 3 exercise, which offers some solid practice with unit testing (JUnit 5) 
     and logging (Log4J2).
     
 #### Week 3 (*Week of 02/03/2020*)
 
 ###### Individual Project
 
-    [2/4/2020]: Created partial Project Plan. Laid out tasks to complete for this week, including
+    [02/04/2020]: Created partial Project Plan. Laid out tasks to complete for this week, including
     all parts Checkpoint 1. Having done little more than create project structure last week, this week
-    will be all about crafting a concrete, detailed design and gameplan for the coming weeks. 
+    will be all about crafting a concrete, detailed design and gameplan for the coming weeks.
+    
+    [02/05/2020]: Added User Stories to cover all intended functionality for project MVP.
     
 ###### Enterprise Java Work
 
-    [2/4/2020]: Completed Week 3 exercise. Feel much more comfortable writing unit tests and
+    [02/04/2020]: Completed Week 3 exercise. Feel much more comfortable writing unit tests and
     utilizing those tests to create higher-quality code. Learned at least one or two ways to test
     for exceptions in a method.
