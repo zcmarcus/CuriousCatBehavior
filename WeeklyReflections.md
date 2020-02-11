@@ -17,7 +17,7 @@
 
 ###### Individual Project
     
-    [01/21/2020, 01/25/2020, 01/27/2020]: Spent several days tossing around different variations on a concept
+    [01/21/2020; 01/25/2020; 01/27/2020]: Spent several days tossing around different variations on a concept
     for the indie project. I was nearly set on creating an app which would allow student developers to 
     craft personal profile pages on which they could link to current project in GitHub, detail current
     courses and independent learning ventures, connect with other students and collaborate, and ultimately
@@ -68,8 +68,30 @@
     
     [02/05/2020]: Added User Stories to cover all intended functionality for project MVP.
     
+    [02/09/2020]: Created first screen design wireframe - a basic template upon which to base wireframes 
+    for most other pages.
 ###### Enterprise Java Work
 
     [02/04/2020]: Completed Week 3 exercise. Feel much more comfortable writing unit tests and
     utilizing those tests to create higher-quality code. Learned at least one or two ways to test
     for exceptions in a method.
+    
+#### Week 4 (*Week of 02/10/2020*)
+
+###### Individual Project
+
+    [02/10/2020; 02/11/2020]: Finished screen design wireframes for five pages: New user sign-up dialog, 
+    Log in dialog, Search, View video, Upload new video.
+    
+    [2/10/2020]: Did some research on YouTube Data API and Facebook Login API. 
+    
+    Implementing video search on an external platform such as YouTube would allow 
+    filtered access to giant collection of videos. However, Amazon Rekognition would not
+    work on videos already on YouTube. 
+    
+    Implementing Facebook Login would allow users to quickly log in without having to create
+    yet another new user account. Uses OAuth, which is a token-based authentication standard.
+    
+###### Enterprise Java Work
+
+    .    
