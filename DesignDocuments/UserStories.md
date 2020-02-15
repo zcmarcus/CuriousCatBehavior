@@ -8,6 +8,16 @@ log in, add my own videos and comment on other video posts.
 As a __registered user__, I want to log in so that I can view my
 profile, add videos and comment on other video posts.
 
+#### Log In with Google Sign-In (MVP) or Facebook Login (Stretch Goal)
+As a guest, I'd prefer not to create yet another new website account, so
+I will opt to log in using an existing Facebook (or Google) account.
+Requires implementation of Google Sign-In / Facebook Login API.
+
+#### Forgot password / reset password (Stretch Goal)
+As a __registered user__, I have forgotten my password and would
+like to be contacted by email in order to complete the password reset process.
+Requires implementation of javamail API. 
+
 #### Browse videos
 As __any user__, I may not know exactly what I am looking for, so 
 I want to browse videos available on the app.
@@ -20,8 +30,14 @@ I can hopefully find videos of cat behavior that match what I'm looking for.
 As __any user__, I want to be able to watch specific videos listed on the browse page or
 on the search page and read user comments if any exist.
 
-#### Add Video
-As a __registered user__, I would to upload my own video.
+#### Upload Video to web app's S3 storage. (Stretch)
+As a __registered user__, I would like to upload my own video (object storage on Amazon S3).
+
+#### Add video via YouTube (MVP)
+As a __registered user__, I want to share videos using the web app, but I already
+use, and prefer, YouTube to upload videos due to its editing tools and interface. Therefore, I
+intend to add my authored YouTube videos to the web app's pool of content.
+Requires implementation of YouTube Data API.
 
 #### Edit Video Post
 As a __registered user__, I would like to change the details of, or delete, a

@@ -11,15 +11,19 @@
 
 #### Week 3
 
-- [ ] Refine problem statement as necessary.
+- [x] Refine problem statement as necessary.
 - [ ] For technologies to be used, describe the functionality they will add
 - [ ] Flesh out full Project Plan through final week of semester
-- [ ] Create Screen Design in draw.io
+- [x] Create Screen Design in draw.io
 - [ ] Diagram User Flow
-- [ ] Design database
-- [ ] Weekly journal entry
+- [X] Design database
+- [x] Weekly journal entry
 
 #### Week 4
+
+- [ ] Refine "technologies used" section of README for planned MVP
+- [ ] Implement Hibernate in project.
+- [ ] Add user stories for: 'Forgot Password,' 'Login with Facebook'
 
 #### Week 5
 

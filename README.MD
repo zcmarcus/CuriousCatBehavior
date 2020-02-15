@@ -80,11 +80,11 @@ answers or advice from other users
 
 #### Design
 
-+ [User Stories](UserStories.md)
-+ [Screen Design](ScreenDesign.md)
++ [User Stories](DesignDocuments/UserStories.md)
++ [Screen Design](DesignDocuments/ScreenDesign.md)
 + [Application Flow](link to application flow)
 + [Database Design](link to database design)
 
-#### [Project Plan](ProjectPlan.md)
+#### [Project Plan](DesignDocuments/ProjectPlan.md)
 
-#### [Weekly Reflections](WeeklyReflections.md)  
+#### [Weekly Reflections](DesignDocuments/WeeklyReflections.md)  
