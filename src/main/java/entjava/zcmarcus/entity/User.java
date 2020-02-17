@@ -1,4 +1,4 @@
-package entjava.zcmarcus.ccb.entity;
+package entjava.zcmarcus.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
@@ -43,21 +43,23 @@ public class User {
      * Instantiates a new User.
      *
      * @param userName      the user name
-     * @param passWord      the pass word
+//     * @param passWord      the password
      * @param email         the email
      * @param lastName      the last name
      * @param firstName     the first name
-     * @param creationDate the creation date
+//     * @param creationDate the creation date
      */
-    public User(String userName, String passWord, String email,
-                String lastName, String firstName, Date creationDate) {
+    public User(String userName
+//                , String passWord
+                , String email
+                , String lastName
+                , String firstName) {
 
         this.userName = userName;
-        this.passWord = passWord;
+//        this.passWord = passWord;
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
-        this.creationDate = creationDate;
     }
 
     /**

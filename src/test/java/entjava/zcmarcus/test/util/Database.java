@@ -1,4 +1,4 @@
-package edu.matc.test.util;
+package entjava.zcmarcus.test.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +20,7 @@ import java.util.Properties;
  * @author Alex M - Fall 2019 - added multi-line sql capability
  */
 
-public class Database {
+public class Database implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     // create an object of the class Database
@@ -31,24 +31,30 @@ public class Database {
 
     // private constructor prevents instantiating this class anywhere else
     private Database() {
-        loadProperties();
-
-    }
-
-    // TODO use properties loader (interface from adv java)
-    private void loadProperties() {
-        properties = new Properties();
         try {
-            properties.load (this.getClass().getResourceAsStream("/database.properties"));
-        } catch (IOException ioe) {
-            System.out.println("Database.loadProperties()...Cannot load the properties file");
-            ioe.printStackTrace();
+            properties = loadProperties("/database.properties");
+
+        } catch (IOException io) {
+            logger.debug("There was a problem reading the file: " + io);
         } catch (Exception e) {
-            System.out.println("Database.loadProperties()..." + e);
-            e.printStackTrace();
+            logger.debug("Encountered a problem: " + e);
         }
 
     }
+
+//    private void loadProperties() {
+//        properties = new Properties();
+//        try {
+//            properties.load (this.getClass().getResourceAsStream("/database.properties"));
+//        } catch (IOException ioe) {
+//            System.out.println("Database.loadProperties()...Cannot load the properties file");
+//            ioe.printStackTrace();
+//        } catch (Exception e) {
+//            System.out.println("Database.loadProperties()..." + e);
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     // get the only Database object available
     public static Database getInstance() {
@@ -56,6 +62,7 @@ public class Database {
     }
 
     public Connection getConnection() {
+
         return connection;
     }
 
@@ -94,23 +101,25 @@ public class Database {
 
         Statement stmt = null;
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(classloader.getResourceAsStream(sqlFile))))  {
+        InputStream inputStream = classloader.getResourceAsStream(sqlFile);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+
 
             connect();
             stmt = connection.createStatement();
 
-            StringBuilder sql = new StringBuilder();
+            String sql = "";
             while (br.ready())
             {
                 char inputValue = (char)br.read();
 
                 if(inputValue == ';')
                 {
-                    stmt.executeUpdate(sql.toString());
-                    sql = new StringBuilder();
+                    stmt.executeUpdate(sql);
+                    sql = "";
                 }
                 else
-                    sql.append(inputValue);
+                    sql += inputValue;
             }
 
         } catch (SQLException se) {
@@ -120,6 +129,5 @@ public class Database {
         } finally {
             disconnect();
         }
-
     }
 }

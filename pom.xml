@@ -3,17 +3,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>entjava.zcmarcus.ccb</groupId>
   <artifactId>ccb</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
-
+  <version>1.0-SNAPSHOT</version>
   <name>CuriousCatBehavior</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.placeholderformyactualwebsiteurl.com</url>
 
   <properties>
+    <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <junit-version>4.13</junit-version>
@@ -23,15 +22,9 @@
     <javax-version>8.0.1</javax-version>
     <log4j-version>2.13.0</log4j-version>
     <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
-    <maven-surefire-plugin-version>3.0.0-M4</maven-surefire-plugin-version>
+    <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
     <mysql-version>8.0.18</mysql-version>
     <hibernate-version>5.4.12.Final</hibernate-version>
-
-
-
-
-
-
 
 
 
@@ -113,18 +106,18 @@
 
 
   <build>
-    <finalName>CuriousCatBehavior</finalName>
+    <finalName>ccb</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven-compiler-plugin-version}</version>
-          <configuration>
-            <source>1.11</source>
-            <target>1.11</target>
+<!--          <configuration>-->
+<!--            <source>1.11</source>-->
+<!--            <target>1.11</target>-->
 
-          </configuration>
+<!--          </configuration>-->
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>

@@ -1,6 +1,6 @@
-package entjava.zcmarcus.ccb.persistence;
+package entjava.zcmarcus.persistence;
 
-import entjava.zcmarcus.ccb.entity.User;
+import entjava.zcmarcus.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -20,7 +20,7 @@ import java.util.List;
 public class UserDao {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-    SessionFactory sessionFactory = edu.matc.persistence.SessionFactoryProvider.getSessionFactory();
+    SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
 
     /**
      * Gets all users.
