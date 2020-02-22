@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: cats_db
+-- Host: 127.0.0.1    Database: test_cats_db
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -16,32 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(45) NOT NULL,
   `last_name` varchar(45) DEFAULT NULL,
   `first_name` varchar(45) DEFAULT NULL,
-  `creation_date` date NOT NULL,
+  `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES users WRITE;
-/*!40000 ALTER TABLE users DISABLE KEYS */;
-/*!40000 ALTER TABLE users ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'jpublic','secretpw1','jpublic@wisc.edu','Public','John','2020-02-22 18:33:00'),(2,'kmalone','secretpw2','kmalone@jazz.com','Malone','Karl','2020-02-22 18:33:00'),(3,'dduany','secretpw3','dduany@wisc.edu','Duany','Duany','2020-02-22 18:33:00'),(4,'hcoulson','secretpw4','hcoulson@hotmail.com','Coulson','Hannah','2020-02-22 18:33:00'),(5,'szawistowski','secretpw5','sz01@wisc.edu','Zawistowski','Samantha','2020-02-22 18:33:00'),(6,'bcurry','secretpw6','bcurry@hotmail.com','Curry','Barney','2020-02-22 18:33:00'),(7,'hc98','secretpw7','hannahbanannah@hotmail.com','Coulson','Hannah','2020-02-22 18:33:00');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-16 11:37:03
+-- Dump completed on 2020-02-22 12:35:00

@@ -29,8 +29,8 @@
                     <td>${user.email}</td>
                     <td>${user.lastName}, ${user.firstName}</td>
                     <td>
-                    <c:forEach var="userRole" items="${user.user_roles}">
-                        ${userRole.id}: ${userRole.role_name}
+                    <c:forEach var="userRole" items="${user.userRoles}">
+                        ${userRole.id}: ${userRole.roleName}
                     </c:forEach>
                     </td>
                 </tr>
