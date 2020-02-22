@@ -1,4 +1,4 @@
-package entjava.zcmarcus.persistence;
+package entjava.zcmarcus.ccb.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;

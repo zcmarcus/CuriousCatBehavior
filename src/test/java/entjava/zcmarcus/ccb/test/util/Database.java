@@ -1,4 +1,4 @@
-package entjava.zcmarcus.test.util;
+package entjava.zcmarcus.ccb.test.util;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -104,22 +104,17 @@ public class Database implements PropertiesLoader {
         InputStream inputStream = classloader.getResourceAsStream(sqlFile);
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 
-
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connect();
             stmt = connection.createStatement();
 
-            String sql = "";
-            while (br.ready())
-            {
-                char inputValue = (char)br.read();
-
-                if(inputValue == ';')
-                {
-                    stmt.executeUpdate(sql);
-                    sql = "";
+            while (true) {
+                String sql = br.readLine();
+                if (sql == null) {
+                    break;
                 }
-                else
-                    sql += inputValue;
+                stmt.executeUpdate(sql);
+
             }
 
         } catch (SQLException se) {
@@ -129,5 +124,6 @@ public class Database implements PropertiesLoader {
         } finally {
             disconnect();
         }
+
     }
 }

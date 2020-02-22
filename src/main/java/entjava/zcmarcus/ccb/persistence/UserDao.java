@@ -1,6 +1,6 @@
-package entjava.zcmarcus.persistence;
+package entjava.zcmarcus.ccb.persistence;
 
-import entjava.zcmarcus.entity.User;
+import entjava.zcmarcus.ccb.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -27,7 +27,7 @@ public class UserDao {
      *
      * @return All users
      */
-    public List<User> getAll() {
+    public List<User> findAll() {
         Session session = sessionFactory.openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -55,34 +55,38 @@ public class UserDao {
     }
 
     /**
-     * Gets user by username.
-     *
-     * @param userName the user's username
-     * @return the user
-     */
-    public User getByUserName(String userName) {
-        Session session = sessionFactory.openSession();
-        logger.debug("Searching for user with username {}", userName);
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<User> query = builder.createQuery(User.class);
-        Root<User> root = query.from(User.class);
-        query.select(root).where(builder.equal(root.get("userName"), userName)); // get at instance variable that points to our table columns
-        User user = session.createQuery(query).getSingleResult();
-        session.close();
-
-        return user;
-    }
-
-    /**
-     * Gets by property.
+     * Gets users by property matching value
      *
      * @param propertyName the property name
      * @param value        the value
      * @return the by property
      */
-    public List<User> getByProperty(String propertyName, String value) {
+    public List<User> findByPropertyEquals(String propertyName, String value) {
         Session session = sessionFactory.openSession();
         logger.debug("Searching for user with {} = {}", propertyName, value);
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        Expression<String> propertyPath = root.get(propertyName);
+
+        query.where(builder.equal(propertyPath, value)); // get at instance variable that points to our table columns
+
+        List<User> users = session.createQuery(query).getResultList();
+        session.close();
+
+        return users;
+    }
+
+    /**
+     * Gets users by property containing value
+     *
+     * @param propertyName the property name
+     * @param value        the value
+     * @return the by property
+     */
+    public List<User> findByProperty(String propertyName, String value) {
+        Session session = sessionFactory.openSession();
+        logger.debug("Searching for user with {} LIKE {}", propertyName, value);
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<User> query = builder.createQuery(User.class);
         Root<User> root = query.from(User.class);
@@ -110,6 +114,7 @@ public class UserDao {
         transaction.commit();
         return id;
     }
+
 
     /**
      * Save or update user.

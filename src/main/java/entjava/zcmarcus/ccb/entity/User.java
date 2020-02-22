@@ -1,15 +1,19 @@
-package entjava.zcmarcus.entity;
+package entjava.zcmarcus.ccb.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type User.
  */
 @Entity(name = "User")
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class User implements java.io.Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator =  "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -33,6 +37,9 @@ public class User {
     @Column(name = "creation_date")
     private Date creationDate;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<UserRole> userRoles = new HashSet<>();
+
     /**
      * Instantiates a new User.
      */
@@ -42,21 +49,20 @@ public class User {
     /**
      * Instantiates a new User.
      *
-     * @param userName      the user name
-//     * @param passWord      the password
-     * @param email         the email
-     * @param lastName      the last name
-     * @param firstName     the first name
-//     * @param creationDate the creation date
+     * @param userName  the user name
+     * @param passWord  the password
+     * @param email     the email
+     * @param lastName  the last name
+     * @param firstName the first name//
      */
     public User(String userName
-//                , String passWord
+                , String passWord
                 , String email
                 , String lastName
                 , String firstName) {
 
         this.userName = userName;
-//        this.passWord = passWord;
+        this.passWord = passWord;
         this.email = email;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -188,16 +194,59 @@ public class User {
         this.creationDate = creationDate;
     }
 
+
+    /**
+     * Gets user roles.
+     *
+     * @return the user roles
+     */
+    public Set<UserRole> getUserRoles() { return userRoles;}
+
+    /**
+     * Sets user roles.
+     *
+     * @param userRoles the user roles
+     */
+    public void setUserRoles(Set<UserRole> userRoles) { this.userRoles = userRoles; }
+
+    /**
+     * Add role.
+     *
+     * @param userRole the user role
+     */
+    public void addRole(UserRole userRole) {
+        userRoles.add(userRole);
+        userRole.setUser(this);
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", user_name='" + userName + '\'' +
+                ", pass_word'" + "<private>" + '\'' +
                 ", email='" + email + '\'' +
                 ", last_name='" + userName + '\'' +
                 ", first_name='" + userName + '\'' +
                 ", creation_date='" + creationDate + '\'' +
                 "}";
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return  id == user.id &&
+                Objects.equals(userName, user.userName) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(firstName, user.firstName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, email, lastName, firstName);
     }
 }

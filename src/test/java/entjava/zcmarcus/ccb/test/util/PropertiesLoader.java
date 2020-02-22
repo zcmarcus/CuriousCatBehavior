@@ -1,4 +1,4 @@
-package entjava.zcmarcus.test.util;
+package entjava.zcmarcus.ccb.test.util;
 
 import java.io.*;
 import java.util.*;
