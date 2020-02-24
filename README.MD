@@ -37,8 +37,7 @@ answers or advice from other users
 
 * Database
     + MySQL
-    + Store users and roles
-    + Store data for user video/postings, including comments from others
+    + Store: users, user roles, video data, video posts, video post comments
 
 * ORM Framework
     + Hibernate 5
@@ -47,11 +46,9 @@ answers or advice from other users
     + Maven
 
 * Web Services consumed using Java
-    + YouTube API
-    + Amazon Rekognition (image/video analysis & identification service)
-    + (tentative) Twitter API
-    + (tentative) Instagram API
-    + (tentative) Facebook API
+    + (MVP) YouTube API - for searching, sorting and presenting youtube videos (with metadata)
+    + (MVP) Google Sign-in - for allowing users to log into app using existing Google account
+    + (stretch goal) Facebook API - for inclusion of videos
 
 * CSS
     + Bootstrap 4
@@ -67,11 +64,13 @@ answers or advice from other users
     + AWS
 
 * Independent Research Topic(s)
-    + [Amazon Rekognition](https://aws.amazon.com/rekognition/)
-    + Social media APIs: YouTube, FB, Twitter, IG
-    + (tentative) [Hibernate Validator](https://hibernate.org/validator/)
+    + YouTube Data API 
+    + Google Sign-In
+    + [Hibernate Validator](https://hibernate.org/validator/)
     + (tentative) [Hibernate Search](https://hibernate.org/search/)
-    + [Project Lombok](https://projectlombok.org/) for eliminating boilerplate code
+    + (tentative) [Project Lombok](https://projectlombok.org/) for eliminating boilerplate code
+    + (stretch goal) [Amazon Rekognition](https://aws.amazon.com/rekognition/) for recognition of animals and objects in videos. This will require user uploads to S3 bucket. 
+
     
 * Unit Testing
     + JUnit tests

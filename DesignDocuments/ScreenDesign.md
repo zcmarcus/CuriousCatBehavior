@@ -22,7 +22,7 @@
 ![About page](wireframes/About.png)
 
 #### Browse(Home)
-![Browse (Home page)](DesignDocuments/wireframes/Browse(home).png)
+![Browse (Home page)](wireframes/Browse(home).png)
 
 #### Administrator panel
-![Admin panel page](DesignDocuments/wireframes/Admin_panel.png)
+![Admin panel page](wireframes/Admin_panel.png)
