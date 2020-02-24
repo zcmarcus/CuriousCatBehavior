@@ -12,42 +12,87 @@
 #### Week 3
 
 - [x] Refine problem statement as necessary.
-- [ ] For technologies to be used, describe the functionality they will add
-- [ ] Flesh out full Project Plan through final week of semester
+- [X] For technologies to be used, describe the functionality they will add
 - [x] Create Screen Design in draw.io
 - [ ] Diagram User Flow
-- [X] Design database
+- [X] Design database 
 - [x] Weekly journal entry
 
 #### Week 4
 
-- [ ] Refine "technologies used" section of README for planned MVP
-- [ ] Implement Hibernate in project.
-- [ ] Add user stories for: 'Forgot Password,' 'Login with Facebook'
+- [X] Refine "technologies used" section of README for planned MVP
+- [X] Implement Hibernate in project.
+- [X] Add user stories for: 'Forgot Password,' 'Log in with Google Sign-in'
+- [x] Weekly journal entry
+
 
 #### Week 5
+
+- [X] Create basic .jsps and servlet to test Admin maintenance capabilities.
+- [X] Add User Role table and associate with 
+- [ ] Flesh out full Project Plan through final week of semester
+- [x] Weekly journal entry
 
 
 
 #### Week 6
 
+- [ ] Initial deployment to AWS
+- [ ] Add to database & test relationships: video posts, comments, 
+- [ ] Add to Admin maintenance .jsp(s) for new tables
+- [ ] Weekly journal entry
+
+
 #### Week 7
+
+- [ ] Implement authentication
+- [ ] Weekly journal entry
+- [ ] Create .jsp for 'home' page
+- [ ] Create .jsp template files for many of the elements that will be re-used in project
+
 
 #### Week 8
 
+- [ ] Add Google Sign-in API and tie in to users table in database
+- [ ] Weekly journal entry
+
+
 #### Week 9
+
+- [ ] Add YouTube Data API for video data aggregation
+- [ ] Weekly journal entry
+
 
 #### Week 10
 
+- [ ]
+- [ ] Weekly journal entry
+
+
 #### Week 11
+
+- [ ] Weekly journal entry
+
 
 #### Week 12
 
+- [ ] Weekly journal entry
+
+
 #### Week 13
+
+- [ ] Weekly journal entry
+
 
 #### Week 14
 
+- [ ] Weekly journal entry
+
+
 #### Week 15
+
+- [ ] Weekly journal entry
+
 
 #### Week 16
 
