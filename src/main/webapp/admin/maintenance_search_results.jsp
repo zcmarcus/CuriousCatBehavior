@@ -30,7 +30,7 @@
                     <td>${user.lastName}, ${user.firstName}</td>
                     <td>
                     <c:forEach var="userRole" items="${user.userRoles}">
-                        ${userRole.roleName} <br/>
+                        Role ID: ${userRole.id}, Role Name: ${userRole.roleName} <br/>
                     </c:forEach>
                     </td>
                 </tr>

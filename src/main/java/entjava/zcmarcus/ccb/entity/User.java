@@ -219,6 +219,16 @@ public class User implements java.io.Serializable {
         userRole.setUser(this);
     }
 
+    /**
+     * Delete role.
+     *
+     * @param userRole the user role
+     */
+    public void removeRole(UserRole userRole) {
+        userRoles.remove(userRole);
+        userRole.setUser(this);
+    }
+
     @Override
     public String toString() {
         return "User{" +
