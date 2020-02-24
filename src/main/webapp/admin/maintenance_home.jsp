@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<div class="container">
+<div class="container-fluid">
 <h2>Maintenance Home</h2>
 
 <h3>Users</h3>

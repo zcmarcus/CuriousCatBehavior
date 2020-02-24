@@ -42,7 +42,7 @@ class UserRoleDaoTest {
     void findAllSuccess() {
         List<UserRole> roles = (List<UserRole>)genericDao.findAll();
         assertEquals(0, 0);
-        assertEquals(6, roles.size());
+        assertEquals(7, roles.size());
     }
 
     @Test

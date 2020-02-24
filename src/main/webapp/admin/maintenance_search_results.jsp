@@ -11,7 +11,7 @@
 
 
 <body>
-<div class="container">
+<div class="container-fluid">
     <h2>Search Results:</h2>
     <table id="resultsDataTable" class="display">
         <thead>
@@ -30,7 +30,7 @@
                     <td>${user.lastName}, ${user.firstName}</td>
                     <td>
                     <c:forEach var="userRole" items="${user.userRoles}">
-                        ${userRole.id}: ${userRole.roleName}
+                        ${userRole.roleName} <br/>
                     </c:forEach>
                     </td>
                 </tr>

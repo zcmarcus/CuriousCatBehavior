@@ -3,9 +3,23 @@
 <%@include file="template/head.jsp"%>
 
 <html>
-<body>
-<div class="container">
-<h2>Home Page</h2>
+<body style="background-color: #ffe6e6">
+<div class="container-fluid">
+    <%@include file="template/navbar.jsp"%>
+
+
+
+    <div class="container">
+        <h2 class="text-center">CatsplainMeThis!</h2>
+
+
+            <div></div>
+
+
+
+
+    </div>
+
 </div>
 </body>
 </html>
