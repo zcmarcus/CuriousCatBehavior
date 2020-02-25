@@ -16,14 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRoleDaoTest {
 
     GenericDao genericDao;
-    UserDao userDao;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     @BeforeEach
     void setUp() {
         genericDao = new GenericDao(UserRole.class);
-        userDao = new UserDao();
         try {
             Database database = Database.getInstance();
             database.runSQL("clean_database.sql");
@@ -45,7 +43,7 @@ class UserRoleDaoTest {
 
     @Test
     void getByIdSuccess() {
-        User user = userDao.getById(5);
+        User user = (User)genericDao.getById(5);
         UserRole userRole = (UserRole)genericDao.getById(2);
         assertNotNull(userRole);
         assertEquals(user, userRole.getUser());
@@ -62,7 +60,7 @@ class UserRoleDaoTest {
 
     @Test
     void insertSuccess() {
-        User user = userDao.getById(3);
+        User user = (User)genericDao.getById(3);
         UserRole newUserRole = new UserRole(user, "admin");
         user.addRole(newUserRole);
         int id = genericDao.insert(newUserRole);
@@ -82,10 +80,17 @@ class UserRoleDaoTest {
     }
 
     @Test
-    void deleteSuccess() {
-        genericDao.delete(genericDao.getById(6));
-        assertNull(genericDao.getById(6));
+    void deleteUserOnDeleteCascadeSuccess() {
+        GenericDao userDao = new GenericDao(User.class);
+        userDao.delete(userDao.getById(6));
+        assertNull(userDao.getById(6));
+        assertNull(genericDao.getById(1));
     }
+//    TODO: test for deleting a user's roles. what should happen when a role or roles are deleted?
+//    @Test
+//    void deleteRoleOnDeleteNoActionSuccess() {
+//
+//    }
 }
 
 
