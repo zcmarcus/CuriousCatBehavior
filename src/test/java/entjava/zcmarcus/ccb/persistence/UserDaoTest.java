@@ -110,4 +110,12 @@ class UserDaoTest {
         assertNull(genericDao.getById(3));
     }
 
+    @Test
+    void deleteUserOnDeleteCascadeSuccess() {
+        GenericDao userRoleDao = new GenericDao(UserRole.class);
+        genericDao.delete(genericDao.getById(6));
+        assertNull(genericDao.getById(6));
+        assertNull(userRoleDao.getById(1));
+    }
+
 }

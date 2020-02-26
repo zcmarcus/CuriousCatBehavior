@@ -43,7 +43,8 @@ class UserRoleDaoTest {
 
     @Test
     void getByIdSuccess() {
-        User user = (User)genericDao.getById(5);
+        GenericDao userDao = new GenericDao(User.class);
+        User user = (User)userDao.getById(5);
         UserRole userRole = (UserRole)genericDao.getById(2);
         assertNotNull(userRole);
         assertEquals(user, userRole.getUser());
@@ -60,7 +61,8 @@ class UserRoleDaoTest {
 
     @Test
     void insertSuccess() {
-        User user = (User)genericDao.getById(3);
+        GenericDao userDao = new GenericDao(User.class);
+        User user = (User)userDao.getById(3);
         UserRole newUserRole = new UserRole(user, "admin");
         user.addRole(newUserRole);
         int id = genericDao.insert(newUserRole);
@@ -80,11 +82,11 @@ class UserRoleDaoTest {
     }
 
     @Test
-    void deleteUserOnDeleteCascadeSuccess() {
+    void deleteUserRoleOnDeleteCascadeSuccess() {
         GenericDao userDao = new GenericDao(User.class);
-        userDao.delete(userDao.getById(6));
-        assertNull(userDao.getById(6));
+        genericDao.delete(genericDao.getById(1));
         assertNull(genericDao.getById(1));
+        logger.error(userDao.getById(6));
     }
 //    TODO: test for deleting a user's roles. what should happen when a role or roles are deleted?
 //    @Test

@@ -100,12 +100,12 @@
         <profile.name>local</profile.name>
       </properties>
     </profile>
-    <!--      <profile>-->
-    <!--        <id>aws</id>-->
-    <!--        <properties>-->
-    <!--          <profile.name>aws</profile.name>-->
-    <!--        </properties>-->
-    <!--      </profile>-->
+    <profile>
+      <id>aws</id>
+      <properties>
+        <profile.name>aws</profile.name>
+      </properties>
+    </profile>
   </profiles>
 
 
@@ -137,6 +137,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <filters>
+      <filter>profiles/${profile.name}.properties</filter>
+    </filters>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
 
 
   </build>

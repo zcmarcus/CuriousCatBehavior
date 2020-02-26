@@ -1,7 +1,11 @@
 package entjava.zcmarcus.ccb.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -34,8 +38,15 @@ public class User implements java.io.Serializable {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "creation_date")
-    private Date creationDate;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_date")
+    private Date createdDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modified_date")
+    private Date modifiedDate;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new HashSet<>();
@@ -177,21 +188,39 @@ public class User implements java.io.Serializable {
     }
 
     /**
-     * Gets creation date.
+     * Gets created date.
      *
-     * @return the creation date
+     * @return the created date
      */
-    public Date getCreationDate() {
-        return creationDate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
     /**
-     * Sets creation date.
+     * Sets created date.
      *
-     * @param creationDate the creation date
+     * @param createdDate the created date
      */
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    /**
+     * Gets modified date.
+     *
+     * @return the modified date
+     */
+    public Date getModifiedDate() {
+        return modifiedDate;
+    }
+
+    /**
+     * Sets modified date.
+     *
+     * @param modifiedDate the modified date
+     */
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
     }
 
 
@@ -238,7 +267,6 @@ public class User implements java.io.Serializable {
                 ", email='" + email + '\'' +
                 ", last_name='" + userName + '\'' +
                 ", first_name='" + userName + '\'' +
-                ", creation_date='" + creationDate + '\'' +
                 "}";
 
     }
