@@ -86,7 +86,6 @@ class UserRoleDaoTest {
         GenericDao userDao = new GenericDao(User.class);
         genericDao.delete(genericDao.getById(1));
         assertNull(genericDao.getById(1));
-        logger.error(userDao.getById(6));
     }
 //    TODO: test for deleting a user's roles. what should happen when a role or roles are deleted?
 //    @Test

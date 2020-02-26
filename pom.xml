@@ -25,9 +25,9 @@
     <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
     <mysql-version>8.0.18</mysql-version>
     <hibernate-version>5.4.12.Final</hibernate-version>
-
-
-
+    <maven-help-plugin-version>3.2.0</maven-help-plugin-version>
+    <maven-resources-plugin-version>2.3</maven-resources-plugin-version>
+    <maven-war-plugin-version>3.2.3</maven-war-plugin-version>
   </properties>
 
   <dependencies>
@@ -95,15 +95,24 @@
 
   <profiles>
     <profile>
-      <id>local</id>
+      <id>prod</id>
       <properties>
-        <profile.name>local</profile.name>
+        <build.profile.id>prod</build.profile.id>
       </properties>
     </profile>
     <profile>
-      <id>aws</id>
+      <id>dev</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
       <properties>
-        <profile.name>aws</profile.name>
+        <build.profile.id>dev</build.profile.id>
+      </properties>
+    </profile>
+    <profile>
+      <id>test</id>
+      <properties>
+        <build.profile.id>test</build.profile.id>
       </properties>
     </profile>
   </profiles>
@@ -112,7 +121,6 @@
 
   <build>
     <finalName>ccb</finalName>
-    <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -125,6 +133,28 @@
 <!--          </configuration>-->
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin-version}</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${maven-war-plugin-version}</version>
+          <configuration>
+            <webResources>
+              <resource>
+                <directory>src/main/webapp/META-INF</directory>
+                <filtering>true</filtering>
+                <targetPath>META-INF</targetPath>
+              </resource>
+            </webResources>
+          </configuration>
+        </plugin>
+        <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${maven-surefire-plugin-version}</version>
           <dependencies>
@@ -135,11 +165,26 @@
             </dependency>
           </dependencies>
         </plugin>
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-help-plugin</artifactId>-->
+<!--          <version>${maven-help-plugin-version}</version>-->
+<!--          <executions>-->
+<!--            <execution>-->
+<!--              <id>show-profiles</id>-->
+<!--              <phase>compile</phase>-->
+<!--              <goals>-->
+<!--                <goal>active-profiles</goal>-->
+<!--              </goals>-->
+<!--            </execution>-->
+<!--          </executions>-->
+<!--        </plugin>-->
       </plugins>
-    </pluginManagement>
+
     <filters>
-      <filter>profiles/${profile.name}.properties</filter>
+      <filter>profiles/${build.profile.id}/config.properties</filter>
     </filters>
+
     <resources>
       <resource>
         <directory>src/main/resources</directory>
