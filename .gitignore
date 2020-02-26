@@ -30,6 +30,8 @@
 
 # IntelliJ
 /out/
+*.log
+
 
 # Maven
 /target/
