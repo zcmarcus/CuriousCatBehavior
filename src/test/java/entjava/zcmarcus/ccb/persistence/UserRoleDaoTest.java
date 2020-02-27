@@ -88,10 +88,7 @@ class UserRoleDaoTest {
         assertNull(genericDao.getById(1));
     }
 //    TODO: test for deleting a user's roles. what should happen when a role or roles are deleted?
-//    @Test
-//    void deleteRoleOnDeleteNoActionSuccess() {
-//
-//    }
+
 }
 
 

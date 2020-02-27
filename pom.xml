@@ -9,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>CuriousCatBehavior</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.placeholderformyactualwebsiteurl.com</url>
+  <url>http://18.217.107.47:8080/</url>
 
   <properties>
     <maven.compiler.release>11</maven.compiler.release>
@@ -28,6 +28,7 @@
     <maven-help-plugin-version>3.2.0</maven-help-plugin-version>
     <maven-resources-plugin-version>2.3</maven-resources-plugin-version>
     <maven-war-plugin-version>3.2.3</maven-war-plugin-version>
+    <properties-maven-plugin-version>1.0.0  </properties-maven-plugin-version>
   </properties>
 
   <dependencies>
@@ -90,33 +91,12 @@
       <artifactId>hibernate-c3p0</artifactId>
       <version>${hibernate-version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>properties-maven-plugin</artifactId>
+      <version>${properties-maven-plugin-version}</version>
+    </dependency>
   </dependencies>
-
-  <profiles>
-    <profile>
-      <id>prod</id>
-      <properties>
-        <build.profile.id>prod</build.profile.id>
-      </properties>
-    </profile>
-    <profile>
-      <id>dev</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <properties>
-        <build.profile.id>dev</build.profile.id>
-      </properties>
-    </profile>
-    <profile>
-      <id>test</id>
-      <properties>
-        <build.profile.id>test</build.profile.id>
-      </properties>
-    </profile>
-  </profiles>
-
 
 
   <build>
@@ -137,7 +117,7 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>${maven-resources-plugin-version}</version>
           <configuration>
-            <encoding>UTF-8</encoding>
+            <encoding>${project.reporting.outputEncoding}</encoding>
           </configuration>
         </plugin>
         <plugin>
@@ -165,24 +145,42 @@
             </dependency>
           </dependencies>
         </plugin>
-<!--        <plugin>-->
-<!--          <groupId>org.apache.maven.plugins</groupId>-->
-<!--          <artifactId>maven-help-plugin</artifactId>-->
-<!--          <version>${maven-help-plugin-version}</version>-->
-<!--          <executions>-->
-<!--            <execution>-->
-<!--              <id>show-profiles</id>-->
-<!--              <phase>compile</phase>-->
-<!--              <goals>-->
-<!--                <goal>active-profiles</goal>-->
-<!--              </goals>-->
-<!--            </execution>-->
-<!--          </executions>-->
-<!--        </plugin>-->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>properties-maven-plugin</artifactId>
+          <version>${properties-maven-plugin-version}</version>
+          <executions>
+            <execution>
+              <phase>initialize</phase>
+              <goals>
+                <goal>read-project-properties</goal>
+              </goals>
+              <configuration>
+                <files>
+                  <file>profiles/${build.profile.name}.properties</file>
+                </files>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-help-plugin</artifactId>
+          <version>${maven-help-plugin-version}</version>
+          <executions>
+            <execution>
+              <id>show-profiles</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>active-profiles</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
 
     <filters>
-      <filter>profiles/${build.profile.id}/config.properties</filter>
+      <filter>profiles/${build.profile.name}.properties</filter>
     </filters>
 
     <resources>
@@ -191,7 +189,26 @@
         <filtering>true</filtering>
       </resource>
     </resources>
-
-
   </build>
+
+
+  <profiles>
+    <profile>
+      <id>production</id>
+      <properties>
+        <build.profile.name>production</build.profile.name>
+      </properties>
+    </profile>
+    <profile>
+      <id>development</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <build.profile.name>development</build.profile.name>
+      </properties>
+    </profile>
+  </profiles>
+
+
 </project>
