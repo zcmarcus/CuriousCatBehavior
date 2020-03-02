@@ -5,4 +5,15 @@
          version="3.0">
 
   <display-name>Curious Cat Behavior</display-name>
+
+
+
+
+
+  <!--  Custom error pages -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/custom_error_pages/error404.jsp</location>
+  </error-page>
+
 </web-app>

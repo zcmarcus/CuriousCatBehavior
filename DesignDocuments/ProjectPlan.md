@@ -49,17 +49,18 @@
 - [ ] Weekly journal entry
 - [ ] Create .jsp for 'home' page
 - [ ] Create .jsp template files for many of the elements that will be re-used in project
+- [ ] sqldump database, both empty creation & test data inserts.
 
 
 #### Week 8
 
-- [ ] Add Google Sign-in API and tie in to users table in database
+- [ ] Add YouTube Data API and tie in to users table in database
 - [ ] Weekly journal entry
 
 
 #### Week 9
 
-- [ ] Add YouTube Data API for video data aggregation
+- [ ] Add Google Sign-in API for video data aggregation
 - [ ] Weekly journal entry
 
 

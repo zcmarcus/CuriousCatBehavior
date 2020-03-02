@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="custom-control custom-radio custom-control-inline" aria-label="Search property user id">
-            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-id" value="id">
+            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-id" selected  value="id">
             <label class="custom-control-label" for="radio-user-id">UserID</label>
         </div>
 

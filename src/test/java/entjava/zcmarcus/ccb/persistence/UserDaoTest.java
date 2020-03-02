@@ -23,6 +23,7 @@ class UserDaoTest {
     @BeforeEach
     void setUp() {
         logger.error("TESTING");
+        logger.debug("TESTING_DEBUG");
         genericDao = new GenericDao(User.class);
         try {
             Database database = Database.getInstance();
