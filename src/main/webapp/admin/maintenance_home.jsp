@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="custom-control custom-radio custom-control-inline" aria-label="Search property user id">
-            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-id" selected  value="id">
+            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-id" checked="checked"  value="id">
             <label class="custom-control-label" for="radio-user-id">UserID</label>
         </div>
 
@@ -35,12 +35,14 @@
             <label class="custom-control-label" for="radio-user-email">Email</label>
         </div>
 
+
+
 <%--        <div class="custom-control custom-radio custom-control-inline" aria-label="Search property - email">--%>
 <%--            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-role-name" value="id">--%>
 <%--            <label class="custom-control-label" for="radio-user-role-name">User Role</label>--%>
 <%--        </div>--%>
 
-        <div
+
 
 
 

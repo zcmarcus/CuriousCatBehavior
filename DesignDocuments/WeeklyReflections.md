@@ -92,6 +92,38 @@
     Implementing Facebook Login would allow users to quickly log in without having to create
     yet another new user account. Uses OAuth, which is a token-based authentication standard.
     
-###### Enterprise Java Work
+#### Week 5 (*Week of 02/17/2020*)
 
-    .    
+###### Individual Project
+    Expanded database with one-to-many relationship between Users and User Roles.
+    Added entities and DAOs to handle queries on User and User Role data.
+    Created unit tests for full CRUD functionality - achieved 85%+ code coverage.
+    Created sections of Administrator CRUD functionality, including ability
+    to query users with associated roles. 
+    Tried to pinpoint the reason for Log4J2 not correctly outputting log files as specified
+    in properties file. More troubleshooting to follow...
+
+###### Enterprise Java Work
+    Helped troubleshoot some classmate issues including testing for equality between
+    returned query objects in unit tests and exporting SQL data for re-use in rebuilding databases.
+    
+
+#### Week 6 (*Week of 02/24/2020*)
+
+###### Individual Project
+    Successfully deployed web app to AWS.
+    Finished with creation of database design.
+    Added video post entity.
+    
+###### Enterprise Java Work
+    Created and set up AWS account. Configured IP and security groups
+    for access to deployed web app and database. Solved issue with Log4J outputting
+    correctly to terminal but not creating log files. The solution was to simply fix a filename typo:
+    "log4j.properties" should have been named log4j2.properties all along. Log files all being output correctly 
+
+#### Week 7 (*Week of 03/02/2020*)
+
+###### Individual Project
+    Added simple custom 404 error page.
+
+###### Enterprise Java Work

@@ -25,17 +25,13 @@ public class MaintenanceSearchUser extends HttpServlet {
         String submitAction = req.getParameter("submit");
 
         GenericDao userDao = new GenericDao(User.class);
-//        UserDao userDao = new UserDao();
 
         if(submitAction!=null) {
             switch (submitAction) {
             case "findUser":
                 req.setAttribute("users", userDao.findByPropertyEqual(req.getParameter("search-property"), req.getParameter("search-term")));
-                logger.error("search property: {}", req.getParameter("search-property"));
-                logger.error("search term: {}", req.getParameter("search-term"));
                 break;
             case "viewAllUsers":
-                    logger.error("hi hi");
                 req.setAttribute("users", userDao.findAll());
                 break;
             }
