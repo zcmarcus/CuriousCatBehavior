@@ -52,3 +52,6 @@ fabric.properties
 
 # Project profiles
 /profiles
+
+# Database scripts
+/dba/

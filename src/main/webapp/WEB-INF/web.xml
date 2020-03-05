@@ -7,13 +7,35 @@
   <display-name>Curious Cat Behavior</display-name>
 
 
+  <!-- Use form-based auth -->
+  <login-config>
+      <auth-method>FORM</auth-method>
+      <form-login-config>
+          <form-login-page>/login.jsp</form-login-page>
+          <form-error-page>/login_error.jsp</form-error-page>
+      </form-login-config>
+  </login-config>
 
+  <!-- Protect the admin maintenance home page (aka search page for users, posts, etc.)  -->
 
+  <security-constraint>
+      <web-resource-collection>
+          <web-resource-name>maintenance_home</web-resource-name>
+          <url-pattern>/admin/*</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+          <role-name>admin</role-name>
+      </auth-constraint>
+  </security-constraint>
+  
+  <security-role>
+      <role-name>admin</role-name>
+  </security-role>
 
   <!--  Custom error pages -->
   <error-page>
-    <error-code>404</error-code>
-    <location>/custom_error_pages/error404.jsp</location>
+      <error-code>404</error-code>
+      <location>/custom_error_pages/error404.jsp</location>
   </error-page>
 
 </web-app>
