@@ -18,9 +18,13 @@
                     <a class="dropdown-item" href="#">Another Item</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link font-weight-bold" href="admin/maintenance_home.jsp">Administrator</a>
-            </li>
+
+            <c:if test="${userRoleNames.contains('admin')}">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="admin/maintenance_home.jsp">Administrator</a>
+                </li>
+            </c:if>
+
 
         </ul>
 
@@ -38,7 +42,7 @@
                 <a href="" class="nav-link btn btn-outline-dark px-3 mx-3">Join</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link btn btn-outline-primary px-3">Log In</a>
+                <a href="loginAction" class="nav-link btn btn-outline-primary px-3">Log In</a>
             </li>
         </ul>
     </div>

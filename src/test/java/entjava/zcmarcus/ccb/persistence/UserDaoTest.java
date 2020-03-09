@@ -22,8 +22,6 @@ class UserDaoTest {
 
     @BeforeEach
     void setUp() {
-        logger.error("TESTING");
-        logger.debug("TESTING_DEBUG");
         genericDao = new GenericDao(User.class);
         try {
             Database database = Database.getInstance();
@@ -83,8 +81,6 @@ class UserDaoTest {
 
         newUser.addRole(role);
         int id = genericDao.insert(newUser);
-
-
 
         assertNotEquals(0, id);
         User insertedUser = (User)genericDao.getById(id);

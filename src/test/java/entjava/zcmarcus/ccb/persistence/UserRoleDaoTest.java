@@ -60,6 +60,18 @@ class UserRoleDaoTest {
     }
 
     @Test
+    void determineIfUserIsAdmin() {
+        GenericDao userDao = new GenericDao(User.class);
+        List<User> users = (List<User>)userDao.findByPropertyEqual("userName", "kmalone");
+        Set<UserRole> userRoles = users.get(0).getUserRoles();
+        List<String> roleNames = new ArrayList<String>();
+        for(UserRole role : userRoles) {
+            roleNames.add(role.getRoleName());
+        }
+        assertTrue(roleNames.contains("admin"));
+    }
+
+    @Test
     void insertSuccess() {
         GenericDao userDao = new GenericDao(User.class);
         User user = (User)userDao.getById(3);
@@ -87,7 +99,10 @@ class UserRoleDaoTest {
         genericDao.delete(genericDao.getById(1));
         assertNull(genericDao.getById(1));
     }
-//    TODO: test for deleting a user's roles. what should happen when a role or roles are deleted?
+
+    //TODO: test for scenario when all roles are deleted for a user and
+    // user is automatically assigned default 'user' role.
+
 
 }
 

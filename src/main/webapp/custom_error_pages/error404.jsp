@@ -4,6 +4,6 @@
 
 <html>
 <body>
-    <h1 class="text-center">Sorry, the page you requested was not found. :( Double-check that url!</h1>
+    <h1 class="text-center bg-error">Sorry, the page you requested was not found. :( Double-check that url!</h1>
 </body>
 </html>
