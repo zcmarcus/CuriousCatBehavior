@@ -33,6 +33,7 @@
             <web-resource-name>login</web-resource-name>
             <url-pattern>/loginAction</url-pattern>
         </web-resource-collection>
+
         <auth-constraint>
             <role-name>admin</role-name>
             <role-name>user</role-name>

@@ -29,6 +29,7 @@
     <maven-resources-plugin-version>2.3</maven-resources-plugin-version>
     <maven-war-plugin-version>3.2.3</maven-war-plugin-version>
     <properties-maven-plugin-version>1.0.0  </properties-maven-plugin-version>
+    <tomcat-catalina-version>8.5.3</tomcat-catalina-version>
   </properties>
 
   <dependencies>
@@ -96,6 +97,13 @@
       <artifactId>properties-maven-plugin</artifactId>
       <version>${properties-maven-plugin-version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat</groupId>
+      <artifactId>tomcat-catalina</artifactId>
+      <version>${tomcat-catalina-version}</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
 

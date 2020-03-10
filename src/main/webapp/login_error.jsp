@@ -3,8 +3,14 @@
 <%@include file="template/head.jsp"%>
 <html>
 <body>
-<h2>Login failed.</h2>
-<p>Please check user login credentials and try again.</p>
+<div class="container-fluid">
+    <%@include file="template/navbar.jsp"%>
 
+    <div class="container">
+        <h2>Login failed.</h2>
+        <p>Please check user login credentials and try again.</p>
+
+    </div>
+</div>
 </body>
 </html>

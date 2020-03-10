@@ -39,7 +39,7 @@
                 <a class="nav-link" href="#">+ Add Video</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link btn btn-outline-dark px-3 mx-3">Join</a>
+                <a href="signup.jsp" class="nav-link btn btn-outline-dark px-3 mx-3">Join</a>
             </li>
             <li class="nav-item">
                 <a href="loginAction" class="nav-link btn btn-outline-primary px-3">Log In</a>
