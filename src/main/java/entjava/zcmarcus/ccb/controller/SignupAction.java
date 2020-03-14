@@ -1,6 +1,7 @@
 package entjava.zcmarcus.ccb.controller;
 
 import entjava.zcmarcus.ccb.entity.User;
+import entjava.zcmarcus.ccb.entity.UserRole;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
 import org.apache.catalina.realm.MessageDigestCredentialHandler;
 import org.apache.logging.log4j.LogManager;
@@ -37,20 +38,32 @@ public class SignupAction extends HttpServlet {
         String hashedPassword = credentialHandler.mutate(plainTextPassword);
 
 
+
         User user = new User(
                 req.getParameter("username")
                 ,hashedPassword
                 ,req.getParameter("email")
                 ,req.getParameter("last_name")
-                ,req.getParameter("first_name"));
+                ,req.getParameter("first_name")
+        );
 
         int newUserId = userDao.insert(user);
 
-        String successMessage = "Account with ID <span class='text-success'>"
-                + newUserId + "</span> successfully created! Visit "
-                + "<a href='loginAction'>Login page</a> to log in.";
 
-        req.setAttribute("successMessage", successMessage);
+        if (newUserId > 0) {
+            // If role other than default "user" set in request, create associated role along with new user
+            GenericDao userRoleDao = new GenericDao(UserRole.class);
+            UserRole userRole;
+            if (req.getParameterMap().containsKey("role_name")) {
+                userRole = new UserRole(user, req.getParameter("role_name"));
+            } else {
+                userRole = new UserRole(user, "user");
+            }
+            user.addRole(userRole);
+            int newUserRoleId = userRoleDao.insert(userRole);
+        }
+
+        req.setAttribute("newUserId", newUserId);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }

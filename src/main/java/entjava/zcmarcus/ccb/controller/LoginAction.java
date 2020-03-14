@@ -31,10 +31,11 @@ public class LoginAction extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String loggedInUser = req.getRemoteUser();
+//        GenericDao userRoleDao = new GenericDao(UserRole.class);
+//        GenericDao userDao = new GenericDao(User.class);
 
-        GenericDao userRoleDao = new GenericDao(UserRole.class);
-        GenericDao userDao = new GenericDao(User.class);
-
+        // TODO: Remember to comment out following line in tomcat/conf/logging.properties when not debugging:
+        // 1catalina.org.apache.juli.FileHandler.bufferSize = -1
 
         //TODO: try/catch block in case of no user or no role?
 //        List<User> users = (List<User>)userDao.findByPropertyEqual("userName", loggedInUser);
@@ -56,7 +57,7 @@ public class LoginAction extends HttpServlet {
 
         req.setAttribute("userRoleNames", userRoleNames);
 
-        logger.error("Logged user : " + req.getRemoteUser() + " has role of admin: " + req.isUserInRole("admin"));
+        logger.error("Logged user : " + req.getRemoteUser() + " has role of admin (true/false): " + req.isUserInRole("admin"));
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);
     }
