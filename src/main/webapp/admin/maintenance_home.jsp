@@ -8,6 +8,8 @@
 <h2>Maintenance Home</h2>
 
 <h3>Users</h3>
+    <%@include file="../template/navbar.jsp"%>
+
 
     <form class="form" action="searchUser" method="get">
         <div class="form-inline">

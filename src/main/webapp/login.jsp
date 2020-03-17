@@ -6,20 +6,27 @@
 <div class="container-fluid">
     <%@include file="template/navbar.jsp"%>
     <div class="container">
-        <div class="col-6 offset-3">
-            <form class="form" action="j_security_check" method="POST">
-                <div class="form-group">
-                    <label for="username">Username: </label>
-                    <input class="form-control" type="text" name="j_username" id="username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password: </label>
-                    <input class="form-control" type="password" name="j_password" id="password">
-                </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form class="form" action="j_security_check" method="POST">
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <input class="form-control" type="text" name="j_username" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input class="form-control" type="password" name="j_password" id="password">
+                    </div>
 
-                <input class="btn btn-primary" type="submit" value="Log In">
-            </form>
+                    <input class="btn btn-primary" type="submit" value="Log In">
+                </form>
+            </div>
+            <div class="col-6 offset-3">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </div>
         </div>
+
+
     </div>
 </div>
 </body>

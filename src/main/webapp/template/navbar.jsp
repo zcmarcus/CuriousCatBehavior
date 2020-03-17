@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-md navbar-light sticky-top justify-content-between" style="background-color: #ffe6e6;">
-    <a class="navbar-brand"><img src="images/logo.png" alt="drawing of cat with a question mark in a dialog bubble above its head" style="height: 80px; width: 80px; box-shadow: 1px 2px 3px lightgrey"></a>
+    <a class="navbar-brand"><img src="${pageContext.request.contextPath}/images/logo.png" alt="drawing of cat with a question mark in a dialog bubble above its head" style="height: 80px; width: 80px; box-shadow: 1px 2px 3px lightgrey"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-dropdown" aria-controls="navbar-nav-dropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -43,6 +43,9 @@
             </li>
             <li class="nav-item">
                 <a href="loginAction" class=" btn btn-outline-primary px-3">Log In</a>
+            </li>
+            <li>
+                <a href="#" onclick="signOut();">Sign out</a>
             </li>
         </ul>
     </div>
