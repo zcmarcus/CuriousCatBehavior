@@ -1,6 +1,6 @@
-<%@include file="../template/taglib.jsp"%>
+<%@include file="/template/taglib.jsp"%>
 <c:set var="title" value="Maintenance - Home" />
-<%@include file="../template/head.jsp"%>
+<%@include file="/template/head.jsp"%>
 
 <html>
 <body>
