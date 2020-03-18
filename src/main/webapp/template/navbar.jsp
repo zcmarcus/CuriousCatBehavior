@@ -42,11 +42,15 @@
                 <a href="signup.jsp" class=" btn btn-outline-dark px-3 mx-3">Join</a>
             </li>
             <li class="nav-item">
-                <a href="loginAction" class=" btn btn-outline-primary px-3">Log In</a>
+                <a href="loginAction" class=" btn btn-outline-primary px-3 mx-3">Log In</a>
             </li>
-            <li>
-                <a href="#" onclick="signOut();">Sign out</a>
-            </li>
+
+            <c:if test="${pageContext.request.getRemoteUser() != null}">
+                <li class="my-auto">
+                    <a href="logoutAction" onclick="signOut();" class="px-3 mx-3">Sign out</a>
+                </li>
+            </c:if>
+
         </ul>
     </div>
 </header>

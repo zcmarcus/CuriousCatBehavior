@@ -13,9 +13,7 @@
         <h2 class="text-center">CatsplainMeThis!</h2>
 
         <c:choose>
-            <c:when test="${empty newUserId}">
-
-            </c:when>
+            <c:when test="${empty newUserId}"></c:when>
             <c:otherwise>
                 <p>
                     Account with ID
