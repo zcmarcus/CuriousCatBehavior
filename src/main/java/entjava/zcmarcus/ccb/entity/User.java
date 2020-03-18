@@ -51,6 +51,9 @@ public class User implements java.io.Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<UserRole> userRoles = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Post> posts = new HashSet<>();
+
     /**
      * Instantiates a new User.
      */
@@ -239,6 +242,24 @@ public class User implements java.io.Serializable {
     public void setUserRoles(Set<UserRole> userRoles) { this.userRoles = userRoles; }
 
     /**
+     * Gets posts.
+     *
+     * @return the posts
+     */
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    /**
+     * Sets posts.
+     *
+     * @param posts the user posts
+     */
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+    /**
      * Add role.
      *
      * @param userRole the user role
@@ -256,6 +277,26 @@ public class User implements java.io.Serializable {
     public void removeRole(UserRole userRole) {
         userRoles.remove(userRole);
         userRole.setUser(this);
+    }
+
+    /**
+     * Add post.
+     *
+     * @param post the post
+     */
+    public void addPost(Post post) {
+        posts.add(post);
+        post.setUser(this);
+    }
+
+    /**
+     * Remove post.
+     *
+     * @param post the post
+     */
+    public void removePost(Post post) {
+        posts.remove(post);
+        post.setUser(this);
     }
 
     @Override
