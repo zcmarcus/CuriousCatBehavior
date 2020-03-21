@@ -17,6 +17,12 @@
 
         <mapping class="entjava.zcmarcus.ccb.entity.User"/>
         <mapping class="entjava.zcmarcus.ccb.entity.UserRole"/>
+        <mapping class="entjava.zcmarcus.ccb.entity.Post"/>
+        <mapping class="entjava.zcmarcus.ccb.entity.Tag"/>
+        <mapping class="entjava.zcmarcus.ccb.entity.Comment"/>
+
+
+
 
 
 
