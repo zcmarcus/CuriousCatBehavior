@@ -29,11 +29,7 @@ public class Tag {
     @Column(name = "tag_name")
     private String tagName;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "post_tags", joinColumns = {
-            @JoinColumn(name = "tag_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "post_id",
-                    nullable = false, updatable = false) })
+    @ManyToMany(mappedBy = "tags")
     private Set<Post> taggedPosts = new HashSet<>();
 
     /**
@@ -143,7 +139,6 @@ public class Tag {
         return "Tag{" +
                 "id=" + id +
                 ", tagName='" + tagName + '\'' +
-                ", posts=" + taggedPosts +
                 '}';
     }
 
@@ -153,12 +148,12 @@ public class Tag {
         if (o == null || getClass() != o.getClass()) return false;
         Tag tag = (Tag) o;
         return id == tag.id &&
-                tagName.equals(tag.tagName) &&
-                Objects.equals(taggedPosts, tag.taggedPosts);
+                tagName.equals(tag.tagName);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, tagName, taggedPosts);
+        return Objects.hash(tagName);
     }
 }

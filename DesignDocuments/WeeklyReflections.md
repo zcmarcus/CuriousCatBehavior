@@ -124,6 +124,32 @@
 #### Week 7 (*Week of 03/02/2020*)
 
 ###### Individual Project
-    Added simple custom 404 error page.
+    Added simple custom 404 error page. Added form-based authentication, requiring users to
+    log in order to reach secured resources (e.g.: If logged in user has admin role, reveal "Maintenance Page" link in navbar.)
+    Added Sign-up page for new users.
 
 ###### Enterprise Java Work
+    Learned about Tomcat security, JDBC Realm and how to use form-based authentication
+    based on User-UserRole relationship.
+
+
+#### Week 8 (*Week of 03/09/2020*)
+
+###### Individual Project
+    Got part of Google Sign-in working (front-end implementation). "Sign-in With Google" button added to Login page. However, I still need to save user ID token to 
+    my app's database in order to associate with posts, tags, comments. 
+###### Enterprise Java Work
+    Read into capabilities of Google Calendar API for potential use in team project. Unsure if it would be worthwhile
+    to make a new web service based on Google Calendar when the existing API already offers a great number of capabilities.
+
+
+#### SPRING BREAK (*Week of 03/16/2020*)
+
+###### Individual Project
+    As COVID-19 response has turned most all of our lives upside-down as of late, I've found little time to 
+    finalize implementation of Google Signin (w/ the back end) or look ahead at starting work with the Youtube Data API.
+    I did manage to incrementally flesh out the rest of my entities and a good amount of basic unit tests, but I have
+    not had enough time to put into the project.
+    
+###### Enterprise Java Work
+    

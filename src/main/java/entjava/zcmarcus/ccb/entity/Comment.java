@@ -58,15 +58,11 @@ public class Comment {
      * Instantiates a new Comment.
      *
      * @param contentBody  the content body
-     * @param createdDate  the created date
-     * @param modifiedDate the modified date
      * @param post         the post
      * @param user         the user
      */
-    public Comment(String contentBody, Date createdDate, Date modifiedDate, Post post, User user) {
+    public Comment(String contentBody, Post post, User user) {
         this.contentBody = contentBody;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
         this.post = post;
         this.user = user;
     }

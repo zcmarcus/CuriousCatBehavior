@@ -6,10 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * The type Post.
@@ -49,7 +46,9 @@ public class Post {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //TODO: fetch tags lazily?
+    //TODO: Change to CascadeType.PERSISTS (+ MERGE?) instead to leave tags alone in case a post is deleted.
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(name = "post_tags", joinColumns = {
             @JoinColumn(name = "post_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "tag_id",
@@ -267,7 +266,7 @@ public class Post {
      */
     public void addTag(Tag tag) {
         tags.add(tag);
-        tag.addPost(this);
+        tag.getTaggedPosts().add(this);
     }
 
 
@@ -278,7 +277,7 @@ public class Post {
      */
     public void removeTag(Tag tag) {
         comments.remove(tag);
-        tag.removePost(this);
+        tag.getTaggedPosts().remove(this);
     }
 
 
@@ -299,10 +298,11 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return id == post.id &&
-                title.equals(post.title) &&
-                videoUrl.equals(post.videoUrl) &&
-                descriptionBody.equals(post.descriptionBody);
+        return id == post.id
+//                && title.equals(post.title)
+//                && videoUrl.equals(post.videoUrl)
+//                && descriptionBody.equals(post.descriptionBody)
+                ;
 
     }
 
