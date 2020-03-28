@@ -146,10 +146,23 @@
 #### SPRING BREAK (*Week of 03/16/2020*)
 
 ###### Individual Project
-    As COVID-19 response has turned most all of our lives upside-down as of late, I've found little time to 
+    As COVID-19 response has turned most all of our lives upside-down, I've found little time to 
     finalize implementation of Google Signin (w/ the back end) or look ahead at starting work with the Youtube Data API.
     I did manage to incrementally flesh out the rest of my entities and a good amount of basic unit tests, but I have
     not had enough time to put into the project.
     
 ###### Enterprise Java Work
+    More leraning about consuming APIs. Getting a better grasp on processing JSON response
+    data using Jackson and the handy RoboPOJOGenerator, which allows for rapid generation of POJOs from JSON.
+
+#### Week 9 (*Week of 03/23/2020*)
+
+###### Individual Project
+    Fully integrating Google Sign-in with the back-end proved to be quite frustrating, so I have removed
+    it from the project. Perhaps I will implement in V2, but for now, it is not vital to the success of the application.
+    Returning focus to implementing the YouTube Data API, which is key to application functionality.
     
+###### Enterprise Java Work
+    Formed a group for a team project, which will offer a web service aimed at assiting Slack workspace owners with
+    templating and creating new workspaces from existing ones. Helped with initial setup tasks including: initiation of a project
+    git repo, creation of a test Slack workspace, and collecting of user research data.

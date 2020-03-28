@@ -21,9 +21,7 @@
                     <input class="btn btn-primary" type="submit" value="Log In">
                 </form>
             </div>
-            <div class="col-6 offset-3">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div>
+
         </div>
 
 

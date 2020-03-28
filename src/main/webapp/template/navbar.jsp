@@ -41,9 +41,11 @@
             <li class="nav-item">
                 <a href="signup.jsp" class=" btn btn-outline-dark px-3 mx-3">Join</a>
             </li>
-            <li class="nav-item">
-                <a href="loginAction" class=" btn btn-outline-primary px-3 mx-3">Log In</a>
-            </li>
+            <c:if test="${pageContext.request.getRemoteUser() == null}">
+                <li class="nav-item">
+                    <a href="loginAction" class=" btn btn-outline-primary px-3 mx-3">Log In</a>
+                </li>
+            </c:if>
 
             <c:if test="${pageContext.request.getRemoteUser() != null}">
                 <li class="my-auto">

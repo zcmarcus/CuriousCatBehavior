@@ -55,3 +55,7 @@ fabric.properties
 
 # Database scripts
 /dba/
+
+# Google API Client
+src/main/resources/google.secrets.properties
+src/main/resources/youtube.properties

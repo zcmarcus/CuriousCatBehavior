@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -27,9 +29,10 @@ import java.util.Set;
 public class LoginAction extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    logger.debug(req.getRemoteUser());
         String loggedInUser = req.getRemoteUser();
 //        GenericDao userRoleDao = new GenericDao(UserRole.class);
 //        GenericDao userDao = new GenericDao(User.class);
@@ -48,7 +51,7 @@ public class LoginAction extends HttpServlet {
 
         String userAccessLevel;
         List<String> userRoleNames = new ArrayList<>();
-        if(req.isUserInRole("admin")) {
+        if (req.isUserInRole("admin")) {
             userRoleNames.add("admin");
         }
         if (req.isUserInRole("user")) {
@@ -61,4 +64,5 @@ public class LoginAction extends HttpServlet {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);
     }
+
 }

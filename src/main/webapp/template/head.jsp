@@ -3,10 +3,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%--  This app's client ID created in Google Developer Console (for use with Google Signin)--%>
-    <%--  TODO: can alternatively specify client ID in gapi.auth2.init() --%>
-    <meta name="google-signin-client_id" content="957495172888-dktv6coic4ctb7m9gchun82luk9q317d.apps.googleusercontent.com">
-
 
     <title>${title}</title>
     <%--  css Bootstrap 4--%>
@@ -24,10 +20,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
     <%--  Google Platform Library--%>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<%--    <script src="https://apis.google.com/js/api.js?onload=onLibraryLoaded" async defer></script>--%>
 
-    <%--  Functions for Google Signin functionality--%>
-    <script src="${pageContext.request.contextPath}/js/google_signin.js"></script>
 
     <%--  Font Awesome--%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
