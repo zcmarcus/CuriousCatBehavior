@@ -28,9 +28,9 @@
 
         </ul>
 
-        <form class="form-inline my-2 my-md-0 ml-auto">
-            <input class="form-control mr-md-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-dark my-2 my-sm-0" type="submit">
+        <form class="form-inline my-2 my-md-0 ml-auto" method="GET" action="searchVideos">
+            <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark my-2 my-sm-0" type="submit" name="submit" value="searchSubmit">
                 <i class="fa fa-search"></i>
             </button>
         </form>

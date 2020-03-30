@@ -18,6 +18,7 @@
     <junit-version>4.13</junit-version>
     <junit-jupiter-version>5.6.0</junit-jupiter-version>
     <junit-vintage-version>5.6.0</junit-vintage-version>
+    <hamcrest-version>2.2</hamcrest-version>
     <junit-platform-surefire-provider-version>1.0.0</junit-platform-surefire-provider-version>
     <javax-version>8.0.1</javax-version>
     <log4j-version>2.13.0</log4j-version>
@@ -62,6 +63,15 @@
       <version>${junit-vintage-version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest -->
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <version>${hamcrest-version}</version>
+      <scope>test</scope>
+    </dependency>
+
     <dependency>
       <groupId>javax</groupId>
       <artifactId>javaee-web-api</artifactId>

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entjava.zcmarcus.ccb.util.PropertiesLoader;
 import entjava.zcmarcus.ccb.youtube.SearchData;
+import entjava.zcmarcus.ccb.youtube.Snippet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +26,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
     /**
      * Instantiates a new Youtube search dao.
      */
-    YoutubeSearchDao() {
+    public YoutubeSearchDao() {
         try {
             youtubeProperties = loadProperties("/youtube.properties");
             googleSecretsProperties = loadProperties("/google.secrets.properties");
@@ -38,14 +39,12 @@ public class YoutubeSearchDao implements PropertiesLoader {
 
     }
 
-    SearchData getSearchData() {
+    public SearchData getSearchData(String searchTerm) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
                 client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")
-                + "&maxResults=25&q=surfing&key="
+                + "&maxResults=12&q=" + searchTerm + "&key="
                 + googleSecretsProperties.getProperty("ccb_api_key"));
-//        WebTarget target =
-//                client.target("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&key=" + AIzaSyBzYpsPrqB3ce-V7FCgsIDOR8jfNvBvzGw + ");
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
         ObjectMapper mapper = new ObjectMapper();
         SearchData search = null;
@@ -56,4 +55,5 @@ public class YoutubeSearchDao implements PropertiesLoader {
         }
         return search;
     }
+
 }
