@@ -46,6 +46,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
                 + "&maxResults=12&q=" + searchTerm + "&key="
                 + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        logger.debug(response);
         ObjectMapper mapper = new ObjectMapper();
         SearchData search = null;
         try {
@@ -53,6 +54,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
         } catch (JsonProcessingException e) {
             logger.error("Encountered a problem processing JSON: {}", e);
         }
+        logger.debug(search);
         return search;
     }
 

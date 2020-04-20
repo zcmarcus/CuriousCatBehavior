@@ -122,7 +122,7 @@ public class GenericDao<T> {
     }
 
     /**
-     * Get order by property (like)
+     * Find entities by property (like)
      *
      * @param propertyName entity property to search by
      * @param value value of the property to search for
@@ -144,7 +144,30 @@ public class GenericDao<T> {
     }
 
     /**
-     * Finds entities by multiple properties.
+     * Find entities one or more of multiple properties like a single value.
+
+     * @param propertyList list of properties
+     * @param value value to search multiple properties for
+     * @return entities with one or more properties like those passed in the map
+     *
+     *
+     */
+    public List<T> findByPropertiesLike(ArrayList<String> propertyList, Object value) {
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        List<Predicate> predicates = new ArrayList<Predicate>();
+        for (String property : propertyList) {
+            logger.debug(property + " " + value);
+            predicates.add(builder.like(root.get((String)property),"%" + (String) value + "%"));
+        }
+        query.select(root).where(builder.or(predicates.toArray(new Predicate[predicates.size()])));
+        return session.createQuery(query).getResultList();
+    }
+
+    /**
+     * Finds entities by multiple property/value pairs.
      * Inspired by https://stackoverflow.com/questions/11138118/really-dynamic-jpa-criteriabuilder
 
      * @param propertyMap property and value pairs
@@ -152,7 +175,7 @@ public class GenericDao<T> {
      *
      *
      */
-    public List<T> findByPropertiesEqual(Map<String, Object> propertyMap) {
+    public List<T> findByPropertiesValuesEqual(Map<String, Object> propertyMap) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);

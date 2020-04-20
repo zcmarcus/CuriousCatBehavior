@@ -64,11 +64,18 @@ class PostDaoTest {
     }
 
     @Test
+    void findByUserSuccess() {
+        User user = (User)userDao.getById(2);
+        List<Post> posts = (List<Post>)postDao.findByPropertyEqual("user", user);
+        assertEquals(2, posts.size());
+    }
+
+    @Test
     void findByPropertiesEqualSuccess() {
         Map<String, String> propertyMap = new HashMap<>();
         propertyMap.put("title", "My cat paws endlessly at the mirror");
         propertyMap.put("videoUrl", "https://www.youtube.com/watch?v=fakeurl2");
-        List<Post> posts = (List<Post>)postDao.findByPropertiesEqual(propertyMap);
+        List<Post> posts = (List<Post>)postDao.findByPropertiesValuesEqual(propertyMap);
         assertEquals(1, posts.size());
     }
 
@@ -77,6 +84,7 @@ class PostDaoTest {
         List<Post> posts = (List<Post>)postDao.findByPropertyLike("title", "endless");
         assertEquals(3, posts.size());
     }
+
 
     @Test
     void insertSuccess() {

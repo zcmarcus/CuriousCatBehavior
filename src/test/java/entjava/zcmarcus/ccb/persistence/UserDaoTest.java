@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,11 +56,23 @@ class UserDaoTest {
     }
 
     @Test
-    void findByPropertiesEqualSuccess() {
+    void findByPropertiesLikeSuccess() {
+        ArrayList<String> propertyList = new ArrayList<>();
+        propertyList.add("userName");
+        propertyList.add("lastName");
+        propertyList.add("firstName");
+        propertyList.add("email");
+        List<User> users = (List<User>)genericDao.findByPropertiesLike(propertyList, "on");
+        assertEquals(3, users.size());
+    }
+
+
+    @Test
+    void findByPropertiesValuesEqualSuccess() {
         Map<String, String> propertyMap = new HashMap<>();
         propertyMap.put("firstName", "Hannah");
         propertyMap.put("lastName", "Coulson");
-        List<User> users = (List<User>)genericDao.findByPropertiesEqual(propertyMap);
+        List<User> users = (List<User>)genericDao.findByPropertiesValuesEqual(propertyMap);
         assertEquals(2, users.size());
     }
 
