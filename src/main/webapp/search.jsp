@@ -23,7 +23,9 @@
                             <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}" class="d-block mt-1 mb-1 h-100">
                                 <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
                             </a>
-                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">/watch?v=${item.getId().getVideoId()}</a>
+<%--                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">/watch?v=${item.getId().getVideoId()}</a>--%>
+                            <a href="http://www.youtube.com/watch?v=${item.getSnippet().getTitle()}">/watch?v=${item.getSnipet().getTitle()}</a>
+
                         </div>
                     </c:forEach>
                 </c:when>

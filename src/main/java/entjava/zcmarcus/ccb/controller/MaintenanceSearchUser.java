@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(
         urlPatterns = {"/admin/searchUser"}
@@ -29,7 +30,13 @@ public class MaintenanceSearchUser extends HttpServlet {
         if(submitAction!=null) {
             switch (submitAction) {
             case "findUser":
-                req.setAttribute("users", userDao.findByPropertyEqual(req.getParameter("search-property"), req.getParameter("search-term")));
+                ArrayList<String> propertiesToSearch = new ArrayList<>();
+                propertiesToSearch.add("userName");
+                propertiesToSearch.add("lastName");
+                propertiesToSearch.add("firstName");
+                propertiesToSearch.add("email");
+
+                req.setAttribute("users", userDao.findByPropertiesLike(propertiesToSearch, req.getParameter("search-term")));
                 break;
             case "viewAllUsers":
                 req.setAttribute("users", userDao.findAll());
