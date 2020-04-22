@@ -13,6 +13,8 @@
 <body>
 <div class="container-fluid">
     <h2>Search Results:</h2>
+    <c:if test="${users != null}">
+
     <table id="resultsDataTable" class="display">
         <thead>
         <th>UserID</th>
@@ -28,18 +30,55 @@
                     <td>${user.userName}</td>
                     <td>${user.email}</td>
                     <td>${user.lastName}, ${user.firstName}</td>
-                    <td>
+                    <td>Roles:
                     <c:forEach var="userRole" items="${user.userRoles}">
-                        Role ID: ${userRole.id}, Role Name: ${userRole.roleName} <br/>
+                        ${userRole.roleName} <br>
                     </c:forEach>
                     </td>
                 </tr>
             </c:forEach>
         </tbody>
 
-
-
     </table>
+
+    </c:if>
+
+    <c:if test="${posts != null}">
+
+        <table id="resultsDataTable" class="display">
+            <thead>
+            <th>PostID</th>
+            <th>Title</th>
+            <th>Description Body</th>
+            <th>Video URL</th>
+            <th>Created</th>
+            <th>Modified</th>
+            <th>User</th>
+            </thead>
+            <tbody>
+            <c:forEach var="post" items="${posts}">
+                <tr>
+                    <td>${post.id}</td>
+                    <td>${post.title}</td>
+                    <td>${post.descriptionBody}</td>
+                    <td>${post.videoUrl}</td>
+                    <td>${post.createdDate}</td>
+                    <td>${post.modifiedDate}</td>
+
+
+                    <td>
+                        ${post.user.id}: ${post.user.userName}
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+
+        </table>
+
+    </c:if>
+
+
+
 
 </div>
 

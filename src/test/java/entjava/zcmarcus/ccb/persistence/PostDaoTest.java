@@ -74,7 +74,7 @@ class PostDaoTest {
     void findByPropertiesEqualSuccess() {
         Map<String, String> propertyMap = new HashMap<>();
         propertyMap.put("title", "My cat paws endlessly at the mirror");
-        propertyMap.put("videoUrl", "https://www.youtube.com/watch?v=fakeurl2");
+        propertyMap.put("videoUrl", "s9LjibhkPfw");
         List<Post> posts = (List<Post>)postDao.findByPropertiesValuesEqual(propertyMap);
         assertEquals(1, posts.size());
     }

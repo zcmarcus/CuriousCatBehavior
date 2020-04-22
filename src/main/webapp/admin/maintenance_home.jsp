@@ -7,20 +7,16 @@
 <%@include file="../template/navbar.jsp"%>
 
 <div class="container-fluid">
-<h2>Maintenance Home</h2>
-
-<h3>Users</h3>
+    <h2 class="mb-2">Maintenance Home</h2>
 
 
+    <form class="form" action="maintenanceSearch" method="get">
+        <h3 class="mb-2">Users</h3>
 
-    <form class="form" action="searchUser" method="get">
-        <div class="form-inline">
+        <div class="form-inline mb-5">
             <div class="form-group">
-                <label for="search-term"></label>
-                <input type="text" id="search-term" name="search-term" class="form-control" placeholder="Enter search term">
-                <p>
-                    <small>Enter part or all of user username, email, first name or last name</small>
-                </p>
+                <label for="userSearchTerm"></label>
+                <input type="text" id="userSearchTerm" name="userSearchTerm" class="form-control" placeholder="Enter part or all of a user detail">
             </div>
             <div class="form-group">
                 <button name="submit" type="submit" value="findUser" class="btn btn-primary ml-3 my-1">Find User</button>
@@ -28,15 +24,18 @@
             </div>
         </div>
 
+        <h3 class="mb-2">Posts</h3>
 
-
-
-<%--        <div class="custom-control custom-radio custom-control-inline" aria-label="Search property - email">--%>
-<%--            <input name="search-property" class="custom-control-input" type="radio" id="radio-user-role-name" value="id">--%>
-<%--            <label class="custom-control-label" for="radio-user-role-name">User Role</label>--%>
-<%--        </div>--%>
-
-
+        <div class="form-inline mb-5">
+            <div class="form-group">
+                <label for="postSearchTerm"></label>
+                <input type="text" id="postSearchTerm" name="postSearchTerm" class="form-control" placeholder="Enter part or all of a post detail">
+            </div>
+            <div class="form-group">
+                <button name="submit" type="submit" value="findPost" class="btn btn-primary ml-3 my-1">Find Post</button>
+                <button name="submit" type="submit" value="viewAllPosts" class="btn btn-primary ml-3 my-1">View All Posts</button>
+            </div>
+        </div>
     </form>
 
 

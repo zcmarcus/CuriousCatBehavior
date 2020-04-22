@@ -1,6 +1,7 @@
 package entjava.zcmarcus.ccb.controller;
 
 
+import entjava.zcmarcus.ccb.entity.Post;
 import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
@@ -16,9 +17,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(
-        urlPatterns = {"/admin/searchUser"}
+        urlPatterns = {"/admin/maintenanceSearch"}
 )
-public class MaintenanceSearchUser extends HttpServlet {
+public class MaintenanceSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -26,20 +27,30 @@ public class MaintenanceSearchUser extends HttpServlet {
         String submitAction = req.getParameter("submit");
 
         GenericDao userDao = new GenericDao(User.class);
+        GenericDao postDao = new GenericDao(Post.class);
 
+        ArrayList<String> propertiesToSearch = new ArrayList<>();
         if(submitAction!=null) {
             switch (submitAction) {
             case "findUser":
-                ArrayList<String> propertiesToSearch = new ArrayList<>();
                 propertiesToSearch.add("userName");
                 propertiesToSearch.add("lastName");
                 propertiesToSearch.add("firstName");
                 propertiesToSearch.add("email");
 
-                req.setAttribute("users", userDao.findByPropertiesLike(propertiesToSearch, req.getParameter("search-term")));
+                req.setAttribute("users", userDao.findByPropertiesLike(propertiesToSearch, req.getParameter("userSearchTerm")));
                 break;
             case "viewAllUsers":
                 req.setAttribute("users", userDao.findAll());
+                break;
+            case "findPost":
+                propertiesToSearch.add("title");
+                propertiesToSearch.add("descriptionBody");
+                propertiesToSearch.add("user");
+                req.setAttribute("posts", postDao.findByPropertiesLike(propertiesToSearch, req.getParameter("postSearchTerm")));
+                break;
+            case "viewAllPosts":
+                req.setAttribute("posts", postDao.findAll());
                 break;
             }
         }

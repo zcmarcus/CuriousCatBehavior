@@ -32,7 +32,8 @@ public class LogoutAction extends HttpServlet {
         HttpSession session = req.getSession();
         session.invalidate();
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(req, resp);
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+//        dispatcher.forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/index.jsp");
     }
 }

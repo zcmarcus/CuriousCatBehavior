@@ -53,6 +53,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
             search = mapper.readValue(response, SearchData.class);
         } catch (JsonProcessingException e) {
             logger.error("Encountered a problem processing JSON: {}", e);
+            e.printStackTrace();
         }
         logger.debug(search);
         return search;
