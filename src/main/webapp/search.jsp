@@ -20,86 +20,60 @@
                 <c:when test="${!empty searchItems}">
                     <c:forEach items="${searchItems}" var="item">
                         <div class="col-lg-3 col-md-4 col-6 mt-4">
-                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}" class="d-block mt-1 mb-1 h-100">
-                                <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
-                            </a>
-<%--                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">/watch?v=${item.getId().getVideoId()}</a>--%>
-                            <a href="http://www.youtube.com/watch?v=${item.getSnippet().getTitle()}">/watch?v=${item.getSnippet().getTitle()}</a>
-
+                            <div>
+                                <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}" class=" mt-1 mb-1 ">
+                                    <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">${item.getSnippet().getTitle()}</a>
+                            </div>
                         </div>
                     </c:forEach>
                 </c:when>
             </c:choose>
 
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/pWkk7iiCoDM/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aob0ukAYfuI/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EUfxH-pze7s/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/M185_qYH8vg/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/sesveuG_rNo/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/AvhMzHwiE_0/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/2gYsZUmockw/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/EMSDtjVHdQ8/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/8mUEy0ABdNE/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/G9Rfc1qccH4/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/aJeH0KcFkuc/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-<%--                <div class="col-lg-3 col-md-4 col-6">--%>
-<%--                    <a href="#" class="d-block mb-4 h-100">--%>
-<%--                        <img class="img-fluid img-thumbnail" src="https://source.unsplash.com/p2TQ-3Bh3Oo/400x300" alt="">--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-
         </div>
 
+        <div class="row mt-5 mb-5">
+            <nav aria-label="youtubeSearchResultsPagination">
+                <ul class="pagination">
+                    <li class="page-item
+                        <c:choose>
+                            <c:when test="${empty searchData.getPrevPageToken()}">
+                                disabled
+                            </c:when>
+                        </c:choose>
+                    ">
+
+                        <c:choose>
+                            <c:when test="${not empty searchData.getPrevPageToken()}">
+                                <a class="page-link" href="searchVideos?searchTerm=${searchTerm}&pageToken=${searchData.getPrevPageToken()}" tabindex="-1">Previous Page</a>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="page-link">Previous Page</span>
+                            </c:otherwise>
+                        </c:choose>
+
+                    </li>
+                    <li class="page-item">
+                        <c:choose>
+                            <c:when test="${not empty searchData.getNextPageToken()}">
+                                <a class="page-link" href="searchVideos?searchTerm=${searchTerm}&pageToken=${searchData.getNextPageToken()}">Next Page</a>
+                            </c:when>
+                        </c:choose>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <footer class="text-center">
+            <span>Some footer text - Copyright 2020</span>
+        </footer>
+
     </div>
 
-
-
-
-    </div>
 </div>
 </body>
 </html>

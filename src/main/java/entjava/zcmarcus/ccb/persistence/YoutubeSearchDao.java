@@ -43,10 +43,10 @@ public class YoutubeSearchDao implements PropertiesLoader {
         Client client = ClientBuilder.newClient();
         WebTarget target =
                 client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")
-                + "&maxResults=12&q=" + searchTerm + "&key="
-                + googleSecretsProperties.getProperty("ccb_api_key"));
+                        + "&maxResults=12&q=" + searchTerm + "&key="
+                        + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        logger.debug(response);
+        logger.debug("response: " + response);
         ObjectMapper mapper = new ObjectMapper();
         SearchData search = null;
         try {
@@ -55,7 +55,28 @@ public class YoutubeSearchDao implements PropertiesLoader {
             logger.error("Encountered a problem processing JSON: {}", e);
             e.printStackTrace();
         }
-        logger.debug(search);
+        logger.info("search data: " + search);
+        return search;
+    }
+
+    public SearchData getSearchDataPageToken(String searchTerm, String pageToken ) {
+        Client client = ClientBuilder.newClient();
+        WebTarget target =
+                client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")
+                        + "&maxResults=12&pageToken=" + pageToken
+                        + "&q=" + searchTerm + "&key="
+                        + googleSecretsProperties.getProperty("ccb_api_key"));
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        logger.debug("response: " + response);
+        ObjectMapper mapper = new ObjectMapper();
+        SearchData search = null;
+        try {
+            search = mapper.readValue(response, SearchData.class);
+        } catch (JsonProcessingException e) {
+            logger.error("Encountered a problem processing JSON: {}", e);
+            e.printStackTrace();
+        }
+        logger.info("search data: " + search);
         return search;
     }
 

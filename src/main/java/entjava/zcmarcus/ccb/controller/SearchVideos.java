@@ -27,17 +27,27 @@ public class SearchVideos extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Logger logger = LogManager.getLogger(this.getClass());
-        String submitAction = req.getParameter("submit");
+//        String submitAction = req.getParameter("submit");
         String searchTerm = req.getParameter("searchTerm").replaceAll(" ", "%20");
+        String pageToken = req.getParameter("pageToken");
 
         YoutubeSearchDao searchDao = new YoutubeSearchDao();
         ArrayList<String> searchResultThumbnailUrls = new ArrayList<>();
         ArrayList<String> searchResultVideoIds = new ArrayList<>();
-        if(submitAction!=null) {
-            List<ItemsItem> searchItems = searchDao.getSearchData(searchTerm).getItems();
+        SearchData searchData = null;
+//        if(submitAction!=null) {
+            if(pageToken != null) {
+                searchData = searchDao.getSearchDataPageToken(searchTerm, pageToken);
+            } else {
+                searchData = searchDao.getSearchData(searchTerm);
+
+            }
+            logger.debug(searchData);
+            List<ItemsItem> searchItems = searchData.getItems();
+            req.setAttribute("searchData", searchData);
             req.setAttribute("searchItems", searchItems);
             req.setAttribute("searchTerm", req.getParameter("searchTerm"));
-        }
+//        }
 
 
 
