@@ -47,7 +47,7 @@ class PostDaoTest {
     @Test
     void findAllSuccess() {
         List<Post> posts = (List<Post>)postDao.findAll();
-        assertEquals(4, posts.size());
+        assertEquals(39, posts.size());
     }
 
     @Test
