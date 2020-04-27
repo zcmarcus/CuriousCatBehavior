@@ -52,7 +52,7 @@ public class CreatePostAction extends HttpServlet {
         GenericDao postDao = new GenericDao(Post.class);
         GenericDao userDao = new GenericDao(User.class);
 
-        int userId = (Integer) session.getAttribute("userID");
+        int userId = (Integer) session.getAttribute("userId");
         User user = (User) userDao.getById(userId);
         String tagsSemicolonDelimited = req.getParameter("tags");
         //split tags by semicolon
