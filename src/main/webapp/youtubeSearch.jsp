@@ -2,26 +2,55 @@
 <c:set var="title" value="Search" />
 <%@include file="template/head.jsp"%>
 
-<html>
-<head>
-    <title>Search</title>
-</head>
-<body>
-<div class="container-fluid">
+<html class="h-100">
+<body class="h-100">
+<div class="container-fluid d-flex flex-column h-100">
     <%@include file="template/navbar.jsp"%>
 
     <div class="container">
-        <h2 class="text-center">Search Results for: ${searchTerm}</h2>
+
+        <h2>Find video on YouTube</h2>
+        <div>
+            <p>
+                Enter your query in the box below. If you have a specific video you would like to select to use in
+                your post, you may enter the video's ID<sup><i class="fa fa-asterisk"></i></sup> in the search box instead.
+            </p>
+        </div>
+        <div class="mt-2">
+            <div>
+                <img src="images/example_youtube_video_id.png" alt="example of a youtube video url with the id portion highlight">
+            </div>
+            <div>
+                <sup><i class="fa fa-asterisk"></i></sup>
+                <small>
+                    See the text highlighted in red in the image above for an example of a YouTube video ID.
+                </small>
+            </div>
+        </div>
+        <form class="form-inline mt-5 mb-3" method="GET" action="youtubeSearchAction">
+            <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark my-2 my-sm-0" type="submit" name="submit" value="searchSubmit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+
+        <div class="mt-2">
+            <p>
+                Click a video in the results below to use it in creating a new post.
+            </p>
+        </div>
+
+
+        <h3>Search Results for: ${searchTerm}</h3>
 
         <div class="row text-center text-lg-left">
-
 
             <c:choose>
                 <c:when test="${!empty searchItems}">
                     <c:forEach items="${searchItems}" var="item">
                         <div class="col-lg-3 col-md-4 col-6 mt-4">
                             <div>
-                                <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}" class=" mt-1 mb-1 ">
+                                <a href="createPostAction?videoUrl=${item.getId().getVideoId()}" class=" mt-1 mb-1 ">
                                     <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
                                 </a>
                             </div>
@@ -68,11 +97,11 @@
         </div>
 
 
-        <footer class="text-center">
-            <span>Some footer text - Copyright 2020</span>
-        </footer>
 
     </div>
+
+    <%@include file="template/footer.jsp"%>
+
 
 </div>
 </body>

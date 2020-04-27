@@ -67,7 +67,9 @@
 
 
                     <td>
-                        ${post.user.id}: ${post.user.userName}
+                        <a href="maintenanceSearch?submitAction=getUserById&userSearchTerm=${post.user.id}">
+                                ${post.user.id}: ${post.user.userName}
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

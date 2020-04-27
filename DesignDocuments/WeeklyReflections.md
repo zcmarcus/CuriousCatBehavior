@@ -166,3 +166,31 @@
     Formed a group for a team project, which will offer a web service aimed at assiting Slack workspace owners with
     templating and creating new workspaces from existing ones. Helped with initial setup tasks including: initiation of a project
     git repo, creation of a test Slack workspace, and collecting of user research data.
+    
+
+#### Week 10 (*Week of 03/30/2020*)
+
+###### Individual Project
+
+
+
+#### Week 11 (*Week of 04/6/2020*)
+
+###### Individual Project
+
+    
+
+#### Week 12 (*Week of 04/13/2020*)
+
+###### Individual Project
+
+
+
+#### Week 13 (*Week of 4/20/2020*)
+
+###### Individual Project
+
+    Used Mockaroo to generate fake data sets for the database. Added new method to GenericDao allowing for more efficient
+    searches on multiple columns using wildcards
+
+#### Week 14 (*Week of 4/27/2020*)

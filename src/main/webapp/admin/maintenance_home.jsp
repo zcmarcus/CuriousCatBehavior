@@ -19,7 +19,7 @@
                 <input type="text" id="userSearchTerm" name="userSearchTerm" class="form-control" placeholder="Enter part or all of a user detail">
             </div>
             <div class="form-group">
-                <button name="submit" type="submit" value="findUser" class="btn btn-primary ml-3 my-1">Find User</button>
+                <button name="submit" type="submit" value="findUsersByAny" class="btn btn-primary ml-3 my-1">Find User</button>
                 <button name="submit" type="submit" value="viewAllUsers" class="btn btn-primary ml-3 my-1">View All Users</button>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <input type="text" id="postSearchTerm" name="postSearchTerm" class="form-control" placeholder="Enter part or all of a post detail">
             </div>
             <div class="form-group">
-                <button name="submit" type="submit" value="findPost" class="btn btn-primary ml-3 my-1">Find Post</button>
+                <button name="submit" type="submit" value="findPostsByAny" class="btn btn-primary ml-3 my-1">Find Post</button>
                 <button name="submit" type="submit" value="viewAllPosts" class="btn btn-primary ml-3 my-1">View All Posts</button>
             </div>
         </div>

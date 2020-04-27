@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
@@ -33,14 +34,24 @@ public class LoginAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     logger.debug(req.getRemoteUser());
+        HttpSession session = req.getSession();
         String loggedInUser = req.getRemoteUser();
 //        GenericDao userRoleDao = new GenericDao(UserRole.class);
-//        GenericDao userDao = new GenericDao(User.class);
+        GenericDao userDao = new GenericDao(User.class);
+
+        int userId = 0;
+        List<User> user = userDao.findByPropertyEqual("userName", loggedInUser);
+        if (user.size() == 1) {
+            userId = user.get(0).getId();
+        }
+
+        // set userID in session for use in calls to web service
+        session.setAttribute("userId", userId);
 
         // TODO: Remember to comment out following line in tomcat/conf/logging.properties when not debugging:
         // 1catalina.org.apache.juli.FileHandler.bufferSize = -1
 
-        //TODO: try/catch block in case of no user or no role?
+        // TODO: try/catch block in case of no user or no role?
 //        List<User> users = (List<User>)userDao.findByPropertyEqual("userName", loggedInUser);
 //        Set<UserRole> userRoles = users.get(0).getUserRoles();
 
@@ -49,7 +60,7 @@ public class LoginAction extends HttpServlet {
 //            roleNames.add(role.getRoleName());
 //        }
 
-        String userAccessLevel;
+//        String userAccessLevel; // for possible future usage with additional role-based functionality
         List<String> userRoleNames = new ArrayList<>();
         if (req.isUserInRole("admin")) {
             userRoleNames.add("admin");

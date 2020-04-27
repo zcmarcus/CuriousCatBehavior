@@ -2,15 +2,20 @@
 <c:set var="title" value="Sign Up" />
 <%@include file="template/head.jsp"%>
 
-<html>
-<body>
-<div class="container-fluid">
+<html class="h-100">
+<body class="h-100">
+<div class="container-fluid d-flex flex-column h-100">
     <%@include file="template/navbar.jsp"%>
 
     <div class="container">
 
         <div class="row">
             <div class="col-6 offset-3">
+                <h3>New User Sign-up</h3>
+                <p>
+                    Fill out the form below to create a new user account. <em>All fields are required unless noted
+                    otherwise.</em>
+                </p>
 
                 <form class="form" action="signupAction" method="post">
                     <div class="form-group">
@@ -30,17 +35,12 @@
                         <input class="form-control" type="email" name="email" id="email">
                     </div>
                     <div class="form-group">
-                        <label for="first_name">First Name: </label>
+                        <label for="first_name">First Name (optional): </label>
                         <input class="form-control" type="text" name="first_name" id="first_name">
                     </div>
                     <div class="form-group">
-                        <label for="last_name">Last Name: </label>
+                        <label for="last_name">Last Name (optional): </label>
                         <input class="form-control" type="text" name="last_name" id="last_name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="last_name">Role: </label>
-                        <input class="form-control" type="text" name="role_name" id="role_name">
                     </div>
 
                     <div class="form-group">
@@ -51,13 +51,12 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-6 offset-3">
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            </div>
-        </div>
+
 
     </div>
+
+    <%@include file="template/footer.jsp"%>
+
 </div>
 </body>
 </html>

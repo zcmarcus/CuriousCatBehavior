@@ -60,14 +60,14 @@ class PostDaoTest {
     @Test
     void findPropertyEqualSuccess() {
         List<Post> posts = (List<Post>)postDao.findByPropertyEqual("title", "Meowing endlessly at the door");
-        assertEquals(2, posts.size());
+        assertEquals(1, posts.size());
     }
 
     @Test
     void findByUserSuccess() {
         User user = (User)userDao.getById(2);
         List<Post> posts = (List<Post>)postDao.findByPropertyEqual("user", user);
-        assertEquals(2, posts.size());
+        assertEquals(3, posts.size());
     }
 
     @Test
@@ -82,7 +82,7 @@ class PostDaoTest {
     @Test
     void findPropertyLikeSuccess() {
         List<Post> posts = (List<Post>)postDao.findByPropertyLike("title", "endless");
-        assertEquals(3, posts.size());
+        assertEquals(2, posts.size());
     }
 
 

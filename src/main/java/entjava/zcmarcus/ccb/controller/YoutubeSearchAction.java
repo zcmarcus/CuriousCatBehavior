@@ -20,15 +20,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(
-        urlPatterns = {"/searchVideos"}
+        urlPatterns = {"/youtubeSearchAction"}
 )
-public class SearchVideos extends HttpServlet {
+public class YoutubeSearchAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Logger logger = LogManager.getLogger(this.getClass());
 //        String submitAction = req.getParameter("submit");
-        String searchTerm = req.getParameter("searchTerm").replaceAll(" ", "%20");
+
+        String searchTerm = req.getParameter("searchTerm");
+        searchTerm.replaceAll(" ", "%20");
+
+        // ensure that search results contain cat-related results
+        if(!searchTerm.contains("cat") && !searchTerm.contains("kitten")) {
+            searchTerm = searchTerm + "%20cat";
+        }
         String pageToken = req.getParameter("pageToken");
 
         YoutubeSearchDao searchDao = new YoutubeSearchDao();
@@ -51,7 +58,7 @@ public class SearchVideos extends HttpServlet {
 
 
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/search.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/youtubeSearch.jsp");
         dispatcher.forward(req, resp);
 
     }
