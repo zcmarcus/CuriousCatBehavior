@@ -77,7 +77,7 @@
 
                         <c:choose>
                             <c:when test="${not empty searchData.getPrevPageToken()}">
-                                <a class="page-link" href="searchVideos?searchTerm=${searchTerm}&pageToken=${searchData.getPrevPageToken()}" tabindex="-1">Previous Page</a>
+                                <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getPrevPageToken()}" tabindex="-1">Previous Page</a>
                             </c:when>
                             <c:otherwise>
                                 <span class="page-link">Previous Page</span>
@@ -88,7 +88,7 @@
                     <li class="page-item">
                         <c:choose>
                             <c:when test="${not empty searchData.getNextPageToken()}">
-                                <a class="page-link" href="searchVideos?searchTerm=${searchTerm}&pageToken=${searchData.getNextPageToken()}">Next Page</a>
+                                <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getNextPageToken()}">Next Page</a>
                             </c:when>
                         </c:choose>
                     </li>

@@ -59,7 +59,10 @@ src/test/resources/database.properties
 # Database scripts
 /dba/
 
-# Google API Client
+# Google/YouTube API Properties
 src/main/resources/google.secrets.properties
 src/main/resources/youtube.properties
 
+#QAPlug files
+.idea/misc.xml
+.idea/qaplug_profiles.xml

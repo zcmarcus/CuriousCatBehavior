@@ -29,13 +29,15 @@ public class YoutubeSearchAction extends HttpServlet {
         Logger logger = LogManager.getLogger(this.getClass());
 //        String submitAction = req.getParameter("submit");
 
-        String searchTerm = req.getParameter("searchTerm");
-        searchTerm.replaceAll(" ", "%20");
+
+        String searchTerm = req.getParameter("searchTerm").replaceAll(" ", "%20");
+
 
         // ensure that search results contain cat-related results
         if(!searchTerm.contains("cat") && !searchTerm.contains("kitten")) {
             searchTerm = searchTerm + "%20cat";
         }
+
         String pageToken = req.getParameter("pageToken");
 
         YoutubeSearchDao searchDao = new YoutubeSearchDao();
@@ -49,7 +51,6 @@ public class YoutubeSearchAction extends HttpServlet {
                 searchData = searchDao.getSearchData(searchTerm);
 
             }
-            logger.debug(searchData);
             List<ItemsItem> searchItems = searchData.getItems();
             req.setAttribute("searchData", searchData);
             req.setAttribute("searchItems", searchItems);
