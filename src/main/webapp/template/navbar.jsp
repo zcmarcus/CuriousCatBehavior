@@ -55,7 +55,7 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-user">
-                        <a class="dropdown-item" href="userProfile.jsp">Profile</a>
+                        <a class="dropdown-item" href="/viewProfileAction?userId=${session.getAttribute('userId')}">Profile</a>
                         <a class="dropdown-item" href="logoutAction" onclick="signOut();">Log Out</a>
                     </div>
                 </li>

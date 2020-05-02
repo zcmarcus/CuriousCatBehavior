@@ -26,10 +26,14 @@
                                 <input class="form-control" type="text" name="title" id="title">
                             </div>
                             <div class="form-group">
-                                <label for="videoUrl">Video URL: </label>
-                                <input type="text" class="form-control" name="videoUrl" id="videoUrl"
+                                <label for="fullVideoUrl">Video URL: </label>
+                                <input type="text" class="form-control" name="fullVideoUrl" id="fullVideoUrl"
                                 <%--  TODO: check here to see if videoID null OR in other url format (e.g. AWS S3 link, ...)--%>
+                                       value="http://www.youtube.com/watch?v=${videoUrl}">
+                                <input type="hidden" class="form-control" name="videoUrl" id="videoUrl"
                                        value="${videoUrl}">
+
+
                             </div>
 
                             <div class="form-group">

@@ -46,8 +46,7 @@ public class Post {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    //TODO: fetch tags lazily?
-    //TODO: Change to CascadeType.PERSISTS (+ MERGE?) instead to leave tags alone in case a post is deleted.
+        //TODO: Change to CascadeType.PERSISTS (+ MERGE?) instead to leave tags alone in case a post is deleted.
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(name = "post_tags", joinColumns = {
             @JoinColumn(name = "post_id", nullable = false, updatable = false) },

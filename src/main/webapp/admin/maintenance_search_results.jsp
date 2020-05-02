@@ -17,11 +17,14 @@
 
     <table id="resultsDataTable" class="display">
         <thead>
-        <th>UserID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Full Name</th>
-        <th>Roles</th>
+            <tr>
+                <th>UserID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Roles</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
             <c:forEach var="user" items="${users}">
@@ -35,6 +38,9 @@
                         ${userRole.roleName} <br>
                     </c:forEach>
                     </td>
+                    <td>
+                        <a href="/viewProfileAction?userId=${user.id}">View Profile</a>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
@@ -47,13 +53,17 @@
 
         <table id="resultsDataTable" class="display">
             <thead>
-            <th>PostID</th>
-            <th>Title</th>
-            <th>Description Body</th>
-            <th>Video URL</th>
-            <th>Created</th>
-            <th>Modified</th>
-            <th>User</th>
+                <tr>
+                    <th>PostID</th>
+                    <th>Title</th>
+                    <th>Description Body</th>
+                    <th>Video URL</th>
+                    <th>Created</th>
+                    <th>Modified</th>
+                    <th>User</th>
+                    <th></th>
+                </tr>
+
             </thead>
             <tbody>
             <c:forEach var="post" items="${posts}">
@@ -64,11 +74,14 @@
                     <td>${post.videoUrl}</td>
                     <td>${post.createdDate}</td>
                     <td>${post.modifiedDate}</td>
-
-
                     <td>
                         <a href="maintenanceSearch?submitAction=getUserById&userSearchTerm=${post.user.id}">
                                 ${post.user.id}: ${post.user.userName}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/viewPostAction?postId=${post.id}">
+                            View Post
                         </a>
                     </td>
                 </tr>

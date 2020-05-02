@@ -34,8 +34,8 @@ public class CreatePostAction extends HttpServlet {
 
         Logger logger = LogManager.getLogger(this.getClass());
 
-        String videoUrl = (String) req.getAttribute("videoUrl");
-
+        String videoUrl = req.getParameter("videoUrl");
+        logger.error("videoUrl: {}", videoUrl);
         req.setAttribute("videoUrl", videoUrl);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostForm.jsp");
         dispatcher.forward(req, resp);
