@@ -40,11 +40,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="createPostChoice.jsp">+ Create New Post</a>
             </li>
-            <c:if test="${!userIsLoggedIn}">
+            <c:if test="${!userId or userRoleNames.contains('admin')) }">
                 <li class="nav-item">
                     <a href="signup.jsp" class=" btn btn-outline-dark px-3 mx-3">Join</a>
                 </li>
-                <li class="nav-item">
+            </c:if>
+            <c:if test="${!userId}">
+            <li class="nav-item">
                     <a href="loginAction" class=" btn btn-outline-primary px-3 mx-3">Log In</a>
                 </li>
             </c:if>

@@ -39,7 +39,7 @@ class UserDaoTest {
     @Test
     void findAllSuccess() {
         List<User> users = (List<User>)genericDao.findAll();
-        assertEquals(48, users.size());
+        assertEquals(14, users.size());
     }
 
     @Test
@@ -63,7 +63,7 @@ class UserDaoTest {
         propertyList.add("firstName");
         propertyList.add("email");
         List<User> users = (List<User>)genericDao.findByPropertiesLike(propertyList, "on");
-        assertEquals(9, users.size());
+        assertEquals(3, users.size());
     }
 
 

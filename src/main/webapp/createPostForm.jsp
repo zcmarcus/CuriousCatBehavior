@@ -1,7 +1,6 @@
 <%@include file="template/taglib.jsp"%>
 <c:set var="title" value="Create Post" />
 <%@include file="template/head.jsp"%>
-
 <html>
 <body>
 <div class="container-fluid">
@@ -27,13 +26,20 @@
                             </div>
                             <div class="form-group">
                                 <label for="fullVideoUrl">Video URL: </label>
-                                <input type="text" class="form-control" name="fullVideoUrl" id="fullVideoUrl"
+                                <input type="text" class="form-control" name="fullVideoUrl" id="fullVideoUrl" readonly
                                 <%--  TODO: check here to see if videoID null OR in other url format (e.g. AWS S3 link, ...)--%>
-                                       value="http://www.youtube.com/watch?v=${videoUrl}">
+                                       value=<c:out value="${not empty videoUrl ? fullYoutubeUrl : 'None'}" />  >
                                 <input type="hidden" class="form-control" name="videoUrl" id="videoUrl"
                                        value="${videoUrl}">
+                            </div>
+                            <div class="form-group">
+                                <%--  TODO: route user back to youtubeSearch.jsp --%>
 
-
+                                    <a href="/youtubeSearch.jsp">
+                                        <button class="btn btn-primary">
+                                            Choose Different Video
+                                        </button>
+                                    </a>
                             </div>
 
                             <div class="form-group">

@@ -54,6 +54,9 @@ public class User implements java.io.Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<Post> posts = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Comment> comments = new HashSet<>();
+
     /**
      * Instantiates a new User.
      */
@@ -260,6 +263,24 @@ public class User implements java.io.Serializable {
     }
 
     /**
+     * Gets comments.
+     *
+     * @return the comments
+     */
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    /**
+     * Sets comments.
+     *
+     * @param comments the comments
+     */
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
+    /**
      * Add role.
      *
      * @param userRole the user role
@@ -298,6 +319,27 @@ public class User implements java.io.Serializable {
         posts.remove(post);
         post.setUser(this);
     }
+
+    /**
+     * Add comment.
+     *
+     * @param comment the comment
+     */
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setUser(this);
+    }
+
+    /**
+     * Remove comment.
+     *
+     * @param comment the comment
+     */
+    public void removeComment(Comment comment) {
+        comments.remove(comment);
+        comment.setUser(this);
+    }
+
 
     @Override
     public String toString() {

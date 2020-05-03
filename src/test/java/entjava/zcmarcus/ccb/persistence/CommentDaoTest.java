@@ -1,156 +1,156 @@
-//package entjava.zcmarcus.ccb.persistence;
-//
-//import entjava.zcmarcus.ccb.entity.Comment;
-//import entjava.zcmarcus.ccb.entity.Post;
-//import entjava.zcmarcus.ccb.entity.Tag;
-//import entjava.zcmarcus.ccb.entity.User;
-//import entjava.zcmarcus.ccb.test.util.Database;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class CommentDaoTest {
-//
-//    GenericDao postDao;
-//    GenericDao userDao;
-//    GenericDao commentDao;
-//    GenericDao tagDao;
-//
-//    private final Logger logger = LogManager.getLogger(this.getClass());
-//
-//    @BeforeEach
-//    void setUp() {
-//        postDao = new GenericDao(Post.class);
-//        userDao = new GenericDao(User.class);
-//        commentDao = new GenericDao(Comment.class);
-//        tagDao = new GenericDao(Tag.class);
-//        try {
-//            Database database = Database.getInstance();
-//            database.runSQL("clean_database.sql");
-//
-//        } catch (NullPointerException npe) {
-//            logger.debug("Null point exception: " + npe);
-//
-//        } catch (Exception e) {
-//            logger.debug("Encountered a problem: " + e);
-//        }
-//    }
-//
+package entjava.zcmarcus.ccb.persistence;
+
+import entjava.zcmarcus.ccb.entity.Comment;
+import entjava.zcmarcus.ccb.entity.Post;
+import entjava.zcmarcus.ccb.entity.Tag;
+import entjava.zcmarcus.ccb.entity.User;
+import entjava.zcmarcus.ccb.test.util.Database;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CommentDaoTest {
+
+    GenericDao postDao;
+    GenericDao userDao;
+    GenericDao commentDao;
+    GenericDao tagDao;
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+    @BeforeEach
+    void setUp() {
+        postDao = new GenericDao(Post.class);
+        userDao = new GenericDao(User.class);
+        commentDao = new GenericDao(Comment.class);
+        tagDao = new GenericDao(Tag.class);
+        try {
+            Database database = Database.getInstance();
+            database.runSQL("clean_database.sql");
+
+        } catch (NullPointerException npe) {
+            logger.debug("Null point exception: " + npe);
+
+        } catch (Exception e) {
+            logger.debug("Encountered a problem: " + e);
+        }
+    }
+
+    @Test
+    void findAllSuccess() {
+        List<Comment> comments = (List<Comment>)commentDao.findAll();
+        assertEquals(20, comments.size());
+    }
+
+    @Test
+    void getByIdSuccess() {
+        Comment retrievedComment = (Comment)commentDao.getById(14);
+        assertNotNull(retrievedComment);
+        assertEquals("szawistowski", retrievedComment.getUser().getUserName());
+    }
+
+    @Test
+    void findPropertyEqualSuccess() {
+        String createdDateString = "2020-05-03 04:35:48";
+        Date createdDate = null;
+        try {
+            createdDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    .parse(createdDateString);
+        } catch (ParseException e) {
+            logger.error("An error occurred while trying to parse the date: {}", e);
+        }
+        List<Comment> comments = (List<Comment>)commentDao.findByPropertyEqual("createdDate", createdDate);
+        assertEquals(1, comments.size());
+    }
+
+    @Test
+    void findByUserSuccess() {
+        User user = (User)userDao.getById(3);
+        List<Comment> comments = (List<Comment>)commentDao.findByPropertyEqual("user", user);
+        assertEquals(3, comments.size());
+    }
+
+    @Test
+    void findByPropertiesEqualSuccess() {
+        String createdDateString = "2020-05-03 04:35:48";
+        String modifiedDateString = "2020-05-10 05:30:40";
+        Date createdDate = null;
+        Date modifiedDate = null;
+        try {
+            createdDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    .parse(createdDateString);
+            modifiedDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                    .parse(modifiedDateString);
+        } catch (ParseException e) {
+            logger.error("An error occurred while trying to parse the date: {}", e);
+        }
+        Map<String, Date> propertyMap = new HashMap<>();
+        propertyMap.put("createdDate", createdDate);
+        propertyMap.put("modifiedDate", modifiedDate);
+        List<Comment> comments = (List<Comment>)commentDao.findByPropertiesValuesEqual(propertyMap);
+        assertEquals(1, comments.size());
+    }
+
+    @Test
+    void findPropertyLikeSuccess() {
+        List<Comment> comments = (List<Comment>)commentDao.findByPropertyLike("contentBody", "id");
+        assertEquals(10, comments.size());
+    }
+
+
+    @Test
+    void insertSuccess() {
+        User user = (User)userDao.getById(3);
+        Post post = (Post)postDao.getById(1);
+
+        Comment newComment = new Comment("Nice post!", post, user);
+//        newComment.setUser(user);
+//        newComment.setPost(post);
+
+        post.addComment(newComment);
+        user.addComment(newComment);
+
+        int insertedCommentId = commentDao.insert(newComment);
+        assertNotEquals(1, insertedCommentId);
+        Comment insertedComment = (Comment)commentDao.getById(insertedCommentId);
+        assertEquals(newComment, insertedComment);
+    }
+
+    /**
+     * Verify successful update of post
+     */
+    @Test
+    void updateSuccess() {
+        String newContentBody = "This is the edited comment body text";
+        Comment commentToUpdate = (Comment)commentDao.getById(4);
+        commentToUpdate.setContentBody(newContentBody);
+        commentDao.saveOrUpdate(commentToUpdate);
+        Comment retrievedComment = (Comment)commentDao.getById(4);
+        assertEquals(newContentBody, retrievedComment.getContentBody());
+        assertEquals(commentToUpdate, retrievedComment);
+    }
+
+    /**
+     * Verify successful delete of post
+     */
+    @Test
+    void deleteSuccess() {
+        commentDao.delete(commentDao.getById(5));
+        assertNull(commentDao.getById(5));
+    }
+
+//    TODO: Test delete of post and check cascade effect on tag/comment.
+//          Similarly check delete of user and check cascade effect on posts.
 //    @Test
-//    void findAllSuccess() {
-//        List<Comment> comments = (List<Comment>)commentDao.findAll();
-//        assertEquals(15, posts.size());
+//    void deletePostOnDeleteCascadeSuccess() {
+
 //    }
-//
-//    @Test
-//    void getByIdSuccess() {
-//        Comment retrievedComment = (Comment)commentDao.getById(14);
-//        assertNotNull(retrievedComment);
-//        assertEquals("cooldude", retrievedComment.getUser().getUserName());
-//    }
-//
-//    @Test
-//    void findPropertyEqualSuccess() {
-//        List<Post> posts = (List<Post>)postDao.findByPropertyEqual("title", "Meowing endlessly at the door");
-//        assertEquals(2, posts.size());
-//    }
-//
-//    @Test
-//    void findByUserSuccess() {
-//        User user = (User)userDao.getById(2);
-//        List<Post> posts = (List<Post>)postDao.findByPropertyEqual("user", user);
-//        assertEquals(2, posts.size());
-//    }
-//
-//    @Test
-//    void findByPropertiesEqualSuccess() {
-//        Map<String, String> propertyMap = new HashMap<>();
-//        propertyMap.put("title", "My cat paws endlessly at the mirror");
-//        propertyMap.put("videoUrl", "s9LjibhkPfw");
-//        List<Post> posts = (List<Post>)postDao.findByPropertiesValuesEqual(propertyMap);
-//        assertEquals(1, posts.size());
-//    }
-//
-//    @Test
-//    void findPropertyLikeSuccess() {
-//        List<Post> posts = (List<Post>)postDao.findByPropertyLike("title", "endless");
-//        assertEquals(3, posts.size());
-//    }
-//
-//
-//    @Test
-//    void insertSuccess() {
-//        GenericDao userDao = new GenericDao(User.class);
-//        User user = (User)userDao.getById(3);
-//
-//        Post newPost = new Post(user, "Chewing on plastic bags", "https://www.youtube.com/watch?v=fakeurl99","My kitten has started chewing on plastic bags. Should I be worried?");
-//        newPost.setUser(user);
-//
-//        user.addPost(newPost);
-//
-//        int insertedPostId = postDao.insert(newPost);
-//        assertNotEquals(1, insertedPostId);
-//        Post insertedPost = (Post)postDao.getById(insertedPostId);
-//        assertEquals(newPost, insertedPost);
-//    }
-//
-//    @Test
-//    void insertWithTags() {
-//        User existingUser = (User)userDao.getById(3);
-//        Post newPost = new Post(existingUser, "Chewing on plastic bags", "https://www.youtube.com/watch?v=fakeurl99","My kitten has started chewing on plastic bags. Should I be worried?");
-//
-//        newPost.setUser(existingUser);
-//        existingUser.addPost(newPost);
-//
-//        Tag firstTag = new Tag("kitten");
-//        Tag secondTag = new Tag("chewing");
-//
-//        newPost.addTag(firstTag);
-//        newPost.addTag(secondTag);
-//
-//        int insertedPostId = postDao.insert(newPost);
-//
-//        assertNotEquals(1, insertedPostId);
-//        Post insertedPost = (Post)postDao.getById(insertedPostId);
-//        assertEquals(newPost, insertedPost);
-//        assertEquals(2, insertedPost.getTags().size());
-//    }
-//
-//    /**
-//     * Verify successful update of post
-//     */
-//    @Test
-//    void updateSuccess() {
-//        String newDescription = "Our kitten starts howling at the front door each night at 8:15 PM and 4:15 AM. What the heck?";
-//        Post postToUpdate = (Post)postDao.getById(4);
-//        postToUpdate.setDescriptionBody(newDescription);
-//        postDao.saveOrUpdate(postToUpdate);
-//        Post retrievedPost = (Post)postDao.getById(4);
-//        assertEquals(newDescription, retrievedPost.getDescriptionBody());
-//        assertEquals(postToUpdate, retrievedPost);
-//    }
-//
-//    /**
-//     * Verify successful delete of post
-//     */
-//    @Test
-//    void deleteSuccess() {
-//        postDao.delete(postDao.getById(3));
-//        assertNull(postDao.getById(3));
-//    }
-//
-////    TODO: Test delete of post and check cascade effect on tag/comment.
-////          Similarly check delete of user and check cascade effect on posts.
-////    @Test
-////    void deletePostOnDeleteCascadeSuccess() {
-//
-////    }
-//
-//}
+
+}

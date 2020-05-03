@@ -38,7 +38,7 @@ class UserRoleDaoTest {
     void findAllSuccess() {
         List<UserRole> roles = (List<UserRole>)genericDao.findAll();
         assertEquals(0, 0);
-        assertEquals(48, roles.size());
+        assertEquals(14, roles.size());
     }
 
     @Test
@@ -55,7 +55,7 @@ class UserRoleDaoTest {
         String propertyName = "roleName";
         String value = "user";
         List<UserRole> userRoles = (List<UserRole>)genericDao.findByPropertyEqual(propertyName, value);
-        assertEquals(45, userRoles.size());
+        assertEquals(11, userRoles.size());
 
     }
 

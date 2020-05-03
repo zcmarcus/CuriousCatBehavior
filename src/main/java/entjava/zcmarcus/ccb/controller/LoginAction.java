@@ -45,8 +45,7 @@ public class LoginAction extends HttpServlet {
             userId = user.get(0).getId();
         }
 
-        // set userID in session for use in calls to web service
-        session.setAttribute("userId", userId);
+
 
         // TODO: Remember to comment out following line in tomcat/conf/logging.properties when not debugging:
         // 1catalina.org.apache.juli.FileHandler.bufferSize = -1
@@ -69,7 +68,9 @@ public class LoginAction extends HttpServlet {
             userRoleNames.add("user");
         }
 
-        req.setAttribute("userRoleNames", userRoleNames);
+        // set userID in session for use in calls to web service
+        session.setAttribute("userId", userId);
+        session.setAttribute("userRoleNames", userRoleNames);
 
         logger.error("Logged user : " + req.getRemoteUser() + " has role of admin (true/false): " + req.isUserInRole("admin"));
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");

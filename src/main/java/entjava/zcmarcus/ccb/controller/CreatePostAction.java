@@ -37,6 +37,7 @@ public class CreatePostAction extends HttpServlet {
         String videoUrl = req.getParameter("videoUrl");
         logger.error("videoUrl: {}", videoUrl);
         req.setAttribute("videoUrl", videoUrl);
+        req.setAttribute("fullYoutubeUrl", "http://www.youtube.com/watch?v="+videoUrl);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostForm.jsp");
         dispatcher.forward(req, resp);
 
