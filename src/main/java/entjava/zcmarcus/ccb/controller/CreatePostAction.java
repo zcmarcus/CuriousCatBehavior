@@ -4,12 +4,7 @@ package entjava.zcmarcus.ccb.controller;
 import entjava.zcmarcus.ccb.entity.Post;
 import entjava.zcmarcus.ccb.entity.Tag;
 import entjava.zcmarcus.ccb.entity.User;
-import entjava.zcmarcus.ccb.entity.UserRole;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
-import entjava.zcmarcus.ccb.persistence.YoutubeSearchDao;
-import entjava.zcmarcus.ccb.youtube.ItemsItem;
-import entjava.zcmarcus.ccb.youtube.SearchData;
-import org.apache.catalina.realm.MessageDigestCredentialHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +26,7 @@ public class CreatePostAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Logger logger = LogManager.getLogger(this.getClass());
-
         String videoUrl = req.getParameter("videoUrl");
-        logger.error("videoUrl: {}", videoUrl);
         req.setAttribute("videoUrl", videoUrl);
         req.setAttribute("fullYoutubeUrl", "http://www.youtube.com/watch?v="+videoUrl);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostForm.jsp");
@@ -82,8 +73,6 @@ public class CreatePostAction extends HttpServlet {
 
         int newPostId = postDao.insert(newPost);
         logger.debug("New post with Id: {} created", newPostId);
-
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostSuccess.jsp");
         dispatcher.forward(req, resp);

@@ -1,7 +1,6 @@
 package entjava.zcmarcus.ccb.controller;
 
 import entjava.zcmarcus.ccb.entity.User;
-import entjava.zcmarcus.ccb.entity.UserRole;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,11 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 /**
  * A servlet for redirecting user to home page after

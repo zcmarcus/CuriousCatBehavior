@@ -3,9 +3,6 @@ package entjava.zcmarcus.ccb.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.io.Serializable;
 
 /**
  * The type User role.

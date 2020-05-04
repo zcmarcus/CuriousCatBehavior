@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
 
 @WebServlet (
     urlPatterns = { "/signupAction" }
@@ -60,8 +59,10 @@ public class SignupAction extends HttpServlet {
                 userRole = new UserRole(user, "user");
             }
             user.addRole(userRole);
+            // FIXME: unused variable
             int newUserRoleId = userRoleDao.insert(userRole);
         }
+        //TODO: route user to signupSuccess page.
 
         req.setAttribute("newUserId", newUserId);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);

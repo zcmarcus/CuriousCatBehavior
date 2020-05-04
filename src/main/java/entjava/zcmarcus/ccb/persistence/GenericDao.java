@@ -156,7 +156,7 @@ public class GenericDao<T> {
      *
      *
      */
-    public List<T> findByPropertiesLike(ArrayList<String> propertyList, Object value) {
+    public List<T> findByPropertiesLike(List<String> propertyList, Object value) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);

@@ -41,8 +41,9 @@ public class YoutubeSearchAction extends HttpServlet {
         String pageToken = req.getParameter("pageToken");
 
         YoutubeSearchDao searchDao = new YoutubeSearchDao();
-        ArrayList<String> searchResultThumbnailUrls = new ArrayList<>();
-        ArrayList<String> searchResultVideoIds = new ArrayList<>();
+        // FIXME: delete two unused vars
+//        ArrayList<String> searchResultThumbnailUrls = new ArrayList<>();
+//        ArrayList<String> searchResultVideoIds = new ArrayList<>();
         SearchData searchData = null;
 //        if(submitAction!=null) {
             if(pageToken != null) {

@@ -27,8 +27,6 @@ public class ViewPostAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Logger logger = LogManager.getLogger(this.getClass());
-
         int postId = Integer.parseInt(req.getParameter("postId"));
 
 
