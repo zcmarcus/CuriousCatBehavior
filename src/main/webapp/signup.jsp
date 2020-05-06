@@ -42,9 +42,11 @@
                         <label for="last_name">Last Name (optional): </label>
                         <input class="form-control" type="text" name="last_name" id="last_name">
                     </div>
-                    <c:if test="${session.userRoleNames.contains('admin')}">
+                    <c:if test="${userRoleNames.contains('admin')}">
+                    <div class="form-group">
                         <label for="role_name">User Role (admin use only): </label>
                         <input class="form-control" type="text" name="role_name" id="role_name">
+                    </div>
                     </c:if>
 
                     <div class="form-group">

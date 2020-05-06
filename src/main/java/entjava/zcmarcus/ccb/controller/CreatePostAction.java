@@ -27,7 +27,9 @@ public class CreatePostAction extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String videoUrl = req.getParameter("videoUrl");
+        String videoTitle = req.getParameter("videoTitle");
         req.setAttribute("videoUrl", videoUrl);
+        req.setAttribute("videoTitle", videoTitle);
         req.setAttribute("fullYoutubeUrl", "http://www.youtube.com/watch?v="+videoUrl);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostForm.jsp");
         dispatcher.forward(req, resp);

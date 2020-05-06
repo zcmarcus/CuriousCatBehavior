@@ -17,7 +17,7 @@
             </p>
         </div>
         <div class="mt-2">
-            <div>
+            <div class="p-2 m-2 border">
                 <img src="images/example_youtube_video_id.png" alt="example of a youtube video url with the id portion highlight">
             </div>
             <div>
@@ -45,22 +45,20 @@
 
         <div class="row text-center text-lg-left">
 
-            <c:choose>
-                <c:when test="${!empty searchItems}">
-                    <c:forEach items="${searchItems}" var="item">
-                        <div class="col-lg-3 col-md-4 col-6 mt-4">
-                            <div>
-                                <a href="createPostAction?videoUrl=${item.getId().getVideoId()}" class=" mt-1 mb-1 ">
-                                    <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
-                                </a>
-                            </div>
-                            <div>
-                                <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">${item.getSnippet().getTitle()}</a>
-                            </div>
+            <c:if test="${!empty searchItems}">
+                <c:forEach items="${searchItems}" var="item">
+                    <div class="col-lg-3 col-md-4 col-6 mt-4">
+                        <div>
+                            <a href="createPostAction?videoUrl=${item.getId().getVideoId()}&videoTitle=${item.getSnippet().getTitle()}" class=" mt-1 mb-1 ">
+                                <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
+                            </a>
                         </div>
-                    </c:forEach>
-                </c:when>
-            </c:choose>
+                        <div>
+                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">${item.getSnippet().getTitle()}</a>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:if>
 
         </div>
 

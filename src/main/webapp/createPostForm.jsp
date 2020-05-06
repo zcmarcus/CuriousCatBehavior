@@ -25,6 +25,15 @@
                                 <input class="form-control" type="text" name="title" id="title">
                             </div>
                             <div class="form-group">
+                                <h5>Video: ${videoTitle}</h5>
+                                <iframe id="videoPlayer" type="text/html" width="640" height="360"
+                                        <%-- FIXME: change 'origin' in URL to deployed app on AWS--%>
+                                        src="https://www.youtube.com/embed/${videoUrl}?autoplay=1&origin=http://localhost:8080/ccb"
+                                        frameborder="0">
+
+                                </iframe>
+                            </div>
+                            <div class="form-group">
                                 <label for="fullVideoUrl">Video URL: </label>
                                 <input type="text" class="form-control" name="fullVideoUrl" id="fullVideoUrl" readonly
                                 <%--  TODO: check here to see if videoID null OR in other url format (e.g. AWS S3 link, ...)--%>
@@ -33,10 +42,8 @@
                                        value="${videoUrl}">
                             </div>
                             <div class="form-group">
-                                <%--  TODO: route user back to youtubeSearch.jsp --%>
-
-                                    <a href="/youtubeSearch.jsp">
-                                        <button class="btn btn-primary">
+                                    <a href="${pageContext.request.contextPath}/youtubeSearch.jsp">
+                                        <button type="button" class="btn btn-primary">
                                             Choose Different Video
                                         </button>
                                     </a>

@@ -40,18 +40,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="createPostChoice.jsp">+ Create New Post</a>
             </li>
-            <c:if test="${!userId or userRoleNames.contains('admin')) }">
+            <c:if test="${(userId == null) or (userRoleNames.contains('admin')) }">
                 <li class="nav-item">
                     <a href="signup.jsp" class=" btn btn-outline-dark px-3 mx-3">Join</a>
                 </li>
             </c:if>
-            <c:if test="${!userId}">
+            <c:if test="${userId == null}">
             <li class="nav-item">
                     <a href="loginAction" class=" btn btn-outline-primary px-3 mx-3">Log In</a>
                 </li>
             </c:if>
 
-            <c:if test="${userIsLoggedIn}">
+            <c:if test="${userId != null}">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-user" aria-hidden="true"></i>
