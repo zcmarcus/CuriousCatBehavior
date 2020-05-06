@@ -28,31 +28,31 @@
       </auth-constraint>
   </security-constraint>
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>youtubeSearch</web-resource-name>
-            <url-pattern>/youtubeSearch.jsp</url-pattern>
-            <url-pattern>/youtubeSearchAction</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>youtubeSearch</web-resource-name>-->
+<!--            <url-pattern>/youtubeSearch.jsp</url-pattern>-->
+<!--            <url-pattern>/youtubeSearchAction</url-pattern>-->
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>admin</role-name>-->
+<!--            <role-name>user</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
 
 
 
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>createPost</web-resource-name>
-            <url-pattern>/createPostChoice.jsp</url-pattern>
-            <url-pattern>/createPostForm.jsp</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-            <role-name>user</role-name>
-        </auth-constraint>
-    </security-constraint>
+<!--    <security-constraint>-->
+<!--        <web-resource-collection>-->
+<!--            <web-resource-name>createPost</web-resource-name>-->
+<!--            <url-pattern>/createPostChoice.jsp</url-pattern>-->
+<!--            <url-pattern>/createPostForm.jsp</url-pattern>-->
+<!--        </web-resource-collection>-->
+<!--        <auth-constraint>-->
+<!--            <role-name>admin</role-name>-->
+<!--            <role-name>user</role-name>-->
+<!--        </auth-constraint>-->
+<!--    </security-constraint>-->
 
     <security-constraint>
         <web-resource-collection>

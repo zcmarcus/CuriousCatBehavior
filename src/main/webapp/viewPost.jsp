@@ -19,7 +19,8 @@
                 <div>
                     <div>
                         <iframe id="youtubePlayer" type="text/html" width="640" height="360"
-                                src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=1&origin=http://example.com"
+                            <%--FIXME: change to AWS-hosted url&ndash;%&gt;--%>
+                                src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
                                 frameborder="0">
 
                         </iframe>
@@ -45,7 +46,9 @@
                                 <span class="font-weight-bold">Description:</span>
                                 ${post.descriptionBody}
                             </p>
+                        </div>
 
+                        <div>
                             <div class="mt-2">
                                 <h5>#(X) Comments</h5>
 
@@ -53,13 +56,13 @@
 
                             <div class="mt-2">
 
-                                    <table id="commentsTable">
+                                    <table class="table" id="commentsTable">
                                         <thead>
 
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                            <c:when test="${!empty comments}">
+                                            <c:when test="${not empty comments}">
                                                 <c:forEach items="${comments}" var="comment">
                                                 <tr>
                                                     <td rowspan="2">(User Icon)</td>
@@ -70,24 +73,30 @@
                                                 </tr>
                                                 </c:forEach>
                                             </c:when>
+                                            <c:otherwise>
+                                                <tr>
+                                                    <td>No one has commented yet. Be the first to comment!</td>
+                                                </tr>
+                                            </c:otherwise>
                                         </c:choose>
                                         </tbody>
                                     </table>
-                                    </c:when>
-                                </c:choose>
                             </div>
+                        </div>
 
                     </div>
 
-                    <div class="col-3">
-                        <h4>Related posts</h4>
-                    </div>
+
+                </div>
+
+                <div class="col-3">
+                    <h4>Related posts</h4>
                 </div>
 
             </div>
 
-
-
+        </div>
+    </div>
 
 
     <%@include file="template/footer.jsp"%>

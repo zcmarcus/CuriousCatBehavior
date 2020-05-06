@@ -29,18 +29,19 @@ public class LoginAction extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    logger.debug(req.getRemoteUser());
+        logger.debug(req.getRemoteUser());
         HttpSession session = req.getSession();
         String loggedInUser = req.getRemoteUser();
 //        GenericDao userRoleDao = new GenericDao(UserRole.class);
         GenericDao userDao = new GenericDao(User.class);
 
         int userId = 0;
-        List<User> user = userDao.findByPropertyEqual("userName", loggedInUser);
-        if (user.size() == 1) {
-            userId = user.get(0).getId();
+        List<User> users = userDao.findByPropertyEqual("userName", loggedInUser);
+        if (users.size() == 1) {
+            userId = users.get(0).getId();
         }
 
+//        logger.debug(userId);
 
 
         // TODO: Remember to comment out following line in tomcat/conf/logging.properties when not debugging:
@@ -67,8 +68,11 @@ public class LoginAction extends HttpServlet {
         // set userID in session for use in calls to web service
         session.setAttribute("userId", userId);
         session.setAttribute("userRoleNames", userRoleNames);
+        session.setAttribute("username", req.getRemoteUser());
 
-        logger.error("Logged user : " + req.getRemoteUser() + " has role of admin (true/false): " + req.isUserInRole("admin"));
+        req.setAttribute("loggedInUsername", req.getRemoteUser());
+
+//        logger.error("Logged user : " + req.getRemoteUser() + " has role of admin (true/false): " + req.isUserInRole("admin"));
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);
     }

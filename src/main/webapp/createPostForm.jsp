@@ -10,6 +10,10 @@
 
     <div class="container">
         <h2 class="text-center">Create a New Post!</h2>
+
+
+
+
         <p class="mt-3">Fill out the form below to create a new post. </p>
 
         <div class="row mt-5">
@@ -20,15 +24,11 @@
                     <div class="col-10">
 
                         <form class="form" action="createPostAction" method="post">
-                            <div class="form-group">
-                                <label for="title">Title: </label>
-                                <input class="form-control" type="text" name="title" id="title">
-                            </div>
-                            <div class="form-group">
+                            <div class="form-group mt-3 mb-3">
                                 <h5>Video: ${videoTitle}</h5>
-                                <iframe id="videoPlayer" type="text/html" width="640" height="360"
-                                        <%-- FIXME: change 'origin' in URL to deployed app on AWS--%>
-                                        src="https://www.youtube.com/embed/${videoUrl}?autoplay=1&origin=http://localhost:8080/ccb"
+                                <iframe id="videoPlayer" type="text/html" width="640" height="290"
+                                <%-- FIXME: change 'origin' in URL to deployed app on AWS--%>
+                                        src="https://www.youtube.com/embed/${videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
                                         frameborder="0">
 
                                 </iframe>
@@ -42,11 +42,16 @@
                                        value="${videoUrl}">
                             </div>
                             <div class="form-group">
-                                    <a href="${pageContext.request.contextPath}/youtubeSearch.jsp">
-                                        <button type="button" class="btn btn-primary">
-                                            Choose Different Video
-                                        </button>
-                                    </a>
+                                <a href="${pageContext.request.contextPath}/youtubeSearch.jsp">
+                                    <button type="button" class="btn btn-primary">
+                                        Choose Different Video
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="form-group mt-3">
+                                <label for="title">Title: </label>
+                                <input class="form-control" type="text" name="title" id="title">
                             </div>
 
                             <div class="form-group">
@@ -80,6 +85,7 @@
             </div>
 
         </div>
+
 
 
 

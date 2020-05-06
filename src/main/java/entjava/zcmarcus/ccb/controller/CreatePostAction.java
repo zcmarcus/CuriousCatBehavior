@@ -5,6 +5,7 @@ import entjava.zcmarcus.ccb.entity.Post;
 import entjava.zcmarcus.ccb.entity.Tag;
 import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
+import entjava.zcmarcus.ccb.util.URLQueryStringEncoder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,12 +23,12 @@ import java.util.List;
 @WebServlet(
         urlPatterns = {"/createPostAction"}
 )
-public class CreatePostAction extends HttpServlet {
+public class CreatePostAction extends HttpServlet implements URLQueryStringEncoder {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String videoUrl = req.getParameter("videoUrl");
-        String videoTitle = req.getParameter("videoTitle");
+        String videoUrl = (req.getParameter("videoUrl"));
+        String videoTitle = (req.getParameter("videoTitle"));
         req.setAttribute("videoUrl", videoUrl);
         req.setAttribute("videoTitle", videoTitle);
         req.setAttribute("fullYoutubeUrl", "http://www.youtube.com/watch?v="+videoUrl);
@@ -46,6 +47,7 @@ public class CreatePostAction extends HttpServlet {
         GenericDao postDao = new GenericDao(Post.class);
         GenericDao userDao = new GenericDao(User.class);
 
+        logger.error(session.getAttribute("userId"));
         int userId = (Integer) session.getAttribute("userId");
         User user = (User) userDao.getById(userId);
         String tagsSemicolonDelimited = req.getParameter("tags");
@@ -56,8 +58,8 @@ public class CreatePostAction extends HttpServlet {
         //TODO: remove whitespace near semicolons??
         List<Tag> tags = new ArrayList<>();
         for (String tagString: tagStrings) {
-            Tag newtag = new Tag(tagString);
-            tags.add(newtag);
+            Tag newTag = new Tag(tagString);
+            tags.add(newTag);
         }
 
         Post newPost = new Post(
@@ -74,7 +76,8 @@ public class CreatePostAction extends HttpServlet {
         user.addPost(newPost);
 
         int newPostId = postDao.insert(newPost);
-        logger.debug("New post with Id: {} created", newPostId);
+//        logger.error("New post with Id: {} created", newPostId);
+        req.setAttribute("newPostId", newPostId);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostSuccess.jsp");
         dispatcher.forward(req, resp);

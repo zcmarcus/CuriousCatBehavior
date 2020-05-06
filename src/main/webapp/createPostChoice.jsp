@@ -10,7 +10,18 @@
 
 
     <div class="container">
+
+
+
         <h2 class="text-center">Create a New Post!</h2>
+
+        <c:choose>
+            <c:when test="${empty userId}">
+                Users must be logged in to create new posts. Please <a href="loginAction">login here</a> first.
+            </c:when>
+        <c:otherwise>
+
+
         <p></p>
 
         <div class="row mt-5">
@@ -68,6 +79,11 @@
 
 
             </div>
+
+
+            </c:otherwise>
+        </c:choose>
+
 
         </div>
 

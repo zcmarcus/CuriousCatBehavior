@@ -10,9 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,20 +75,6 @@ class TagDaoTest {
         List<Tag> tags = (List<Tag>)tagDao.findByPropertyLike("tagName", "is");
         assertEquals(2, tags.size());
     }
-
-    /**
-     * Verify successful update of tag
-     */
-//    @Test
-//    void updateSuccess() {
-//        String newContentBody = "This is the edited comment body text";
-//        Comment commentToUpdate = (Comment)commentDao.getById(4);
-//        commentToUpdate.setContentBody(newContentBody);
-//        commentDao.saveOrUpdate(commentToUpdate);
-//        Comment retrievedComment = (Comment)commentDao.getById(4);
-//        assertEquals(newContentBody, retrievedComment.getContentBody());
-//        assertEquals(commentToUpdate, retrievedComment);
-//    }
 
     /**
      * Verify successful delete of tag
