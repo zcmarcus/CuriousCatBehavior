@@ -64,7 +64,7 @@ class PostDaoTest {
     }
 
     @Test
-    void findByUserSuccess() {
+    void findByUserPostsSuccess() {
         User user = (User)userDao.getById(3);
         List<Post> posts = (List<Post>)postDao.findByPropertyEqual("user", user);
         assertEquals(2, posts.size());
