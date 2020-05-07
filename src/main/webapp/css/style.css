@@ -5,3 +5,19 @@ body {
 .verticalLine {
     border-left: 2px dashed lightblue !important;
 }
+
+#errorMessage {
+    padding: 4px;
+    border: 2px solid grey;
+    background-color: #E3E9EF;
+    animation-name: errorMessageColors;
+    animation-duration: .25s;
+    animation-iteration-count: 5;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes errorMessageColors {
+    0%   {border-width: 3px; border-color: grey;}
+    40%  {border-width: 4px; border-color: red;}
+    80%   {border-width: 3px; border-color: grey;}
+}

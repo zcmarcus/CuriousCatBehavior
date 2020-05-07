@@ -17,35 +17,48 @@
                     otherwise.</em>
                 </p>
 
+                <c:if test="${not empty errorMsg}">
+                    <div id="errorMessage">
+                        <span id="errorMessageText" class="text-danger">${errorMsg}</span>
+                    </div>
+                </c:if>
+
+
                 <form class="form" action="signupAction" method="post">
                     <div class="form-group">
                         <label for="username">Username: </label>
-                        <input class="form-control" type="text" name="username" id="username">
+                        <input class="form-control" type="text" name="username" id="username" required>
                     </div>
+
                     <div class="form-group">
                         <label for="password">Password: </label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="password" id="password" required>
                     </div>
                     <div class="form-group">
-                        <label for="confirm_password">Confirm Password: </label>
-                        <input type="password" class="form-control" name="confirm_password" id="confirm_password">
+                        <label for="confirmPassword">Confirm Password: </label>
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
                     </div>
+                    <div class="text-danger mt-1 mb-1" id="passwordMatchStatus"></div>
                     <div class="form-group">
                         <label for="email">Email: </label>
-                        <input class="form-control" type="email" name="email" id="email">
+                        <input class="form-control" type="email" name="email" id="email" required
+                               value="${not empty email ? email : ''}">
                     </div>
                     <div class="form-group">
-                        <label for="first_name">First Name (optional): </label>
-                        <input class="form-control" type="text" name="first_name" id="first_name">
+                        <label for="firstName">First Name (optional): </label>
+                        <input class="form-control" type="text" name="firstName" id="firstName"
+                               value="${not empty firstName ? firstName : ''}">
                     </div>
                     <div class="form-group">
-                        <label for="last_name">Last Name (optional): </label>
-                        <input class="form-control" type="text" name="last_name" id="last_name">
+                        <label for="lastName">Last Name (optional): </label>
+                        <input class="form-control" type="text" name="lastName" id="lastName"
+                               value="${not empty lastName ? lastName : ''}">
                     </div>
                     <c:if test="${userRoleNames.contains('admin')}">
                     <div class="form-group">
-                        <label for="role_name">User Role (admin use only): </label>
-                        <input class="form-control" type="text" name="role_name" id="role_name">
+                        <label for="roleName">User Role (admin use only): </label>
+                        <input class="form-control" type="text" name="roleName" id="roleName"
+                               value="${not empty roleName ? roleName : ''}">
                     </div>
                     </c:if>
 

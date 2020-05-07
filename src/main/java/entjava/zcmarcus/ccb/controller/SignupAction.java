@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @WebServlet (
     urlPatterns = { "/signupAction" }
@@ -26,7 +27,23 @@ public class SignupAction extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDao userDao = new GenericDao(User.class);
 
+        List<User> users = (List<User>)userDao.findByPropertyEqual("userName", req.getParameter("username"));
+        // check to see if username already exists
+        if (users.size() != 0) {
+            req.setAttribute("email", req.getParameter("email"));
+            req.setAttribute("lastName", req.getParameter("lastName"));
+            req.setAttribute("firstName", req.getParameter("firstName"));
+            // check to see if admin has specified a role name for new user account
+            if (req.getParameterMap().containsKey("roleName")) {
+                req.setAttribute("roleName", "roleName");
+            }
+
+            req.setAttribute("errorMsg", "Username already exists in database. Please choose a different username.");
+            req.getRequestDispatcher("/signup.jsp").forward(req, resp);
+        }
+
         String plainTextPassword = req.getParameter("password");
+        //
         MessageDigestCredentialHandler credentialHandler = new MessageDigestCredentialHandler();
         try {
             credentialHandler.setAlgorithm("SHA-256");
@@ -36,14 +53,12 @@ public class SignupAction extends HttpServlet {
         credentialHandler.setEncoding("UTF-8");
         String hashedPassword = credentialHandler.mutate(plainTextPassword);
 
-
-
         User user = new User(
                 req.getParameter("username")
                 ,hashedPassword
                 ,req.getParameter("email")
-                ,req.getParameter("last_name")
-                ,req.getParameter("first_name")
+                ,req.getParameter("lastName")
+                ,req.getParameter("firstName")
         );
 
         int newUserId = userDao.insert(user);
@@ -53,16 +68,14 @@ public class SignupAction extends HttpServlet {
             // If role other than default "user" set in request, create associated role along with new user
             GenericDao userRoleDao = new GenericDao(UserRole.class);
             UserRole userRole;
-            if (req.getParameterMap().containsKey("role_name")) {
-                userRole = new UserRole(user, req.getParameter("role_name"));
+            if (req.getParameterMap().containsKey("roleName")) {
+                userRole = new UserRole(user, req.getParameter("roleName"));
             } else {
                 userRole = new UserRole(user, "user");
             }
             user.addRole(userRole);
-            // FIXME: unused variable
-            int newUserRoleId = userRoleDao.insert(userRole);
+            userRoleDao.insert(userRole);
         }
-        //TODO: route user to signupSuccess page.
 
         req.setAttribute("newUserId", newUserId);
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
