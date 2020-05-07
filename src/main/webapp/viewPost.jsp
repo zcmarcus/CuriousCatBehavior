@@ -18,7 +18,7 @@
 
                 <div>
                     <div>
-                        <iframe id="youtubePlayer" type="text/html" width="640" height="360"
+                        <iframe id="youtubePlayer" type="text/html" width="640" height="360 "
                             <%--FIXME: change to AWS-hosted url&ndash;%&gt;--%>
                                 src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
                                 frameborder="0">
@@ -48,6 +48,19 @@
                             </p>
                         </div>
 
+                        <div class="mt-2">
+                            <p>Tags:
+                                <c:if test="${not empty post.tags}">
+                                    <c:forEach items="${post.tags}" var="tag">
+                                        <span class="font-weight-bold border border-rounded">
+                                            ${tag.tagName}
+                                        </span>;&nbsp
+                                    </c:forEach>
+                                </c:if>
+
+                            </p>
+                        </div>
+
                         <div>
                             <div class="mt-2">
                                 <h5>#(X) Comments</h5>
@@ -55,21 +68,22 @@
                             </div>
 
                             <div class="mt-2">
-
+                                <form class="form" action="addCommentAction" method="post">
+                                    <input type="hidden" name="postId" value="${post.id}">
                                     <table class="table" id="commentsTable">
                                         <thead>
 
                                         </thead>
                                         <tbody>
                                         <c:choose>
-                                            <c:when test="${not empty comments}">
-                                                <c:forEach items="${comments}" var="comment">
+                                            <c:when test="${not empty post.comments}">
+                                                <c:forEach items="${post.comments}" var="comment">
                                                 <tr>
                                                     <td rowspan="2">(User Icon)</td>
                                                     <td>${comment.user.userName} - ${comment.createdDate}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>${comment.commentBody}</td>
+                                                    <td>${comment.contentBody}</td>
                                                 </tr>
                                                 </c:forEach>
                                             </c:when>
@@ -79,8 +93,21 @@
                                                 </tr>
                                             </c:otherwise>
                                         </c:choose>
+                                        <tr>
+                                            <td>
+                                                <textarea rows="3" cols="20"
+                                                          name="contentBody" id="contentBody">
+                                                </textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button type="submit" name="submit" id="submitCommentButton">Submit</button>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
+                                </form>
                             </div>
                         </div>
 
