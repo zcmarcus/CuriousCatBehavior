@@ -45,11 +45,11 @@
 
         <div class="row text-center text-lg-left">
 
-            <c:if test="${!empty searchItems}">
-                <c:forEach items="${searchItems}" var="item">
+            <c:if test="${!empty searchData}">
+                <c:forEach items="${searchData.getItems()}" var="item">
                     <div class="col-lg-3 col-md-4 col-6 mt-4">
                         <div>
-                            <a href="createPostAction?videoUrl=${item.getId().getVideoId()}&videoTitle=${item.getSnippet().getTitle()}" class=" mt-1 mb-1 ">
+                            <a href="createPostAction?videoUrl=${item.getId().getVideoId()}&videoTitle=${item.getSnippet().getURLEncodedTitle()}" class=" mt-1 mb-1 ">
                                 <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
                             </a>
                         </div>

@@ -47,7 +47,6 @@ public class CreatePostAction extends HttpServlet implements URLQueryStringEncod
         GenericDao postDao = new GenericDao(Post.class);
         GenericDao userDao = new GenericDao(User.class);
 
-        logger.error(session.getAttribute("userId"));
         int userId = (Integer) session.getAttribute("userId");
         User user = (User) userDao.getById(userId);
         String tagsSemicolonDelimited = req.getParameter("tags");
@@ -76,7 +75,6 @@ public class CreatePostAction extends HttpServlet implements URLQueryStringEncod
         user.addPost(newPost);
 
         int newPostId = postDao.insert(newPost);
-//        logger.error("New post with Id: {} created", newPostId);
         req.setAttribute("newPostId", newPostId);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/createPostSuccess.jsp");

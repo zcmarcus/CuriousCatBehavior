@@ -17,8 +17,8 @@
             <div class="col-12">
 
                 <div>
-                    <div>
-                        <iframe id="youtubePlayer" type="text/html" width="640" height="360 "
+                    <div class="videoWrapper">
+                        <iframe id="youtubePlayer" type="text/html" width="640" height="360"
                             <%--FIXME: change to AWS-hosted url&ndash;%&gt;--%>
                                 src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
                                 frameborder="0">
@@ -63,7 +63,10 @@
 
                         <div>
                             <div class="mt-2">
-                                <h5>#(X) Comments</h5>
+                                <h5>
+                                    ${not empty $post.comments ? $post.comments.size() : '0'}
+                                    Comments
+                                </h5>
 
                             </div>
 
@@ -79,7 +82,10 @@
                                             <c:when test="${not empty post.comments}">
                                                 <c:forEach items="${post.comments}" var="comment">
                                                 <tr>
-                                                    <td rowspan="2">(User Icon)</td>
+                                                    <td rowspan="2">
+                                                        <%-- Dicebear randomized Avatars API Call using username as seed--%>
+                                                        <object data="https://avatars.dicebear.com/v2/jdenticon/${comment.user.userName}.svg?options[radius]=12&options[width]=96&options[height]=96"></object>
+                                                    </td>
                                                     <td>${comment.user.userName} - ${comment.createdDate}</td>
                                                 </tr>
                                                 <tr>
@@ -95,9 +101,7 @@
                                         </c:choose>
                                         <tr>
                                             <td>
-                                                <textarea rows="3" cols="20"
-                                                          name="contentBody" id="contentBody">
-                                                </textarea>
+                                                <textarea rows="4" cols="80" name="contentBody" id="contentBody"></textarea>
                                             </td>
                                         </tr>
                                         <tr>

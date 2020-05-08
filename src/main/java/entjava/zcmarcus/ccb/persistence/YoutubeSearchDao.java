@@ -1,6 +1,7 @@
 package entjava.zcmarcus.ccb.persistence;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entjava.zcmarcus.ccb.util.PropertiesLoader;
 import entjava.zcmarcus.ccb.youtube.SearchData;
@@ -48,6 +49,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
         logger.debug("response: " + response);
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SearchData search = null;
         try {
             search = mapper.readValue(response, SearchData.class);
@@ -58,7 +60,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
         return search;
     }
 
-    public SearchData getSearchDataPageToken(String searchTerm, String pageToken ) {
+    public SearchData getSearchDataWithPage(String searchTerm, String pageToken ) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
                 client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")

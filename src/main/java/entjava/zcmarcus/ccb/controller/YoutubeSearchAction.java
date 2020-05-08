@@ -1,8 +1,6 @@
 package entjava.zcmarcus.ccb.controller;
 
 
-import entjava.zcmarcus.ccb.entity.User;
-import entjava.zcmarcus.ccb.persistence.GenericDao;
 import entjava.zcmarcus.ccb.persistence.YoutubeSearchDao;
 import entjava.zcmarcus.ccb.youtube.ItemsItem;
 import entjava.zcmarcus.ccb.youtube.SearchData;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(
@@ -47,14 +44,12 @@ public class YoutubeSearchAction extends HttpServlet {
         SearchData searchData = null;
 //        if(submitAction!=null) {
             if(pageToken != null) {
-                searchData = searchDao.getSearchDataPageToken(searchTerm, pageToken);
+                searchData = searchDao.getSearchDataWithPage(searchTerm, pageToken);
             } else {
                 searchData = searchDao.getSearchData(searchTerm);
 
             }
-            List<ItemsItem> searchItems = searchData.getItems();
             req.setAttribute("searchData", searchData);
-            req.setAttribute("searchItems", searchItems);
             req.setAttribute("searchTerm", req.getParameter("searchTerm"));
 //        }
 

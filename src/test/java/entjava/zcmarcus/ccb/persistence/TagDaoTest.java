@@ -7,6 +7,7 @@ import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

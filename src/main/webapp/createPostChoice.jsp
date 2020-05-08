@@ -42,7 +42,7 @@
 
                     <div class="col-1"></div>
 
-                    <div class="col-1 verticalLine">
+                    <div class="col-1 dashedVerticalDivider">
                         <p>
                             x
                         </p>

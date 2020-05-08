@@ -1,15 +1,14 @@
 package entjava.zcmarcus.ccb.persistence;
 
-import entjava.zcmarcus.ccb.entity.Post;
-import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.entity.Comment;
+import entjava.zcmarcus.ccb.entity.Post;
 import entjava.zcmarcus.ccb.entity.Tag;
+import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 
 import java.util.HashMap;
 import java.util.List;
