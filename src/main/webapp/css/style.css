@@ -22,6 +22,11 @@ body {
     80%   {border-width: 3px; border-color: grey;}
 }
 
+.userIcon {
+    width: 64px;
+    height: 64px;
+}
+
 /* YouTube-related */
 /* TODO: fix videowrapper/iframe display issues
 /*.videoWrapper {*/

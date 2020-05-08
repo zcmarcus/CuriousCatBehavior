@@ -4,9 +4,15 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.ejb.Local;
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * The type Comment.
@@ -32,7 +38,6 @@ public class Comment {
     @Column(name = "modified_date")
     private Date modifiedDate;
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
@@ -51,9 +56,9 @@ public class Comment {
     /**
      * Instantiates a new Comment.
      *
-     * @param contentBody  the content body
-     * @param post         the post
-     * @param user         the user
+     * @param contentBody the content body
+     * @param post        the post
+     * @param user        the user
      */
     public Comment(String contentBody, Post post, User user) {
         this.contentBody = contentBody;
@@ -168,6 +173,22 @@ public class Comment {
     public void setUser(User user) {
         this.user = user;
     }
+
+    /**
+     * Gets current date.
+     *
+     * @return the current date
+     */
+    @Transient
+    public String getTimeElapsedSinceCreated() {
+        Instant createdDateInstant = createdDate.toInstant();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate createdDateLocalDate = createdDateInstant.atZone(defaultZoneId).toLocalDate();
+        LocalDate currentDate = LocalDate.now();
+        long daysBetween = DAYS.between(createdDateLocalDate, currentDate);
+        return String.valueOf(daysBetween);
+    }
+
 
     @Override
     public String toString() {

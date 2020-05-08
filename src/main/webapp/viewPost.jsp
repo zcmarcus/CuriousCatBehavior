@@ -52,9 +52,9 @@
                             <p>Tags:
                                 <c:if test="${not empty post.tags}">
                                     <c:forEach items="${post.tags}" var="tag">
-                                        <span class="font-weight-bold border border-rounded">
+                                        <span class="text-info px-2 mx-2 font-weight-bold border rounded">
                                             ${tag.tagName}
-                                        </span>;&nbsp
+                                        </span>
                                     </c:forEach>
                                 </c:if>
 
@@ -64,29 +64,28 @@
                         <div>
                             <div class="mt-2">
                                 <h5>
-                                    ${not empty $post.comments ? $post.comments.size() : '0'}
-                                    Comments
+                                    ${not empty post.comments
+                                            ? (post.comments.size() == 1 ? "1 Comment" : post.comments.size().concat(" Comments"))
+                                            : '0 Comments'}
                                 </h5>
 
                             </div>
 
-                            <div class="mt-2">
+                            <div class="container-fluid mt-2">
                                 <form class="form" action="addCommentAction" method="post">
                                     <input type="hidden" name="postId" value="${post.id}">
-                                    <table class="table" id="commentsTable">
-                                        <thead>
-
-                                        </thead>
+                                    <table class="table table-borderless" id="commentsTable">
+                                        <thead></thead>
                                         <tbody>
                                         <c:choose>
                                             <c:when test="${not empty post.comments}">
                                                 <c:forEach items="${post.comments}" var="comment">
                                                 <tr>
                                                     <td rowspan="2">
-                                                        <%-- Dicebear randomized Avatars API Call using username as seed--%>
-                                                        <object data="https://avatars.dicebear.com/v2/jdenticon/${comment.user.userName}.svg?options[radius]=12&options[width]=96&options[height]=96"></object>
+                                                        <%-- Dicebear randomized Avatars API Call using comment author username as seed--%>
+                                                        <object class="userIcon" data="https://avatars.dicebear.com/v2/jdenticon/${comment.user.userName}.svg?options[radius]=12&options[width]=48&options[height]=48"></object>
                                                     </td>
-                                                    <td>${comment.user.userName} - ${comment.createdDate}</td>
+                                                    <td class="font-weight-bold">${comment.user.userName} - ${comment.getTimeElapsedSinceCreated() > 1 ? comment.getTimeElapsedSinceCreated().concat(' days ago') : 'less than a day ago'}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>${comment.contentBody}</td>
@@ -100,6 +99,10 @@
                                             </c:otherwise>
                                         </c:choose>
                                         <tr>
+                                            <td rowspan="2">
+                                                <%-- Dicebear randomized Avatars API Call using logged-in user username as seed--%>
+                                                <object class="userIcon" data="https://avatars.dicebear.com/v2/jdenticon/${userName}.svg?options[radius]=12&options[width]=48&options[height]=48"></object>
+                                            </td>
                                             <td>
                                                 <textarea rows="4" cols="80" name="contentBody" id="contentBody"></textarea>
                                             </td>
