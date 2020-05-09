@@ -78,6 +78,6 @@ public class SignupAction extends HttpServlet {
         }
 
         req.setAttribute("newUserId", newUserId);
-        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/signupSuccess.jsp").forward(req, resp);
     }
 }

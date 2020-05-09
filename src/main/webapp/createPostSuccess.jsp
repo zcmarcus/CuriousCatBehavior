@@ -1,5 +1,5 @@
 <%@include file="template/taglib.jsp"%>
-<c:set var="title" value="Home" />
+<c:set var="title" value="Create Post - Success" />
 <%@include file="template/head.jsp"%>
 
 <html class="h-100">

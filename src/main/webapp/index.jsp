@@ -12,28 +12,6 @@
     <div class="container">
         <h2 class="text-center">CatsplainMeThis!</h2>
 
-        <c:choose>
-            <c:when test="${!empty newUserId}">
-                <p>
-                    Account with ID
-                    <span class='text-success'>
-                        <c:out value = "${newUserId}" />
-                    </span> successfully created! Visit
-                    <a href='loginAction'>Login page</a> to log in.
-                </p>
-            </c:when>
-            <c:when test="${!empty userId}">
-                <p>
-                    User ${username} with ID ${userId} successfully logged in!.
-                </p>
-            </c:when>
-            <c:otherwise>
-
-            </c:otherwise>
-
-        </c:choose>
-
-
             <div>
 
             </div>

@@ -65,7 +65,7 @@
                             <div class="mt-2">
                                 <h5>
                                     ${not empty post.comments
-                                            ? (post.comments.size() == 1 ? "1 Comment" : post.comments.size().concat(" Comments"))
+                                            ? (post.comments.size() == 1 ? "1 Comment" : String.valueOf(post.comments.size()).concat(" Comments"))
                                             : '0 Comments'}
                                 </h5>
 
@@ -101,7 +101,14 @@
                                         <tr>
                                             <td rowspan="2">
                                                 <%-- Dicebear randomized Avatars API Call using logged-in user username as seed--%>
-                                                <object class="userIcon" data="https://avatars.dicebear.com/v2/jdenticon/${userName}.svg?options[radius]=12&options[width]=48&options[height]=48"></object>
+                                                <c:choose>
+                                                    <c:when test="${not empty pageContext.request.remoteUser}">
+                                                        <object class="userIcon" data="https://avatars.dicebear.com/v2/jdenticon/${pageContext.request.remoteUser}.svg?options[radius]=12&options[width]=48&options[height]=48"></object>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img id="guestIcon" class="userIcon" src="${pageContext.request.contextPath}/images/guestIcon.jpg"></img>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </td>
                                             <td>
                                                 <textarea rows="4" cols="80" name="contentBody" id="contentBody"></textarea>
@@ -109,7 +116,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button type="submit" name="submit" id="submitCommentButton">Submit</button>
+                                                <button type="submit" name="submit" id="submitCommentButton">Post Comment</button>
                                             </td>
                                         </tr>
                                         </tbody>

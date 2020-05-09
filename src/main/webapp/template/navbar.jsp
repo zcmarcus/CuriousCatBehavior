@@ -1,4 +1,10 @@
-<c:set var = "userIsLoggedIn" scope = "session" value = "${pageContext.request.getRemoteUser() != null ? true : false}"/>
+<%--If user authenticated but user id not yet set, redirect to LoginAction--%>
+
+<c:if test="${(not empty pageContext.request.remoteUser) and (empty userId)}">
+    <%--TODO:  get URL of page issueing request in order to set proper redirect to intended resource after successful login--%>
+    <c:redirect url="loginAction" />
+</c:if>
+
 
 <header class="navbar navbar-expand-md navbar-light sticky-top justify-content-between" style="background-color: #ffe6e6;">
     <a class="navbar-brand"><img src="${pageContext.request.contextPath}/images/logo.png" alt="drawing of cat with a question mark in a dialog bubble above its head" style="height: 80px; width: 80px; box-shadow: 1px 2px 3px lightgrey"></a>
@@ -21,8 +27,10 @@
                 </div>
             </li>
 
-            <c:if test="${userRoleNames.contains('admin')}">
-                <li class="nav-item">
+<%--            <c:if test="${userRoleNames.contains('admin')}">--%>
+            <c:if test="${pageContext.request.isUserInRole('admin')}">
+
+            <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="admin/maintenance_home.jsp">Administrator</a>
                 </li>
             </c:if>
@@ -40,8 +48,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="createPostChoice.jsp">+ Create New Post</a>
             </li>
-            <c:if test="${(userId == null) or (userRoleNames.contains('admin')) }">
-                <li class="nav-item">
+<%--            <c:if test="${(userId == null) or (userRoleNames.contains('admin')) }">--%>
+            <c:if test="${(userId == null) or (pageContext.request.isUserInRole('admin')) }">
+            <li class="nav-item">
                     <a href="signup.jsp" class=" btn btn-outline-dark px-3 mx-3">Join</a>
                 </li>
             </c:if>

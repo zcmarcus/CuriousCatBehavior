@@ -68,12 +68,12 @@ public class LoginAction extends HttpServlet {
         // set userID in session for use in calls to web service
         session.setAttribute("userId", userId);
         session.setAttribute("userRoleNames", userRoleNames);
-        session.setAttribute("username", req.getRemoteUser());
+//        session.setAttribute("username", req.getRemoteUser());
 
-        req.setAttribute("loggedInUsername", req.getRemoteUser());
+//        req.setAttribute("loggedInUsername", req.getRemoteUser());
 
 //        logger.error("Logged user : " + req.getRemoteUser() + " has role of admin (true/false): " + req.isUserInRole("admin"));
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/loginSuccess.jsp");
         dispatcher.forward(req, resp);
     }
 
