@@ -11,19 +11,24 @@
 
         <div class="row">
             <div class="col-6 offset-3">
-                <%--TODO: add 5-sec JavaScript auto-redirect timeOut--%>
+                <%--TODO: add 5-sec JavaScript auto-redirect timeOut on successful login--%>
                 <c:choose>
                     <c:when test="${!empty userId}">
-                        <p>
-                            Glad to see you, ${pageContext.request.remoteUser}!.
+                        <div>
+                            Glad to see you, ${pageContext.request.remoteUser}!
                             Head on over to the <a href="${pageContext.request.contextPath}/index.jsp">main site</a> to get started!
-                        </p>
+                        </div>
                     </c:when>
                     <c:otherwise>
-                        <p class="text-error">
-                            Login unsuccessful. Please check that username and password are entered correctly and try again.
-                            <a href="${pageContext.request.contextPath}/login.jsp">Return to login page</a>.
-                        </p>
+                        <div class="text-error">
+                            Oops! Something went wrong. Check that you entered the correct URL.
+                        </div>
+                        <div class="mt-2 mb-2">
+                            Return to <a href="${pageContext.request.contextPath}/login.jsp">login page</a>.
+                        </div>
+                        <div>
+                            Return to <a href="${pageContext.request.contextPath}/index.jsp">home page</a>.
+                        </div>
                     </c:otherwise>
 
                 </c:choose>

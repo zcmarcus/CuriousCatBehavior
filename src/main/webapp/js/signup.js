@@ -10,8 +10,8 @@ function checkPasswordMatch() {
         $("#passwordMatchStatus").html("Passwords match.");
     } else {
         $("#passwordMatchStatus").html("");
-
     }
+
 
 }
 

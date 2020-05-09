@@ -1,14 +1,13 @@
 package entjava.zcmarcus.ccb.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import entjava.zcmarcus.ccb.util.CommentDateComparator;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.*;
 
 /**
  * The type Post.
@@ -42,13 +41,14 @@ public class Post {
     private Date modifiedDate;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private Set<Comment> comments = new HashSet<>();
+    @SortComparator(CommentDateComparator.class)
+    private SortedSet<Comment> comments;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-        //TODO: Change to CascadeType.PERSISTS (+ MERGE?) instead to leave tags alone in case a post is deleted.
+    //TODO: Change to CascadeType.PERSISTS (+ MERGE?) instead to leave tags alone in case a post is deleted.
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     @JoinTable(name = "post_tags", joinColumns = {
             @JoinColumn(name = "post_id", nullable = false, updatable = false) },
@@ -190,7 +190,7 @@ public class Post {
      *
      * @return the comments
      */
-    public Set<Comment> getComments() {
+    public SortedSet<Comment> getComments() {
         return comments;
     }
 
@@ -199,7 +199,7 @@ public class Post {
      *
      * @param comments the comments
      */
-    public void setComments(Set<Comment> comments) {
+    public void setComments(SortedSet<Comment> comments) {
         this.comments = comments;
     }
 

@@ -11,7 +11,7 @@
 
         <div class="row">
             <div class="col-6 offset-3">
-            <%--TODO: add 5-sec JavaScript auto-redirect for either situation--%>
+            <%--TODO: add 5-sec JavaScript auto-redirect for account creation ???--%>
             <c:choose>
                 <c:when test="${!empty newUserId}">
                     <p>
@@ -24,10 +24,15 @@
                 </c:when>
                 <c:otherwise>
                     <c:otherwise>
-                        <p class="text-error">
-                            There was a problem creating new account. Please check that all required fields were filled out properly.
-                            <a href="${pageContext.request.contextPath}/signup.jsp">Return to sign-up page page</a>.
-                        </p>
+                        <div class="text-error">
+                            Oops! Something went wrong. Check that you entered the correct URL.
+                        </div>
+                        <div class="mt-2 mb-2">
+                            Return to <a href="${pageContext.request.contextPath}/signup.jsp">sign-up page</a>.
+                        </div>
+                        <div>
+                            Return to <a href="${pageContext.request.contextPath}/index.jsp">home page</a>.
+                        </div>
                     </c:otherwise>
                 </c:otherwise>
 

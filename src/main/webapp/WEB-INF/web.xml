@@ -17,7 +17,6 @@
     </login-config>
 
     <!-- Protect the admin maintenance home page (aka search page for users, posts, etc.)  -->
-
     <security-constraint>
       <web-resource-collection>
           <web-resource-name>maintenance</web-resource-name>
@@ -28,6 +27,7 @@
       </auth-constraint>
     </security-constraint>
 
+    <!-- Protect the YouTube search page used for creating a new post  -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>youtubeSearch</web-resource-name>
@@ -40,7 +40,7 @@
         </auth-constraint>
     </security-constraint>
 
-
+    <!-- Protect pages used for adding site content  -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>addContent</web-resource-name>
@@ -56,6 +56,7 @@
         </auth-constraint>
     </security-constraint>
 
+    <!-- Protect logout-related pages-->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>loginLogout</web-resource-name>

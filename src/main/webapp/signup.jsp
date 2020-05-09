@@ -24,7 +24,10 @@
                 </c:if>
 
 
-                <form class="form" action="signupAction" method="post">
+                <form class="form" action="signupAction" method="post"
+                      <%-- FIXME: Change to event listener in signup.js --%>
+                      oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
+
                     <div class="form-group">
                         <label for="username">Username: </label>
                         <input class="form-control" type="text" name="username" id="username" required>
