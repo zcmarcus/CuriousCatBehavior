@@ -1,5 +1,5 @@
 <%@include file="template/taglib.jsp"%>
-<c:set var="title" value="Create Post - Success" />
+<c:set var="title" value="Delete Post - Success" />
 <%@include file="template/head.jsp"%>
 
 <html class="h-100">
@@ -11,18 +11,11 @@
 
     <div class="container">
 
-        <h3 class="text-center">Success!</h3>
+        <h3 class="text-center">Post Deleted!</h3>
         <c:choose>
-            <c:when test="${not empty newPostId}">
+            <c:when test="${not empty postDeleted}">
                 <p>
-                    Post with ID
-                    <span class='text-success'>
-                        <c:out value = "${newPostId}" />
-                    </span> successfully created!
-                    <span class="font-weight-bold">
-                        <a href="viewPostAction?postId=${newPostId}">Click here</a>
-                    </span>
-                    to view the post.
+                    Post successfully deleted. <a href="homeAction">Return to home page</a>.
                 </p>
             </c:when>
             <c:otherwise>

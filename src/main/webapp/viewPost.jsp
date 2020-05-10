@@ -4,7 +4,7 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="container-fluid d-flex flex-column h-100">
+<div class="contentBody container-fluid d-flex flex-column h-100">
     <%@include file="template/navbar.jsp"%>
 
 
@@ -59,6 +59,10 @@
                                 </c:if>
 
                             </p>
+                        </div>
+
+                        <div class="mt-2">
+                            <a class="btn btn-success" href="editPostAction?editId=${post.id}">Edit Post</a>
                         </div>
 
                         <div>

@@ -4,7 +4,7 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="container-fluid d-flex flex-column h-100">
+<div class="contentBody container-fluid d-flex flex-column h-100">
 
     <div class="container">
         <h2 class="text-center">CatsplainMeThis!</h2>

@@ -16,8 +16,6 @@ function checkPasswordMatch() {
 }
 
 $(document).ready(function () {
-    console.log('linked properly');
-
     let errorMessageDiv = document.querySelector('#errorMessage');
     if (errorMessageDiv != null) {
         errorMessageDiv.focus();

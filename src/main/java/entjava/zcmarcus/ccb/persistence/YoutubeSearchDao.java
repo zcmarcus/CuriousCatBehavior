@@ -43,7 +43,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
     public SearchData getSearchData(String searchTerm) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
-                client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")
+                client.target(youtubeProperties.getProperty("dataAPIv3BaseSearchURL")
                         + "&maxResults=12&q=" + searchTerm + "&key="
                         + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
@@ -63,7 +63,7 @@ public class YoutubeSearchDao implements PropertiesLoader {
     public SearchData getSearchDataWithPage(String searchTerm, String pageToken ) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
-                client.target(youtubeProperties.getProperty("dataAPIv3BaseURL")
+                client.target(youtubeProperties.getProperty("dataAPIv3BaseSearchURL")
                         + "&maxResults=12&pageToken=" + pageToken
                         + "&q=" + searchTerm + "&key="
                         + googleSecretsProperties.getProperty("ccb_api_key"));
@@ -78,6 +78,26 @@ public class YoutubeSearchDao implements PropertiesLoader {
         }
         logger.info("search data: " + search);
         return search;
+    }
+
+    public SearchData getVideoById(String id) {
+        Client client = ClientBuilder.newClient();
+        WebTarget target =
+                client.target(youtubeProperties.getProperty("dataAPIv3BaseVideoURL")
+                        + "&id=" + id + "&key="
+                        + googleSecretsProperties.getProperty("ccb_api_key"));
+        String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
+        logger.error("response: " + response);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        SearchData idSearch = null;
+        try {
+            idSearch = mapper.readValue(response, SearchData.class);
+        } catch (JsonProcessingException e) {
+            logger.error("Encountered a problem processing JSON: {}", e);
+        }
+        logger.info("search data for video with id {}: {}", id, idSearch);
+        return idSearch;
     }
 
 }

@@ -4,7 +4,7 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="container-fluid d-flex flex-column h-100">
+<div class="contentBody container-fluid d-flex flex-column h-100">
 
     <div class="container">
         <h2 class="text-center">CatsplainMeThis!</h2>
@@ -31,7 +31,7 @@
                             Return to <a href="${pageContext.request.contextPath}/signup.jsp">sign-up page</a>.
                         </div>
                         <div>
-                            Return to <a href="home">home page</a>.
+                            Return to <a href="homeAction">home page</a>.
                         </div>
                     </c:otherwise>
                 </c:otherwise>

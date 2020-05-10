@@ -4,7 +4,7 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="container-fluid d-flex flex-column h-100">
+<div class="contentBody container-fluid d-flex flex-column h-100">
 
     <div class="container">
         <h2 class="text-center">CatsplainMeThis!</h2>
@@ -16,7 +16,7 @@
                     <c:when test="${!empty userId}">
                         <div>
                             Glad to see you, ${pageContext.request.remoteUser}!
-                            Head on over to the <a href="home">main site</a> to get started!
+                            Head on over to the <a href="homeAction">main site</a> to get started!
                         </div>
                     </c:when>
                     <c:otherwise>
@@ -27,7 +27,7 @@
                             Return to <a href="${pageContext.request.contextPath}/login.jsp">login page</a>.
                         </div>
                         <div>
-                            Return to <a href="home">home page</a>.
+                            Return to <a href="homeAction">home page</a>.
                         </div>
                     </c:otherwise>
 

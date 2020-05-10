@@ -1,6 +1,8 @@
-body {
+.contentBody {
     background-color: #ffe6e6;
 }
+
+
 
 .dashedVerticalDivider {
     border-left: 2px dashed lightblue !important;
@@ -22,12 +24,27 @@ body {
     80%   {border-width: 3px; border-color: grey;}
 }
 
+/* User */
 .userIcon {
     width: 64px;
     height: 64px;
 }
 
-/* YouTube-related */
+/* Tables and DataTables */
+.dataTableClickable tr {
+    cursor: pointer;
+}
+
+.hiddenColumn {
+    position: absolute;
+    left: -9999px;
+}
+
+.postTitleText {
+    font-size: 1.25em;
+}
+
+/* YouTube */
 /* TODO: fix videowrapper/iframe display issues
 /*.videoWrapper {*/
 /*    width: 100%;*/

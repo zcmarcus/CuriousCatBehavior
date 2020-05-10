@@ -4,67 +4,62 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="container-fluid d-flex flex-column h-100">
+<div class="contentBody container-fluid d-flex flex-column h-100">
     <%@include file="template/navbar.jsp"%>
-
-    <script type="text/javascript" class="init">
-        $(document).ready( function () {
-            $('#allPostsTable').DataTable();
-            $('#allTagsTable').DataTable();
-        } );
-    </script>
-
 
     <div class="container-fluid">
         <h2 class="text-center">CatsplainMeThis!</h2>
 
-        <div class="row">
+        <div class="row mx-4">
             <div class="col-3">
-                <c:if test="${allTags != null}">
+                <c:choose>
+                <c:when test="${not empty allTags}">
 
-                    <table id="allTagsTable" class="display">
+                    <table id="allTagsTable" class="display table table-striped">
                         <thead>
                         <tr>
-                            <th></th>
+                            <th class="p-3"></th>
                         </tr>
 
                         </thead>
                         <tbody>
                         <c:forEach var="tag" items="${allTags}">
                             <tr>
-                                <td>${tag.tagName}</td>
+                                <td class="p-3">${tag.tagName}</td>
                             </tr>
                         </c:forEach>
                         </tbody>
 
                     </table>
 
-                </c:if>
+                </c:when>
+                <c:otherwise>
+                    <h5>No tags found in database</h5>
+                </c:otherwise>
+                </c:choose>
             </div>
             <div class="col-9">
-                <c:if test="${allPosts != null}">
+                <c:if test="${not empty allPosts}">
 
-                    <table id="allPostsTable" class="display">
+                    <table id="allPostsTable" class="display table table-striped dataTableClickable"  >
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Video URL</th>
-                            <th>Posted on</th>
-                            <th>User</th>
-                            <th></th>
+                            <th class="p-3">Title</th>
+                            <th class="p-3">Posted on</th>
+                            <th class="p-3">User</th>
+                            <th class="p-3"></th>
                         </tr>
 
                         </thead>
                         <tbody>
                         <c:forEach var="post" items="${allPosts}">
                             <tr>
-                                <td>${post.title}</td>
-                                <td>${post.videoUrl}</td>
-                                <td>${post.createdDate}</td>
-                                <td>
-                                    by ${post.user.userName}
+                                <td class="font-weight-bold p-3 postTitleText">${post.title}</td>
+                                <td class="p-3">${post.createdDate}</td>
+                                <td class="p-3">
+                                    by <span class="font-weight-bold text-underline">${post.user.userName}</span>
                                 </td>
-                                <td>
+                                <td class="p-3">
                                     <a href="viewPostAction?postId=${post.id}">
                                         View Post
                                     </a>
@@ -91,3 +86,7 @@
 </div>
 </body>
 </html>
+
+<script>
+    initializeDataTables();
+</script>

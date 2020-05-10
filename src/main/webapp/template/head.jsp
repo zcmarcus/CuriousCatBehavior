@@ -19,8 +19,8 @@
     <%--  Bootstrap.js--%>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <%--  Google Platform Library--%>
-<%--    <script src="https://apis.google.com/js/api.js?onload=onLibraryLoaded" async defer></script>--%>
+    <%--  Google Platform Library // FIXME: delete if not used in final version --%>
+    <%--  <script src="https://apis.google.com/js/api.js?onload=onLibraryLoaded" async defer></script>--%>
 
 
     <%--  Font Awesome--%>
@@ -31,6 +31,7 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 
     <%-- Custom JavaScript --%>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/home.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/signup.js"></script>
 
 </head>

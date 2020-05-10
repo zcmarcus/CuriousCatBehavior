@@ -277,7 +277,7 @@ public class Post {
      * @param tag the tag
      */
     public void removeTag(Tag tag) {
-        comments.remove(tag);
+        tags.remove(tag);
         tag.getTaggedPosts().remove(this);
     }
 

@@ -43,7 +43,6 @@ public class GenericDao<T> {
         Session session = getSession();
 
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        logger.error(type);
 
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
@@ -163,7 +162,6 @@ public class GenericDao<T> {
         Root<T> root = query.from(type);
         List<Predicate> predicates = new ArrayList<Predicate>();
         for (String property : propertyList) {
-            logger.debug(property + " " + value);
             predicates.add(builder.like(root.get((String)property),"%" + (String) value + "%"));
         }
         query.select(root).where(builder.or(predicates.toArray(new Predicate[predicates.size()])));

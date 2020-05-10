@@ -16,14 +16,13 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(
-        urlPatterns = {""}
+        urlPatterns = {"/homeAction", ""}
 )
 public class HomeAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Logger logger = LogManager.getLogger(this.getClass());
-        logger.error("HELLO");
 
         GenericDao postDao = new GenericDao(Post.class);
         GenericDao tagDao = new GenericDao(Tag.class);

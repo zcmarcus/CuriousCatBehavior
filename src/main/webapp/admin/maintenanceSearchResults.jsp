@@ -2,6 +2,7 @@
 <c:set var="title" value="Maintenance - Search Results" />
 <%@include file="../template/head.jsp"%>
 
+<%--FIXME: move to external js script--%>
 <script type="text/javascript" class="init">
     $(document).ready( function () {
         $('#resultsDataTable').DataTable();
