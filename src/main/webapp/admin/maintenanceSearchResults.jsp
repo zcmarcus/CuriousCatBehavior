@@ -80,7 +80,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="/viewPostAction?postId=${post.id}">
+                        <a href="viewPostAction?postId=${post.id}">
                             View Post
                         </a>
                     </td>

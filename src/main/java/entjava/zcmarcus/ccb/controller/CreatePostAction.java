@@ -46,6 +46,7 @@ public class CreatePostAction extends HttpServlet implements URLQueryStringEncod
 
         GenericDao postDao = new GenericDao(Post.class);
         GenericDao userDao = new GenericDao(User.class);
+        GenericDao tagDao = new GenericDao(Tag.class);
 
         int userId = (Integer) session.getAttribute("userId");
         User user = (User) userDao.getById(userId);
@@ -54,25 +55,44 @@ public class CreatePostAction extends HttpServlet implements URLQueryStringEncod
         String[] tagStrings = tagsSemicolonDelimited.split(";");
 
 
-        //TODO: remove whitespace near semicolons??
-        List<Tag> tags = new ArrayList<>();
-        for (String tagString: tagStrings) {
-            Tag newTag = new Tag(tagString);
-            tags.add(newTag);
-        }
-
         Post newPost = new Post(
                 user
                 ,req.getParameter("title")
                 ,req.getParameter("videoUrl")
                 ,req.getParameter("descriptionBody")
         );
-        for (Tag tag: tags) {
-            newPost.addTag(tag);
-        }
 
         newPost.setUser(user);
         user.addPost(newPost);
+
+        List<Tag> newTagsToAdd = new ArrayList<>();
+        List<Tag> existingTagsToAdd = new ArrayList<>();
+        // Check database to see if tags entered in form already exist in database
+        for (String tagString: tagStrings) {
+            String trimmedTagString = tagString.trim();
+            List<Tag> matchingTags = (List<Tag>)tagDao.findByPropertyEqual("tagName", trimmedTagString);
+            if(matchingTags.size() == 0) { // tag is not yet in database. create new tag with tag name
+                Tag newTag = new Tag(trimmedTagString);
+                newTagsToAdd.add(newTag);
+            } else { // tag already in database. add to array list of existing tags that match entered tag name
+                for(Tag matchingTag: matchingTags) {
+                    existingTagsToAdd.add(matchingTag);
+                }
+            }
+        }
+
+        if(newTagsToAdd.size() > 0) { // if any new tags not already in database exist, add to new post
+            for (Tag newTag: newTagsToAdd) {
+                newPost.addTag(newTag);
+            }
+        }
+
+        if(existingTagsToAdd.size() > 0) { // if any matching tags found already existing in database, add to new post
+            for (Tag existingTag: existingTagsToAdd) {
+                newPost.addTag(existingTag);
+            }
+        }
+
 
         int newPostId = postDao.insert(newPost);
         req.setAttribute("newPostId", newPostId);

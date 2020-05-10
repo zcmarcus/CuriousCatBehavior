@@ -31,7 +31,7 @@
             <c:if test="${pageContext.request.isUserInRole('admin')}">
 
             <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="admin/maintenance_home.jsp">Administrator</a>
+                    <a class="nav-link font-weight-bold" href="admin/maintenanceHome.jsp">Administrator</a>
                 </li>
             </c:if>
 

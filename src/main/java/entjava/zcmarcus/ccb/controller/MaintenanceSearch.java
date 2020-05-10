@@ -69,7 +69,7 @@ public class MaintenanceSearch extends HttpServlet {
 
         logger.debug(users);
         logger.debug(posts);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/maintenance_search_results.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/admin/maintenanceSearchResults.jsp");
         dispatcher.forward(req, resp);
 
     }

@@ -16,7 +16,7 @@
                     <c:when test="${!empty userId}">
                         <div>
                             Glad to see you, ${pageContext.request.remoteUser}!
-                            Head on over to the <a href="${pageContext.request.contextPath}/index.jsp">main site</a> to get started!
+                            Head on over to the <a href="home">main site</a> to get started!
                         </div>
                     </c:when>
                     <c:otherwise>
@@ -27,7 +27,7 @@
                             Return to <a href="${pageContext.request.contextPath}/login.jsp">login page</a>.
                         </div>
                         <div>
-                            Return to <a href="${pageContext.request.contextPath}/index.jsp">home page</a>.
+                            Return to <a href="home">home page</a>.
                         </div>
                     </c:otherwise>
 

@@ -1,11 +1,13 @@
 package entjava.zcmarcus.ccb.youtube;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import entjava.zcmarcus.ccb.util.URLQueryStringEncoder;
 
 /**
  * The type Snippet.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Snippet implements URLQueryStringEncoder {
 
 	@JsonProperty("publishedAt")

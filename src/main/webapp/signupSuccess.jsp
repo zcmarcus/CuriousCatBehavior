@@ -31,7 +31,7 @@
                             Return to <a href="${pageContext.request.contextPath}/signup.jsp">sign-up page</a>.
                         </div>
                         <div>
-                            Return to <a href="${pageContext.request.contextPath}/index.jsp">home page</a>.
+                            Return to <a href="home">home page</a>.
                         </div>
                     </c:otherwise>
                 </c:otherwise>
