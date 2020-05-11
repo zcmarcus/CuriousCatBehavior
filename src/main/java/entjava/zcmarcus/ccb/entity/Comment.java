@@ -175,9 +175,9 @@ public class Comment {
     }
 
     /**
-     * Gets current date.
+     * Gets time elapsed since comment created.
      *
-     * @return the current date
+     * @return the time elapsed
      */
     @Transient
     public String getTimeElapsedSinceCreated() {

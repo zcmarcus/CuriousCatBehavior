@@ -1,6 +1,10 @@
 const initializeDataTables = () => {
 
-    $('#allPostsTable').DataTable({
+    $('#postsTable').DataTable( {
+        "searching": false,
+        "info":     false,
+        "pagingType": "full",
+        "lengthChange": false,
         "columnDefs": [
             {
                 "targets": [ 3 ],
@@ -8,14 +12,20 @@ const initializeDataTables = () => {
             }
         ],
         "order": [[1, "desc" ]],
-        "lengthMenu": [[25, 50, -1], [25, 50, "All"]]
+        "lengthMenu": [[10], [10]]
     });
-    $('#allTagsTable').DataTable({
-        "lengthMenu": [[25, 50, -1], [25, 50, "All"]]
+
+
+    $('#tagsTable').DataTable( {
+        "searching": false,
+        "ordering": false,
+        "info":     false,
+        "paging":   false,
+        "lengthChange": false,
     });
 
     // make entire rows clickable
-    $('#allPostsTable tbody').on('click', 'tr', function () {
+    $('#postsTable tbody').on('click', 'tr', function () {
         let href = $(this).find('a').prop('href');
         if(href) {
             window.location = href;

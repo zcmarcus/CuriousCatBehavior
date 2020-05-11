@@ -9,7 +9,7 @@
 
     <div class="container-fluid">
         <div class="my-5">
-            <h2 class="text-center">CatsplainMeThis!</h2>
+            <div class="titleHeading display-1 text-center">catsplain me <span class="boldHeadingSpan">this!</span></div>
         </div>
         <div class="row mt-5">
             <div class="col-3">
@@ -17,7 +17,7 @@
                 <c:choose>
                 <c:when test="${not empty allTags}">
 
-                    <table id="allTagsTable" class="display table table-striped">
+                    <table id="tagsTable" class="display table table-striped">
                         <thead>
                         <tr>
                             <th class="p-3"></th>
@@ -43,7 +43,7 @@
             <div class="col-8 offset-1">
                 <c:if test="${not empty allPosts}">
 
-                    <table id="allPostsTable" class="display table table-striped dataTableClickable"  >
+                    <table id="postsTable" class="display table table-striped dataTableClickable"  >
                         <thead>
                         <tr>
                             <th class="p-3">Title</th>

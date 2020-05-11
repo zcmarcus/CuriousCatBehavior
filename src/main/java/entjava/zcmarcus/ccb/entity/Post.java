@@ -7,7 +7,12 @@ import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * The type Post.
@@ -279,6 +284,21 @@ public class Post {
     public void removeTag(Tag tag) {
         tags.remove(tag);
         tag.getTaggedPosts().remove(this);
+    }
+
+    /**
+     * Gets time elapsed since post created.
+     *
+     * @return the post elapsed
+     */
+    @Transient
+    public String getTimeElapsedSinceCreated() {
+        Instant createdDateInstant = createdDate.toInstant();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        LocalDate createdDateLocalDate = createdDateInstant.atZone(defaultZoneId).toLocalDate();
+        LocalDate currentDate = LocalDate.now();
+        long daysBetween = DAYS.between(createdDateLocalDate, currentDate);
+        return String.valueOf(daysBetween);
     }
 
 
