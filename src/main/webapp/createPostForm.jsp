@@ -3,7 +3,7 @@
 <%@include file="template/head.jsp"%>
 <html class="h-100">
 <body class="h-100">
-<div class="contentBody container-fluid d-flex flex-column  h-100">
+<div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
 
 
@@ -91,9 +91,7 @@
 
     </div>
 
-    <%@include file="template/footer.jsp"%>
-
-
 </div>
+<%@include file="template/footer.jsp"%>
 </body>
 </html>

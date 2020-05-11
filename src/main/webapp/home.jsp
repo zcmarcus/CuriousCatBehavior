@@ -4,14 +4,16 @@
 
 <html class="h-100">
 <body class="h-100">
-<div class="contentBody container-fluid d-flex flex-column h-100">
+<div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
 
     <div class="container-fluid">
-        <h2 class="text-center">CatsplainMeThis!</h2>
-
-        <div class="row mx-4">
+        <div class="my-5">
+            <h2 class="text-center">CatsplainMeThis!</h2>
+        </div>
+        <div class="row mt-5">
             <div class="col-3">
+                <h4>Popular Tags</h4>
                 <c:choose>
                 <c:when test="${not empty allTags}">
 
@@ -38,7 +40,7 @@
                 </c:otherwise>
                 </c:choose>
             </div>
-            <div class="col-9">
+            <div class="col-8 offset-1">
                 <c:if test="${not empty allPosts}">
 
                     <table id="allPostsTable" class="display table table-striped dataTableClickable"  >
@@ -81,9 +83,10 @@
 
 
 
-    <%@include file="template/footer.jsp"%>
 
 </div>
+<%@include file="template/footer.jsp"%>
+
 </body>
 </html>
 

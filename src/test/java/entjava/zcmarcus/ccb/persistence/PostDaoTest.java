@@ -138,19 +138,18 @@ class PostDaoTest {
     }
 
     /**
-     * Verify successful delete of post
+     * Verify successful delete of post and associated comments
      */
     @Test
-    void deleteSuccess() {
+    void deleteCascadeSuccess() {
+        Post postToBeDeleted = (Post) postDao.getById(3);
+        assertEquals(postToBeDeleted.getComments().size(), 6);
         postDao.delete(postDao.getById(3));
         assertNull(postDao.getById(3));
+        List<Comment> associatedCommentsAfterDelete = commentDao.findByPropertyEqual("post", postToBeDeleted);
+        assertEquals(associatedCommentsAfterDelete.size(), 0);
+
     }
 
-//    TODO: Test delete of post and check cascade effect on tag/comment.
-//          Similarly check delete of user and check cascade effect on posts.
-//    @Test
-//    void deletePostOnDeleteCascadeSuccess() {
-
-//    }
 
 }

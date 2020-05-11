@@ -1,6 +1,38 @@
-.contentBody {
+html, body {
     background-color: #ffe6e6;
 }
+
+h2 {
+    color: white;
+    text-shadow: 1px 1px 3px black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 1px 1px 4px darkgrey;
+}
+
+.contentBody {
+    min-height: 100%;
+    /* footer height */
+    margin-bottom: -20px;
+}
+
+.contentBody:after {
+    content: "";
+    display: block;
+}
+
+footer, .contentBody:after {
+    height: 20px;
+}
+
+footer {
+    border-top: 10px solid grey;
+    color: white;
+
+    background-color: #874c62;
+}
+
 
 
 
@@ -18,7 +50,7 @@
     animation-timing-function: ease-in-out;
 }
 
-@keyframes errorMessageColors {
+@keyframes errorMessageColors { /* short animation of error message border */
     0%   {border-width: 3px; border-color: grey;}
     40%  {border-width: 4px; border-color: red;}
     80%   {border-width: 3px; border-color: grey;}
