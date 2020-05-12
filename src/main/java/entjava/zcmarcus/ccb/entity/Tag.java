@@ -22,7 +22,7 @@ public class Tag {
     @Column(name = "tag_name")
     private String tagName;
 
-    @ManyToMany(mappedBy = "tags")
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.EAGER)
     private Set<Post> taggedPosts = new HashSet<>();
 
     /**

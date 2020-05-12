@@ -101,8 +101,6 @@ class UserRoleDaoTest {
         assertNull(genericDao.getById(1));
     }
 
-    //TODO: test for scenario when all roles are deleted for a user and
-    // user is automatically assigned default 'user' role.
 
 
 }

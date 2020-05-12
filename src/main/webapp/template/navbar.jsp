@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbar-nav-dropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link active" href="homeAction">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle active" href="#" id="navbar-dropdown-about-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,7 +35,7 @@
         </ul>
 
         <form class="form-inline my-2 my-md-0 ml-auto" method="GET" action="searchPosts">
-            <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Search posts" aria-label="Search" size="48">
+            <input class="form-control mr-md-2" name="postSearchTerm" type="search" placeholder="Search posts" aria-label="Search" size="48">
             <button class="btn btn-dark my-2 my-sm-0" type="submit" name="submit" value="searchSubmit">
                 <i class="fa fa-search"></i>
             </button>

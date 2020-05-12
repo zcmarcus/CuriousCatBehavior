@@ -34,11 +34,9 @@ public class EditPostAction extends HttpServlet {
         GenericDao postDao = new GenericDao(Post.class);
         int postId = Integer.parseInt(req.getParameter("editId"));
         Post postToUpdate = (Post)postDao.getById(postId);
-        logger.error("postToUpdate url: {}", postToUpdate.getVideoUrl());
 
         YoutubeSearchDao youtubeSearchDao = new YoutubeSearchDao();
         SearchData videoData = youtubeSearchDao.getVideoById(postToUpdate.getVideoUrl());
-        logger.error(videoData);
 
         req.setAttribute("videoData", videoData);
         req.setAttribute("post", postToUpdate);

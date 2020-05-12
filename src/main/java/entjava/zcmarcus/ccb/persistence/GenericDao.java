@@ -37,7 +37,7 @@ public class GenericDao<T> {
     /**
      * Gets all entities
      *
-     * @return the all entities
+     * @return all entities
      */
     public List<T> findAll() {
         Session session = getSession();
@@ -47,6 +47,49 @@ public class GenericDao<T> {
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
         List<T> list = session.createQuery(query).getResultList();
+        session.close();
+        return list;
+
+    }
+
+    //FIXME: Delete if unused
+//    /**
+//     * Gets all entities ordered by date created in descending order
+//     *
+//     * @return all entities
+//     */
+//    public List<T> findAllOrderByDateDesc() {
+//        Session session = getSession();
+//
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//
+//        CriteriaQuery<T> query = builder.createQuery(type);
+//        Root<T> root = query.from(type);
+//        query.orderBy(builder.desc(root.get("createdDate")));
+//        List<T> list = session.createQuery(query).getResultList();
+//        session.close();
+//        return list;
+//    }
+
+
+    //FIXME: move to separate class, as this does not apply to all entities
+    /**
+     * Find newest list.
+     *
+     * @param maxResults the max number of results
+     * @return the list
+     */
+    public List<T> findNewestPostsComments(int maxResults) {
+        Session session = getSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        query.orderBy(builder.asc(root.get("createdDate")));
+        List<T> list = session.createQuery(query)
+                .setMaxResults(maxResults)
+                .getResultList();
         session.close();
         return list;
 

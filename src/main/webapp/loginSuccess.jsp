@@ -7,9 +7,8 @@
 <div class="contentBody d-flex flex-column">
 
     <div class="container">
-        <h2 class="text-center">CatsplainMeThis!</h2>
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-6 offset-3">
                 <%--TODO: add 5-sec JavaScript auto-redirect timeOut on successful login--%>
                 <c:choose>

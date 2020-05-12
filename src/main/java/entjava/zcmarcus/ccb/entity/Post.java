@@ -1,12 +1,13 @@
 package entjava.zcmarcus.ccb.entity;
 
-import entjava.zcmarcus.ccb.util.CommentDateComparator;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -46,8 +47,8 @@ public class Post {
     private Date modifiedDate;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    @SortComparator(CommentDateComparator.class)
-    private SortedSet<Comment> comments;
+    @OrderBy("created_date ASC")
+    private Set<Comment> comments;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
@@ -195,7 +196,7 @@ public class Post {
      *
      * @return the comments
      */
-    public SortedSet<Comment> getComments() {
+    public Set<Comment> getComments() {
         return comments;
     }
 
@@ -204,7 +205,7 @@ public class Post {
      *
      * @param comments the comments
      */
-    public void setComments(SortedSet<Comment> comments) {
+    public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
 
@@ -301,6 +302,12 @@ public class Post {
         return String.valueOf(daysBetween);
     }
 
+    @Transient
+    public String getCreatedDateWithoutTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateOnly = this.createdDate;
+        return formatter.format(dateOnly);
+    }
 
 
     @Override

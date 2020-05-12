@@ -34,8 +34,8 @@
                     <div class="col-9">
                         <div class="row col-12">
                             <h3>${post.title}</h3>
-                            <p>
-                                <span class="text-success">${post.createdDate}</span>
+                            <p class="mx-2 text-muted">
+                                posted on <span class="text-success">${post.getCreatedDateWithoutTime()}</span>
                                 by ${post.user.userName}
                             </p>
 
@@ -60,10 +60,11 @@
 
                             </p>
                         </div>
-
-                        <div class="mt-2">
-                            <a class="btn btn-success" href="editPostAction?editId=${post.id}">Edit Post</a>
-                        </div>
+                        <c:if test="${(post.user.userName == pageContext.request.remoteUser) or (pageContext.request.isUserInRole('admin')) }">
+                            <div class="mt-2">
+                                <a class="btn btn-success" href="editPostAction?editId=${post.id}">Edit Post</a>
+                            </div>
+                        </c:if>
 
                         <div>
                             <div class="mt-2">
@@ -89,7 +90,7 @@
                                                         <%-- Dicebear randomized Avatars API Call using comment author username as seed--%>
                                                         <object class="userIcon" data="https://avatars.dicebear.com/v2/jdenticon/${comment.user.userName}.svg?options[radius]=12&options[width]=48&options[height]=48"></object>
                                                     </td>
-                                                    <td class="font-weight-bold">${comment.user.userName} - ${comment.getTimeElapsedSinceCreated() > 1 ? comment.getTimeElapsedSinceCreated().concat(' days ago') : 'less than a day ago'}</td>
+                                                    <td class="font-weight-bold">${comment.user.userName} - <span class="text-muted">${comment.getTimeElapsedSinceCreated() > 1 ? comment.getTimeElapsedSinceCreated().concat(' days ago') : 'less than a day ago'}</span></td>
                                                 </tr>
                                                 <tr>
                                                     <td>${comment.contentBody}</td>

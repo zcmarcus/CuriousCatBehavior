@@ -10,9 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -50,6 +48,15 @@ class PostDaoTest {
     }
 
     @Test
+    void findNewestSuccess() {
+        List<Post> posts = (List<Post>)postDao.findNewestPostsComments(5);
+        assertEquals(   5, posts.size());
+        Date newestPostDate = posts.get(0).getCreatedDate();
+        Date secondNewestPostDate = posts.get(1).getCreatedDate();
+        assert(newestPostDate.before(secondNewestPostDate));
+    }
+
+    @Test
     void getByIdSuccess() {
         Post retrievedPost = (Post)postDao.getById(2);
         assertNotNull(retrievedPost);
@@ -79,9 +86,27 @@ class PostDaoTest {
     }
 
     @Test
+    void findByPropertiesLikeSuccess() {
+        String searchTerm = "door";
+        ArrayList<String> propertyList = new ArrayList<>();
+        propertyList.add("title");
+        propertyList.add("descriptionBody");
+        List<Post> posts = (List<Post>)postDao.findByPropertiesLike(propertyList, searchTerm);
+        assertEquals(2, posts.size());
+    }
+
+    @Test
     void findPropertyLikeSuccess() {
         List<Post> posts = (List<Post>)postDao.findByPropertyLike("title", "endless");
         assertEquals(2, posts.size());
+    }
+
+    @Test
+    void findByTag() {
+        Tag tag = (Tag)tagDao.getById(3);
+
+//        Post post = (Post)postDao.getById(3);
+        assertEquals(3, tag.getTaggedPosts().size());
     }
 
 

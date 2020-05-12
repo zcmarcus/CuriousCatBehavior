@@ -149,11 +149,4 @@ class CommentDaoTest {
         assertNull(commentDao.getById(5));
     }
 
-//    TODO: Test delete of post and check cascade effect on tag/comment.
-//          Similarly check delete of user and check cascade effect on posts.
-//    @Test
-//    void deletePostOnDeleteCascadeSuccess() {
-
-//    }
-
 }
