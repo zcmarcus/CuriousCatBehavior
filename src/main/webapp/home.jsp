@@ -7,38 +7,29 @@
 <div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
 
-    <div class="container">
-        <div class="jumbotron my-2">
-            <div class="titleHeading display-1 text-center">catsplain me <span class="boldHeadingSpan">this!</span></div>
+    <div class="container-fluid">
+        <div class="jumbotron jumbotron-fluid jumbotronHeading my-2">
+            <div class="titleHeading display-1 text-right">Catsplain me <span class="boldHeadingSpan">this!</span></div>
+                <div class="row">
+                <div class="col-8 offset-4 text-right">
+                    <div class="lead">
+                        Share your knowledge about the mysteries of feline behavior.
+                    </div>
+                    <div>
+                        <small>
+                            (or just enjoy some cat videos)
+                        </small>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-2">
+        <div class="row mt-5 px-2">
+            <div class="col-2 tagContainer">
                 <h3 class="mb-5 text-center">Popular Tags</h3>
                 <c:choose>
                 <c:when test="${not empty allTags}">
 
-<%--                    <table id="tagsTable" class="table table-borderless">--%>
-<%--                        <thead>--%>
-<%--                        <tr>--%>
-<%--                            <th class="p-3"></th>--%>
-<%--                        </tr>--%>
-
-<%--                        </thead>--%>
-<%--                        <tbody>--%>
-<%--                        <c:forEach var="tag" items="${allTags}">--%>
-<%--                            <tr>--%>
-<%--                                <td class="p-3">--%>
-<%--                                    <span class="text-info px-2 mx-2 font-weight-bold border rounded">--%>
-<%--                                        <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>--%>
-<%--                                    </span>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                        </c:forEach>--%>
-<%--                        </tbody>--%>
-
-<%--                    </table>--%>
-
-                    <p clas="bg-light">
+                    <p class="bg-light">
                         <c:forEach var="tag" items="${allTags}">
                                     <span class="text-info px-1 mx-2 font-weight-bold border rounded">
                                         <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>

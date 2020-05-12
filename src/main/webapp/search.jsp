@@ -17,28 +17,7 @@
                 <c:choose>
                 <c:when test="${not empty allTags}">
 
-<%--                    <table id="" class="display compact table table-borderless">--%>
-<%--                        <thead>--%>
-<%--                        <tr>--%>
-<%--                            <th class="p-3"></th>--%>
-<%--                        </tr>--%>
-
-<%--                        </thead>--%>
-<%--                        <tbody>--%>
-<%--                        <c:forEach var="tag" items="${allTags}">--%>
-<%--                            <tr>--%>
-<%--                                <td class="p-3">--%>
-<%--                                    <span class="text-info px-2 mx-2 font-weight-bold border rounded">--%>
-<%--                                        <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>--%>
-<%--                                    </span>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                        </c:forEach>--%>
-<%--                        </tbody>--%>
-
-<%--                    </table>--%>
-
-                    <p>
+                    <p class="bg-light">
                         <c:forEach var="tag" items="${allTags}">
                                     <span class="text-info px-1 mx-2 font-weight-bold border rounded">
                                         <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>

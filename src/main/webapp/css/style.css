@@ -36,13 +36,16 @@ footer {
 /* Headings */
 
 .jumbotron {
-    background-image: url("../images/sunburstBanner.jpg");
-    background-size: cover;
+    height: 250px !important;
+    background-color: rgba(255,255,255,80);
+    background-image: url("../images/catPeeking.png");
+    background-repeat: no-repeat;
+    background-position: 35px 0px;
+    border-radius: 4px;
 }
-
 .titleHeading {
     text-shadow: 1px 1px 3px grey;
-    color: #874c62;
+    color: #050f23;
 }
 
 .titleHeading .boldHeadingSpan {
@@ -110,7 +113,11 @@ a {
 /*}*/
 
 /* Misc */
-.dashedVerticalDivider {
+.loginButton {
+    background-color: #1FBED6 !important;
+}
+
+ .dashedVerticalDivider {
     border-left: 2px dashed lightblue !important;
 }
 

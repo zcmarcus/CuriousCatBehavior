@@ -51,7 +51,7 @@
             </c:if>
             <c:if test="${userId == null}">
             <li class="nav-item">
-                    <a href="loginAction" class="btn btn-primary text-light nav-link px-3 mx-2">Log In</a>
+                    <a href="loginAction" class="btn loginButton text-light nav-link px-3 mx-2">Log In</a>
                 </li>
             </c:if>
 
