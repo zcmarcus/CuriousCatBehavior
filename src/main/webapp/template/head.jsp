@@ -31,7 +31,7 @@
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
 
     <%-- Custom JavaScript --%>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/home.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/datatables.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/signup.js"></script>
 
 </head>

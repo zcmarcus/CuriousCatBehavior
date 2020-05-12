@@ -35,6 +35,11 @@ footer {
 
 /* Headings */
 
+.jumbotron {
+    background-image: url("../images/sunburstBanner.jpg");
+    background-size: cover;
+}
+
 .titleHeading {
     text-shadow: 1px 1px 3px grey;
     color: #874c62;
@@ -78,6 +83,12 @@ a {
 .tableThumbnail {
     width: 120px;
     height: 90px;
+}
+
+/* Images */
+.errorImage {
+    width: 640px;
+    height: auto;
 }
 
 /* YouTube */

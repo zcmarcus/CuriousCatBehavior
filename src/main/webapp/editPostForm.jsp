@@ -49,12 +49,12 @@
 
                             <div class="form-group mt-3">
                                 <label for="title">Title: </label>
-                                <input class="form-control" type="text" name="title" id="title" value="${not empty post.title ? post.title : ''}">
+                                <input class="form-control" type="text" name="title" id="title" required value="${not empty post.title ? post.title : ''}">
                             </div>
 
                             <div class="form-group">
                                 <label for="descriptionBody">Description: </label>
-                                <textarea class="form-control" rows="3"  name="descriptionBody" id="descriptionBody">${not empty post.descriptionBody ? post.descriptionBody : ''}</textarea>
+                                <textarea class="form-control" rows="3"  name="descriptionBody" required id="descriptionBody">${not empty post.descriptionBody ? post.descriptionBody : ''}</textarea>
                             </div>
 
                             <div class="form-group">

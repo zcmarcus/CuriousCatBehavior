@@ -23,14 +23,13 @@ const initializeDataTables = () => {
         "lengthMenu": [[10], [10]]
     });
 
-
-    $('#tagsTable').DataTable( {
-        "searching": false,
-        "ordering": false,
-        "info":     false,
-        "paging":   false,
-        "lengthChange": false,
-    });
+    // $('#tagsTable').DataTable( {
+    //     "searching": false,
+    //     "ordering": false,
+    //     "info":     false,
+    //     "paging":   false,
+    //     "lengthChange": false,
+    // });
 
     // make entire rows clickable
     $('#postsTable tbody').on('click', 'tr', function () {

@@ -7,32 +7,44 @@
 <div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="jumbotron my-2">
             <div class="titleHeading display-1 text-center">catsplain me <span class="boldHeadingSpan">this!</span></div>
         </div>
         <div class="row mt-5">
             <div class="col-2">
-                <h3 class="mb-5">Popular Tags</h3>
+                <h3 class="mb-5 text-center">Popular Tags</h3>
                 <c:choose>
                 <c:when test="${not empty allTags}">
 
-                    <table id="tagsTable" class="display compact table table-striped">
-                        <thead>
-                        <tr>
-                            <th class="p-3"></th>
-                        </tr>
+<%--                    <table id="tagsTable" class="table table-borderless">--%>
+<%--                        <thead>--%>
+<%--                        <tr>--%>
+<%--                            <th class="p-3"></th>--%>
+<%--                        </tr>--%>
 
-                        </thead>
-                        <tbody>
+<%--                        </thead>--%>
+<%--                        <tbody>--%>
+<%--                        <c:forEach var="tag" items="${allTags}">--%>
+<%--                            <tr>--%>
+<%--                                <td class="p-3">--%>
+<%--                                    <span class="text-info px-2 mx-2 font-weight-bold border rounded">--%>
+<%--                                        <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>--%>
+<%--                                    </span>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                        </c:forEach>--%>
+<%--                        </tbody>--%>
+
+<%--                    </table>--%>
+
+                    <p clas="bg-light">
                         <c:forEach var="tag" items="${allTags}">
-                            <tr>
-                                <td class="p-3"><a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a></td>
-                            </tr>
+                                    <span class="text-info px-1 mx-2 font-weight-bold border rounded">
+                                        <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>
+                                    </span>
                         </c:forEach>
-                        </tbody>
-
-                    </table>
+                    </p>
 
                 </c:when>
                 <c:otherwise>
@@ -43,10 +55,10 @@
             <div class="col-9 offset-1">
                 <c:choose>
                     <c:when test="${empty newestPosts}">
-                        <h3 class="mb-3">No posts in database.</h3>
+                        <h3 class="mb-3 text-center">No posts in database.</h3>
                     </c:when>
                     <c:otherwise>
-                    <h3 class="mb-3">Newest Posts</h3>
+                    <h3 class="mb-3 text-center">Newest Posts</h3>
                     <table id="postsTable" class="display compact table table-striped dataTableClickable"  >
                         <thead>
                         <tr>
