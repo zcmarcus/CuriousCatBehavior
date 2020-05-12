@@ -6,6 +6,7 @@ import entjava.zcmarcus.ccb.entity.Tag;
 import entjava.zcmarcus.ccb.entity.User;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
 import entjava.zcmarcus.ccb.persistence.YoutubeSearchDao;
+import entjava.zcmarcus.ccb.util.PropertiesLoader;
 import entjava.zcmarcus.ccb.util.URLQueryStringEncoder;
 import entjava.zcmarcus.ccb.youtube.SearchData;
 import org.apache.logging.log4j.LogManager;
@@ -21,15 +22,23 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 @WebServlet(
         urlPatterns = {"/editPostAction"}
 )
-public class EditPostAction extends HttpServlet {
+public class EditPostAction extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Logger logger = LogManager.getLogger(this.getClass());
+
+        Properties youtubeProperties = null;
+        try {
+            youtubeProperties = loadProperties("/youtube.properties");
+        } catch (Exception e) {
+            logger.error("Encountered an error reading the properties file: {}", e);
+        }
 
         GenericDao postDao = new GenericDao(Post.class);
         int postId = Integer.parseInt(req.getParameter("editId"));
@@ -38,6 +47,7 @@ public class EditPostAction extends HttpServlet {
         YoutubeSearchDao youtubeSearchDao = new YoutubeSearchDao();
         SearchData videoData = youtubeSearchDao.getVideoById(postToUpdate.getVideoUrl());
 
+        req.setAttribute("origin", youtubeProperties.getProperty("player.iframe.origin"));
         req.setAttribute("videoData", videoData);
         req.setAttribute("post", postToUpdate);
         req.setAttribute("postId", postId);
@@ -62,7 +72,7 @@ public class EditPostAction extends HttpServlet {
         Post postToUpdate = (Post)postDao.getById(postId);
 
         // check to see if user clicked "Delete Post"
-        if(req.getParameter("submit") == "Delete Post") {
+        if(req.getParameter("submit").equals("Delete Post")) {
             postDao.delete(postToUpdate);
             req.setAttribute("postDeleted", postToUpdate);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/deletePostSuccess.jsp");

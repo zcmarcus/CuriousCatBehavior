@@ -14,20 +14,20 @@
     <div class="collapse navbar-collapse" id="navbar-nav-dropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="homeAction">Home</a>
+                <a class="nav-link" href="homeAction">Home</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbar-dropdown-about-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-about-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Info
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbar-dropdown-about-menu-link">
-                    <a class="dropdown-item active" href="#">About</a>
+                    <a class="dropdown-item" href="#">About</a>
                 </div>
             </li>
 
             <c:if test="${pageContext.request.isUserInRole('admin')}">
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold active" href="admin/maintenanceHome.jsp">Administrator</a>
+                    <a class="nav-link font-weight-bold" href="admin/maintenanceHome.jsp">Admin</a>
                 </li>
             </c:if>
 
@@ -35,7 +35,7 @@
         </ul>
 
         <form class="form-inline my-2 my-md-0 ml-auto" method="GET" action="searchPosts">
-            <input class="form-control mr-md-2" name="postSearchTerm" type="search" placeholder="Search posts" aria-label="Search" size="48">
+            <input class="form-control mr-md-2" name="postSearchTerm" type="search" placeholder="Search posts" aria-label="Search" size="36">
             <button class="btn btn-dark my-2 my-sm-0" type="submit" name="submit" value="searchSubmit">
                 <i class="fa fa-search"></i>
             </button>
@@ -61,8 +61,8 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-user">
-                        <a class="dropdown-item" href="/viewProfileAction?userId=${session.getAttribute('userId')}">Profile</a>
-                        <a class="dropdown-item active" href="logoutAction" onclick="signOut();">Log Out</a>
+                        <a class="dropdown-item" href="editProfileAction?userId=${userId}">Edit Profile</a>
+                        <a class="dropdown-item" href="logoutAction" onclick="signOut();">Log Out</a>
                     </div>
                 </li>
 

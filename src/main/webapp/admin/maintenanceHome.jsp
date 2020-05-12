@@ -16,11 +16,11 @@
         <div class="form-inline mb-5">
             <div class="form-group">
                 <label for="userSearchTerm"></label>
-                <input type="text" id="userSearchTerm" name="userSearchTerm" class="form-control" placeholder="Enter part or all of a user detail">
+                <input type="text" id="userSearchTerm" name="userSearchTerm" class="form-control" placeholder="Enter part or all of a user detail" size="55">
             </div>
             <div class="form-group">
                 <button name="submit" type="submit" value="findUsersByAny" class="btn btn-primary ml-3 my-1">Find User</button>
-                <button name="submit" type="submit" value="viewAllUsers" class="btn btn-primary ml-3 my-1">View All Users</button>
+                <button name="submit" type="submit" value="viewAllUsers" class="btn btn-primary ml-3 my-1" >View All Users</button>
             </div>
         </div>
 
@@ -29,7 +29,7 @@
         <div class="form-inline mb-5">
             <div class="form-group">
                 <label for="postSearchTerm"></label>
-                <input type="text" id="postSearchTerm" name="postSearchTerm" class="form-control" placeholder="Enter part or all of a post detail">
+                <input type="text" id="postSearchTerm" name="postSearchTerm" class="form-control" placeholder="Enter part or all of a post detail"  size="55">
             </div>
             <div class="form-group">
                 <button name="submit" type="submit" value="findPostsByAny" class="btn btn-primary ml-3 my-1">Find Post</button>

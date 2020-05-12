@@ -30,11 +30,10 @@
 
                             </div>
                             <div class="form-group mt-3 mb-3">
-                                <h5>Video Title Placeholder</h5>
                                 <h5>Video: ${not empty videoData ? videoData.getItems(0).getSnippet().getTitle() : ""}</h5>
                                 <iframe id="videoPlayer" type="text/html" width="640" height="290"
                                 <%-- FIXME: change 'origin' in URL to deployed app on AWS--%>
-                                        src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
+                                        src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=${origin}"
                                         frameborder="0">
 
                                 </iframe>
@@ -60,11 +59,7 @@
                             <div class="form-group">
                                 <label for="tags">Tags (optional): </label>
                                 <input type="text" class="form-control" name="tags" id="tags"
-                                       value="<c:if test="${not empty post.tags}">
-                                               <c:forEach items="${post.tags}" var="tag">
-                                                   ${tag};&nbsp
-                                               </c:forEach>
-                                           </c:if>">
+                                       value="<c:if test="${not empty post.tags}"><c:forEach items="${post.tags}" var="tag">${tag.tagName}; </c:forEach></c:if> ">
                             </div>
 
                             <div class="form-group">

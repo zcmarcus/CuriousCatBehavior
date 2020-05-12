@@ -20,7 +20,7 @@
                     <div class="videoWrapper">
                         <iframe id="youtubePlayer" type="text/html" width="640" height="360"
                             <%--FIXME: change to AWS-hosted url&ndash;%&gt;--%>
-                                src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=http://localhost:8080/ccb"
+                                src="https://www.youtube.com/embed/${post.videoUrl}?autoplay=0&origin=${origin}"
                                 frameborder="0">
 
                         </iframe>
@@ -34,11 +34,12 @@
                     <div class="col-9">
                         <div class="row col-12">
                             <h3>${post.title}</h3>
+                        </div>
+                        <div class="row col-12">
                             <p class="mx-2 text-muted">
                                 posted on <span class="text-success">${post.getCreatedDateWithoutTime()}</span>
                                 by ${post.user.userName}
                             </p>
-
                         </div>
 
                         <div class="row col-12">
@@ -95,6 +96,18 @@
                                                 <tr>
                                                     <td>${comment.contentBody}</td>
                                                 </tr>
+                                                    <c:if test="${(comment.user.userName == pageContext.request.remoteUser) or (pageContext.request.isUserInRole('admin'))}">
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <small>Delete Comment</small> -
+                                                            <button type="submit" name="submit" id="deleteCommentButton">
+                                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    </c:if>
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
@@ -116,12 +129,22 @@
                                                 </c:choose>
                                             </td>
                                             <td>
-                                                <textarea rows="4" cols="80" name="contentBody" id="contentBody"></textarea>
+                                                <c:choose>
+                                                    <c:when test="${not empty pageContext.request.remoteUser}">
+                                                        <textarea rows="4" cols="80" name="contentBody" id="contentBody" placeholder="Add to the conversation"></textarea>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <textarea rows="4" cols="80" name="contentBody" id="contentBody" disabled placeholder="You must be logged in to add a comment"></textarea>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <button type="submit" name="submit" id="submitCommentButton">Post Comment</button>
+                                                <c:if test="${not empty pageContext.request.remoteUser}">
+                                                    <button type="submit" name="submit" id="submitCommentButton">Post Comment</button>
+                                                </c:if>
+
                                             </td>
                                         </tr>
                                         </tbody>

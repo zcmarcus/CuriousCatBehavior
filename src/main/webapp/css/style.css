@@ -36,13 +36,22 @@ footer {
 /* Headings */
 
 .jumbotron {
+    padding-top: .5em !important;
     height: 250px !important;
-    background-color: rgba(255,255,255,80);
+    background-color: rgba(233, 233, 233, 50);
     background-image: url("../images/catPeeking.png");
     background-repeat: no-repeat;
-    background-position: 35px 0px;
+    background-position: 22px 0px;
     border-radius: 4px;
 }
+
+/*.jumbotron .verticalLine {*/
+/*    margin: 7px auto;*/
+/*    width: 85%;*/
+/*    height: 2px;*/
+/*    border-bottom: 2px solid black;*/
+/*}*/
+
 .titleHeading {
     text-shadow: 1px 1px 3px grey;
     color: #050f23;
@@ -52,6 +61,7 @@ footer {
     font-size: 1.1em;
     font-weight: 900
 }
+
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
@@ -86,6 +96,16 @@ a {
 .tableThumbnail {
     width: 120px;
     height: 90px;
+}
+
+textarea:disabled {
+    color: grey;
+    font-style: italic;
+}
+
+#submitCommentButton:disabled {
+    color: grey;
+    font-style: italic;
 }
 
 /* Images */

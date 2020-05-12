@@ -8,12 +8,14 @@
     <%@include file="template/navbar.jsp"%>
 
     <div class="container-fluid">
-        <div class="jumbotron jumbotron-fluid jumbotronHeading my-2">
+        <div class="jumbotron jumbotron-fluid jumbotronHeading my-5">
             <div class="titleHeading display-1 text-right">Catsplain me <span class="boldHeadingSpan">this!</span></div>
                 <div class="row">
-                <div class="col-8 offset-4 text-right">
-                    <div class="lead">
-                        Share your knowledge about the mysteries of feline behavior.
+                <div class="col-8 offset-4 justify-content-center text-center">
+<%--                    <div class="verticalLine"></div>--%>
+
+                    <div class="mt-2 lead">
+                        Explore and share your knowledge about the mysteries of feline behavior.
                     </div>
                     <div>
                         <small>

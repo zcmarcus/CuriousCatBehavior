@@ -40,7 +40,7 @@
                     </c:forEach>
                     </td>
                     <td>
-                        <a href="/viewProfileAction?userId=${user.id}">View Profile</a>
+                        <a href="${pageContext.request.contextPath}/editProfileAction?userId=${user.id}">Edit Profile</a>
                     </td>
                 </tr>
             </c:forEach>
@@ -76,12 +76,12 @@
                     <td>${post.createdDate}</td>
                     <td>${post.modifiedDate}</td>
                     <td>
-                        <a href="maintenanceSearch?submitAction=getUserById&userSearchTerm=${post.user.id}">
+                        <a href="maintenanceSearch?submit=getUserById&userSearchTerm=${post.user.id}">
                                 ${post.user.id}: ${post.user.userName}
                         </a>
                     </td>
                     <td>
-                        <a href="viewPostAction?postId=${post.id}">
+                        <a href="${pageContext.request.contextPath}/viewPostAction?postId=${post.id}">
                             View Post
                         </a>
                     </td>
