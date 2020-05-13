@@ -15,6 +15,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit test suite for the User DAO.
+ */
 class UserDaoTest {
 
     GenericDao genericDao;

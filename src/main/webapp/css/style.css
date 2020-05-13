@@ -65,7 +65,7 @@ footer {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
-    text-shadow: 1px 1px 2px grey;
+    text-shadow: 1px 1px 2px lightgrey;
 }
 
 /* Links */
@@ -114,6 +114,21 @@ textarea:disabled {
     height: auto;
 }
 
+.youtubeLogo {
+    height: 64px !important;
+    width: 88px !important;
+}
+
+.youtubeSearchArrow {
+    color: #FFFFFF;
+}
+
+.youtubeSearchButton {
+    background-color: #ed1717 !important;
+    border-radius: 8px !important;
+    border: 1px solid darkgrey;
+}
+
 /* YouTube */
 /* TODO: fix videowrapper/iframe display issues
 /*.videoWrapper {*/
@@ -133,12 +148,19 @@ textarea:disabled {
 /*}*/
 
 /* Misc */
+
 .loginButton {
     background-color: #1FBED6 !important;
 }
 
  .dashedVerticalDivider {
     border-left: 2px dashed lightblue !important;
+}
+
+.dashedHorizontalDivider {
+    border-bottom: 2px dashed lightblue !important;
+    height: 2px;
+
 }
 
 #errorMessage {

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import entjava.zcmarcus.ccb.util.URLQueryStringEncoder;
 
 /**
- * The type Snippet.
+ * Represents a search result item's video information.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Snippet implements URLQueryStringEncoder {

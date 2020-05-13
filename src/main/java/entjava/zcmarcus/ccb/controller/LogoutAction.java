@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+
 /**
- * A servlet for redirecting user to home page after
- * log in attempt.
+ * Servlet for logging out user.
  */
 @WebServlet(
     urlPatterns = {"/logoutAction"}

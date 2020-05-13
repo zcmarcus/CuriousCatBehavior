@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet for adding user comment to post.
+ */
 @WebServlet(
         urlPatterns = {"/addCommentAction"}
 )

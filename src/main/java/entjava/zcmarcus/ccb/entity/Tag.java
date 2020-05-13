@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * The type Tag.
+ * Represents a keyword or tag that can be associated with a post.
  */
 @Entity(name = "Tag")
 @Table(name = "tags")

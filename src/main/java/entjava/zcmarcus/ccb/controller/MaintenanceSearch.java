@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Maintenance page servlet. Allows admin users to search for posts and users.
+ */
 @WebServlet(
         urlPatterns = {"/admin/maintenanceSearch"}
 )

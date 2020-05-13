@@ -7,94 +7,109 @@
 <div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
 
-    <div class="container">
-
-        <h2>Find video on YouTube</h2>
-        <div>
-            <p>
-                Enter your query in the box below. If you have a specific video you would like to select to use in
-                your post, you may enter the video's ID<sup><i class="fa fa-asterisk"></i></sup> in the search box instead.
-            </p>
-        </div>
-        <div class="mt-2">
-            <div class="p-2 m-2 border">
-                <img src="images/example_youtube_video_id.png" alt="example of a youtube video url with the id portion highlight">
+    <div class="container-fluid mt-5">
+        <div mt-5>
+            <h2 class="">Find video on YouTube</h2>
+            <div mt-5>
+                <p>
+                    Enter your query in the box below. You may enter a search term, a YouTube video ID (the part after '?v= )</sup>
+                    or even a full video url, as pictured below.
+                </p>
             </div>
-            <div>
-                <sup><i class="fa fa-asterisk"></i></sup>
-                <small>
-                    See the text highlighted in red in the image above for an example of a YouTube video ID.
-                </small>
+            <div class="my-2 py-2">
+<%--                FIXME: remove if not needed--%>
+<%--                <div>--%>
+<%--                    <img class="border" src="images/exampleVideoId.png" alt="example of a youtube video url with the id portion highlight">--%>
+<%--                </div>--%>
             </div>
-        </div>
-        <form class="form-inline mt-5 mb-3" method="GET" action="youtubeSearchAction">
-            <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-dark my-2 my-sm-0" type="submit" name="submit" value="searchSubmit">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
-
-        <div class="mt-2">
-            <p>
-                Click a video in the results below to use it in creating a new post.
-            </p>
-        </div>
 
 
-        <h3>Search Results for: ${searchTerm}</h3>
 
-        <div class="row text-center text-lg-left">
+
+            <div class="row mb-5">
+                <div class="col-6 align-self-center">
+                    <form class="form-inline mt-2 mb-5" method="GET" action="youtubeSearchAction">
+                        <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Enter search term(s) or video URL..." size="60" aria-label="Search">
+                        <button class="btn my-2 my-sm-0 youtubeSearchButton" type="submit" name="submit" value="searchSubmit">
+                            <i class="fa fa-caret-right fa-3 youtubeSearchArrow"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <div class="">
+                        - powered by <img class="youtubeLogo" src="images/youtubeLogo.jpg" alt="youtube logo">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
 
             <c:if test="${!empty searchData}">
-                <c:forEach items="${searchData.getItems()}" var="item">
-                    <div class="col-lg-3 col-md-4 col-6 mt-4">
-                        <div>
-                            <a href="createPostAction?videoUrl=${item.getId().getVideoId()}&videoTitle=${item.getSnippet().getURLEncodedTitle()}" class=" mt-1 mb-1 ">
-                                <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
-                            </a>
+            <div class="mt-5">
+                <p>
+                    Click a video in the results that appear below to select for use in your post.
+                </p>
+            </div>
+
+
+            <h3>Results for: "${searchTerm}"</h3>
+
+            <div class="row text-center text-lg-left">
+
+
+                    <c:forEach items="${searchData.getItems()}" var="item">
+                        <div class="col-lg-3 col-md-4 col-6 mt-4">
+                            <div>
+                                <a href="createPostAction?videoUrl=${item.getId().getVideoId()}&videoTitle=${item.getSnippet().getURLEncodedTitle()}" class=" mt-1 mb-1 ">
+                                    <img class="img-fluid img-thumbnail" src="${item.getSnippet().getThumbnails().getMedium().getUrl()}" alt="">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">${item.getSnippet().getTitle()}</a>
+                            </div>
                         </div>
-                        <div>
-                            <a href="http://www.youtube.com/watch?v=${item.getId().getVideoId()}">${item.getSnippet().getTitle()}</a>
-                        </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+
+
+            </div>
+
+            <div class="row mt-5 mb-5">
+                <nav aria-label="youtubeSearchResultsPagination">
+                    <ul class="pagination">
+                        <li class="page-item
+                            <c:choose>
+                                <c:when test="${empty searchData.getPrevPageToken()}">
+                                    disabled
+                                </c:when>
+                            </c:choose>
+                        ">
+
+                            <c:choose>
+                                <c:when test="${not empty searchData.getPrevPageToken()}">
+                                    <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getPrevPageToken()}" tabindex="-1">Previous Page</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <span class="page-link">Previous Page</span>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </li>
+                        <li class="page-item">
+                            <c:choose>
+                                <c:when test="${not empty searchData.getNextPageToken()}">
+                                    <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getNextPageToken()}">Next Page</a>
+                                </c:when>
+                            </c:choose>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
             </c:if>
-
         </div>
-
-        <div class="row mt-5 mb-5">
-            <nav aria-label="youtubeSearchResultsPagination">
-                <ul class="pagination">
-                    <li class="page-item
-                        <c:choose>
-                            <c:when test="${empty searchData.getPrevPageToken()}">
-                                disabled
-                            </c:when>
-                        </c:choose>
-                    ">
-
-                        <c:choose>
-                            <c:when test="${not empty searchData.getPrevPageToken()}">
-                                <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getPrevPageToken()}" tabindex="-1">Previous Page</a>
-                            </c:when>
-                            <c:otherwise>
-                                <span class="page-link">Previous Page</span>
-                            </c:otherwise>
-                        </c:choose>
-
-                    </li>
-                    <li class="page-item">
-                        <c:choose>
-                            <c:when test="${not empty searchData.getNextPageToken()}">
-                                <a class="page-link" href="youtubeSearchAction?searchTerm=${searchTerm}&pageToken=${searchData.getNextPageToken()}">Next Page</a>
-                            </c:when>
-                        </c:choose>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
 
     </div>
 

@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Servlet for searching YouTube for a video with which to use in the creation of a new post.
+ */
 @WebServlet(
         urlPatterns = {"/youtubeSearchAction"}
 )

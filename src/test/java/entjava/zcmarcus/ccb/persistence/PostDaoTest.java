@@ -14,6 +14,10 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * JUnit test suite for the Post DAO.
+ */
 class PostDaoTest {
 
     GenericDao postDao;

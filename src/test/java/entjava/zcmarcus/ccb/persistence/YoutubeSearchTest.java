@@ -9,6 +9,10 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+/**
+ * JUnit test suite for the YoutubeSearch DAO.
+ */
 public class YoutubeSearchTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());

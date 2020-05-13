@@ -8,27 +8,25 @@
     <%@include file="template/navbar.jsp"%>
 
     <div class="container-fluid">
-        <div class="jumbotron my-2">
-            <div class="titleHeading display-1 text-center">catsplain me <span class="boldHeadingSpan">this!</span></div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-2 bg-light">
-                <h3 class="mb-5">Popular Tags</h3>
-                <c:choose>
-                <c:when test="${not empty allTags}">
 
-                    <p class="bg-light">
-                        <c:forEach var="tag" items="${allTags}">
+        <div class="row mt-5">
+            <div class="col-2 tagContainer">
+                <h3 class="mb-5 text-center">Popular Tags</h3>
+                <c:choose>
+                    <c:when test="${not empty allTags}">
+
+                        <p class="bg-light">
+                            <c:forEach var="tag" items="${allTags}">
                                     <span class="text-info px-1 mx-2 font-weight-bold border rounded">
                                         <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>
                                     </span>
-                        </c:forEach>
-                    </p>
+                            </c:forEach>
+                        </p>
 
-                </c:when>
-                <c:otherwise>
-                    <h5 class="text-center">No tags found in database</h5>
-                </c:otherwise>
+                    </c:when>
+                    <c:otherwise>
+                        <h5>No tags found in database</h5>
+                    </c:otherwise>
                 </c:choose>
             </div>
             <div class="col-9 offset-1">
@@ -39,7 +37,7 @@
 
                     </c:when>
                     <c:otherwise>
-                    <h3 class="mb-3 text-center">Displaying posts matching term: ${searchTerm} </h3>
+                        <h3 class="mb-3">Displaying posts matching term: <span class="">"${searchTerm}"</span> </h3>
                         <table id="postsTable" class="display compact table table-striped dataTableClickable"  >
                             <thead>
                             <tr>

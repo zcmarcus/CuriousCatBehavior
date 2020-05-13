@@ -16,7 +16,7 @@ import java.util.*;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
- * The type Post.
+ * Represents a user post.
  */
 @Entity(name = "Post")
 @Table(name = "posts")

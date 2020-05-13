@@ -19,6 +19,9 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit test suite for the Comment DAO.
+ */
 class CommentDaoTest {
 
     GenericDao postDao;

@@ -15,7 +15,7 @@ import java.util.Objects;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
- * The type Comment.
+ * Represents a user comment on a post.
  */
 @Entity(name = "Comment")
 @Table(name = "comments")

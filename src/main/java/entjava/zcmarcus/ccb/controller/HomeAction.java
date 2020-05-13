@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * Home page servlet. Also welcome page servlet - user navigation to webapp root redirects here.
+ */
 @WebServlet(
         urlPatterns = {"/homeAction", ""}
 )

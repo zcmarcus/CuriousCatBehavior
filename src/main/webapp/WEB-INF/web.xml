@@ -96,7 +96,6 @@
             <url-pattern>/loginAction</url-pattern>
             <url-pattern>/loginSuccess</url-pattern>
             <url-pattern>/logoutAction.jsp</url-pattern>
-            <url-pattern>/logoutSuccess.jsp</url-pattern>
         </web-resource-collection>
 
         <auth-constraint>

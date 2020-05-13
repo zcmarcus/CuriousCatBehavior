@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * The type User.
+ * Represents a user.
  */
 @Entity(name = "User")
 @Table(name = "users")

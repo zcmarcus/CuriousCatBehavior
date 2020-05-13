@@ -5,7 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * The type User role.
+ * Represents a user role.
  */
 @Entity(name = "UserRole")
 @Table(name = "user_roles")

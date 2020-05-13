@@ -1,3 +1,3 @@
 <footer class="text-center">
-    <span>Some footer text - Copyright 2020</span>
+    <span>CuriousCatIndustries, Inc. &#84712020</span>
 </footer>

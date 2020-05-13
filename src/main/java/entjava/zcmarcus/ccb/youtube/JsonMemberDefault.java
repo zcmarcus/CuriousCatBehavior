@@ -3,6 +3,9 @@ package entjava.zcmarcus.ccb.youtube;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Represents the default thumbnail for a YouTube video.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonMemberDefault{
 
@@ -15,26 +18,56 @@ public class JsonMemberDefault{
 	@JsonProperty("height")
 	private int height;
 
+	/**
+	 * Set width.
+	 *
+	 * @param width the width
+	 */
 	public void setWidth(int width){
 		this.width = width;
 	}
 
+	/**
+	 * Get width int.
+	 *
+	 * @return the int
+	 */
 	public int getWidth(){
 		return width;
 	}
 
+	/**
+	 * Set url.
+	 *
+	 * @param url the url
+	 */
 	public void setUrl(String url){
 		this.url = url;
 	}
 
+	/**
+	 * Get url string.
+	 *
+	 * @return the string
+	 */
 	public String getUrl(){
 		return url;
 	}
 
+	/**
+	 * Set height.
+	 *
+	 * @param height the height
+	 */
 	public void setHeight(int height){
 		this.height = height;
 	}
 
+	/**
+	 * Get height int.
+	 *
+	 * @return the int
+	 */
 	public int getHeight(){
 		return height;
 	}

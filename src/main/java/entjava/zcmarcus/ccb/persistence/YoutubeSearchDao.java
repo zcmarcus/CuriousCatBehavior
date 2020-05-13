@@ -16,6 +16,10 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.Properties;
 
+
+/**
+ * The YouTube DAO, which issues calls to the YouTube Data API to retrieve search and video data.
+ */
 public class YoutubeSearchDao implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -40,6 +44,12 @@ public class YoutubeSearchDao implements PropertiesLoader {
 
     }
 
+    /**
+     * Gets search data.
+     *
+     * @param searchTerm the search term
+     * @return the search data
+     */
     public SearchData getSearchData(String searchTerm) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
@@ -60,6 +70,13 @@ public class YoutubeSearchDao implements PropertiesLoader {
         return search;
     }
 
+    /**
+     * Gets search data with page.
+     *
+     * @param searchTerm the search term
+     * @param pageToken  the page token
+     * @return the search data with page
+     */
     public SearchData getSearchDataWithPage(String searchTerm, String pageToken ) {
         Client client = ClientBuilder.newClient();
         WebTarget target =
@@ -80,6 +97,12 @@ public class YoutubeSearchDao implements PropertiesLoader {
         return search;
     }
 
+    /**
+     * Gets video by id.
+     *
+     * @param id the id
+     * @return the video by id
+     */
     public SearchData getVideoById(String id) {
         Client client = ClientBuilder.newClient();
         WebTarget target =

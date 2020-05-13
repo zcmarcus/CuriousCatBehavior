@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * Servlet for handling the editing of a post.
+ */
 @WebServlet(
         urlPatterns = {"/editPostAction"}
 )

@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet for creating a new post.
+ */
 @WebServlet(
         urlPatterns = {"/createPostAction"}
 )

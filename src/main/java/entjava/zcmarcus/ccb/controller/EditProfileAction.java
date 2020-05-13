@@ -22,6 +22,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Servlet for updating or deleting user profile.
+ */
 @WebServlet(
         urlPatterns = {"/editProfileAction"}
 )
@@ -64,10 +67,11 @@ public class EditProfileAction extends HttpServlet implements PropertiesLoader {
 
             if(req.isUserInRole("admin")) { // handle role names if admin is updating the account
 
-
                 String roleNamesSemicolonDelimited = (String)req.getParameter("roleNames");
                 //split roleNames by semicolon
                 Set<UserRole> existingUserRoles = userToUpdate.getUserRoles();
+                // delete existing roles before adding role names entered in form in order to prevent possible duplication
+                // FIXME: rather than delete roles, UPDATE roles with additional logic to prevent duplication
                 for(UserRole role: existingUserRoles) {
                     userRoleDao.delete(role);
                 }

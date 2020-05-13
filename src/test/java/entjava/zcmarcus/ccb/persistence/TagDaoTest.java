@@ -16,6 +16,9 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit test suite for the Tag DAO.
+ */
 class TagDaoTest {
 
     GenericDao postDao;

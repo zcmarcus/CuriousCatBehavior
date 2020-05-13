@@ -7,13 +7,22 @@ import java.io.*;
 import java.util.*;
 
 /**
- * @author Eric Knapp
+ * Loads a properties file.
  *
+ * @author Eric Knapp
  */
 public interface PropertiesLoader{
 
+
     public static final Logger logger = LogManager.getLogger(PropertiesLoader.class);
 
+    /**
+     * Load properties file.
+     *
+     * @param propertiesFilePath the properties file path
+     * @return the properties file
+     * @throws Exception the input/output exception
+     */
     default Properties loadProperties(String propertiesFilePath) throws Exception {
         Properties properties = new Properties();
         try {

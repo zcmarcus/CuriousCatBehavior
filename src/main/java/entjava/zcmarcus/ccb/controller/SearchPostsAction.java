@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Servlet for searching for posts based on search term.
+ */
 @WebServlet(
         urlPatterns = {"/searchPosts"}
 )

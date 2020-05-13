@@ -12,7 +12,6 @@
             <div class="titleHeading display-1 text-right">Catsplain me <span class="boldHeadingSpan">this!</span></div>
                 <div class="row">
                 <div class="col-8 offset-4 justify-content-center text-center">
-<%--                    <div class="verticalLine"></div>--%>
 
                     <div class="mt-2 lead">
                         Explore and share your knowledge about the mysteries of feline behavior.
@@ -25,6 +24,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="my-5">
+<%--            placeholder for additional home page content--%>
+        </div>
+
         <div class="row mt-5 px-2">
             <div class="col-2 tagContainer">
                 <h3 class="mb-5 text-center">Popular Tags</h3>

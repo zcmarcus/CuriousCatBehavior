@@ -14,6 +14,9 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * JUnit test suite for the UserRole DAO.
+ */
 class UserRoleDaoTest {
 
     GenericDao genericDao;
