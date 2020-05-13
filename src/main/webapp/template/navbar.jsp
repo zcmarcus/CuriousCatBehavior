@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbar-nav-dropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="homeAction">Home</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/homeAction">Home</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown-about-menu-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +27,7 @@
 
             <c:if test="${pageContext.request.isUserInRole('admin')}">
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="admin/maintenanceHome.jsp">Admin</a>
+                    <a class="nav-link font-weight-bold" href="${pageContext.request.contextPath}/admin/maintenanceHome.jsp">Admin</a>
                 </li>
             </c:if>
 
@@ -42,16 +42,16 @@
         </form>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item px-3 mr-3">
-                <a class="btn btn-outline text-dark nav-link" href="createPostChoice.jsp">+ Create New Post</a>
+                <a class="btn btn-outline text-dark nav-link" href="${pageContext.request.contextPath}/createPostChoice.jsp">+ Create New Post</a>
             </li>
             <c:if test="${(userId == null) or (pageContext.request.isUserInRole('admin')) }">
             <li class="nav-item">
-                    <a href="signup.jsp" class="btn btn-dark text-light nav-link px-3 mx-1">Join</a>
+                    <a href="${pageContext.request.contextPath}/signup.jsp" class="btn btn-dark text-light nav-link px-3 mx-1">Join</a>
                 </li>
             </c:if>
             <c:if test="${userId == null}">
             <li class="nav-item">
-                    <a href="loginAction" class="btn loginButton text-light nav-link px-3 mx-2">Log In</a>
+                    <a href="${pageContext.request.contextPath}/loginAction" class="btn loginButton text-light nav-link px-3 mx-2">Log In</a>
                 </li>
             </c:if>
 
@@ -61,7 +61,7 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-user">
-                        <a class="dropdown-item" href="editProfileAction?userId=${userId}">Edit Profile</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/editProfileAction?userId=${userId}">Edit Profile</a>
                         <a class="dropdown-item" href="logoutAction" onclick="signOut();">Log Out</a>
                     </div>
                 </li>

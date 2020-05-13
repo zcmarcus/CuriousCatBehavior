@@ -4,6 +4,7 @@ package entjava.zcmarcus.ccb.controller;
 import entjava.zcmarcus.ccb.entity.Post;
 import entjava.zcmarcus.ccb.entity.Tag;
 import entjava.zcmarcus.ccb.entity.User;
+import entjava.zcmarcus.ccb.entity.UserRole;
 import entjava.zcmarcus.ccb.persistence.GenericDao;
 import entjava.zcmarcus.ccb.persistence.YoutubeSearchDao;
 import entjava.zcmarcus.ccb.util.PropertiesLoader;
@@ -20,10 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Servlet for handling the editing of a post.
@@ -83,6 +81,13 @@ public class EditPostAction extends HttpServlet implements PropertiesLoader {
 
         } else {
 
+            Set<Tag> existingTags = postToUpdate.getTags();
+            // delete existing roles before adding role names entered in form in order to prevent possible duplication
+            // FIXME: rather than delete tags, UPDATE tags with additional logic to prevent duplication
+            for(Tag tag: existingTags) {
+                tagDao.delete(tag);
+            }
+
             String newTitle = (String)req.getParameter("title");
             String newDescriptionBody = (String)req.getParameter("descriptionBody");
 
@@ -90,38 +95,41 @@ public class EditPostAction extends HttpServlet implements PropertiesLoader {
             //split tags by semicolon
             String[] tagStrings = tagsSemicolonDelimited.split(";");
 
-            List<Tag> newTagsToAdd = new ArrayList<>();
-            List<Tag> existingTagsToAdd = new ArrayList<>();
-            Set<Tag> currentPostTags = postToUpdate.getTags();
+            Set<Tag> newTagsToAdd = new HashSet<>();
+//            List<Tag> existingTagsToAdd = new ArrayList<>();
+//            Set<Tag> currentPostTags = postToUpdate.getTags();
             // Check database to see if tags entered in form already exist in database
             for (String tagString: tagStrings) {
                 String trimmedTagString = tagString.trim();
-                List<Tag> matchingTags = (List<Tag>)tagDao.findByPropertyEqual("tagName", trimmedTagString);
-                if(matchingTags.size() == 0) { // tag is not yet in database. create new tag with tag name
+//                List<Tag> matchingTags = (List<Tag>)tagDao.findByPropertyEqual("tagName", trimmedTagString);
+//                if(matchingTags.size() == 0) { // tag is not yet in database. create new tag with tag name
                     Tag newTag = new Tag(trimmedTagString);
                     newTagsToAdd.add(newTag);
-                } else { // tag already in database. add to array list of existing tags that match entered tag name
-                    for(Tag matchingTag: matchingTags) {
-                        existingTagsToAdd.add(matchingTag);
-                    }
-                }
+//                } else { // tag already in database. add to array list of existing tags that match entered tag name
+//                    for(Tag matchingTag: matchingTags) {
+//                        existingTagsToAdd.add(matchingTag);
+//                    }
+//                }
             }
 
-            if(newTagsToAdd.size() > 0) { // if any new tags not already in database exist, add to new post
+            if(newTagsToAdd.size() > 0) { // if any new tags, add to post
                 for (Tag newTag: newTagsToAdd) {
                     postToUpdate.addTag(newTag);
                 }
+
+                postToUpdate.setTags(newTagsToAdd);
             }
 
-            if(existingTagsToAdd.size() > 0) { // if any matching tags found already existing in database, add to new post
-                for (Tag existingTag: existingTagsToAdd) {
-                    if(!currentPostTags.contains(existingTag)) {
-                        postToUpdate.addTag(existingTag);
-                    }
+//            if(existingTagsToAdd.size() > 0) { // if any matching tags found already existing in database, add to new post
+//                for (Tag existingTag: existingTagsToAdd) {
+//                    if(!currentPostTags.contains(existingTag)) {
+//                        postToUpdate.addTag(existingTag);
+//                    }
+//
+//                }
+//            }
 
-                }
-            }
-
+            // FIXME: test to see if working properly
 //            for (Tag currentPostTag: currentPostTags) { // remove tag from current post if tags to be added no longer contains it
 //                if(!existingTagsToAdd.contains(currentPostTag)) {
 //                    postToUpdate.removeTag(currentPostTag);

@@ -37,7 +37,7 @@ answers or advice from other users
 
 * Database
     + MySQL
-    + Store: users, user roles, video data, video posts, video post comments
+    + Store: users, user roles, video posts, video post comments, searchable tag/keyword data
 
 * ORM Framework
     + Hibernate 5

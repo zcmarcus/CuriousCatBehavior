@@ -27,7 +27,7 @@
 
 
             <div class="row mb-5">
-                <div class="col-7 align-self-center">
+                <div class="col-6 align-self-center">
                     <form class="form-inline mt-2 mb-5" method="GET" action="youtubeSearchAction">
                         <input class="form-control mr-md-2" name="searchTerm" type="search" placeholder="Enter search term(s) or video URL..." size="40" aria-label="Search">
                         <button class="btn my-2 my-sm-0 youtubeSearchButton" type="submit" name="submit" value="searchSubmit">
@@ -35,9 +35,9 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-5">
+                <div class="col-6">
                     <div class="">
-                        - powered by <img class="youtubeLogo" src="images/youtubeLogo.jpg" alt="youtube logo">
+                        <strong>powered by</strong> <img class="youtubeLogo" src="images/youtubeLogo.jpg" alt="youtube logo">
                     </div>
                 </div>
             </div>

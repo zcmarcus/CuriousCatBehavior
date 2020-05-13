@@ -57,7 +57,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
                         + "&maxResults=12&q=" + searchTerm + "&key="
                         + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        logger.debug("response: " + response);
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SearchData search = null;
@@ -66,7 +65,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
         } catch (JsonProcessingException e) {
             logger.error("Encountered a problem processing JSON: {}", e);
         }
-        logger.info("search data: " + search);
         return search;
     }
 
@@ -85,7 +83,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
                         + "&q=" + searchTerm + "&key="
                         + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        logger.debug("response: " + response);
         ObjectMapper mapper = new ObjectMapper();
         SearchData search = null;
         try {
@@ -93,7 +90,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
         } catch (JsonProcessingException e) {
             logger.error("Encountered a problem processing JSON: {}", e);
         }
-        logger.info("search data: " + search);
         return search;
     }
 
@@ -110,7 +106,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
                         + "&id=" + id + "&key="
                         + googleSecretsProperties.getProperty("ccb_api_key"));
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
-        logger.error("response: " + response);
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         SearchData idSearch = null;
@@ -119,7 +114,6 @@ public class YoutubeSearchDao implements PropertiesLoader {
         } catch (JsonProcessingException e) {
             logger.error("Encountered a problem processing JSON: {}", e);
         }
-        logger.info("search data for video with id {}: {}", id, idSearch);
         return idSearch;
     }
 

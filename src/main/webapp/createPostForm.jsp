@@ -51,12 +51,12 @@
 
                             <div class="form-group mt-3">
                                 <label for="title">Title: </label>
-                                <input class="form-control" type="text" name="title" id="title">
+                                <input class="form-control" type="text" name="title" id="title" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="descriptionBody">Description: </label>
-                                <textarea class="form-control" rows="3"  name="descriptionBody" id="descriptionBody"></textarea>
+                                <textarea class="form-control" rows="3"  name="descriptionBody" id="descriptionBody" required></textarea>
                             </div>
 
                             <div class="form-group">

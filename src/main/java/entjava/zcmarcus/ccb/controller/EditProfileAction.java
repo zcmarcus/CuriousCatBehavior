@@ -58,9 +58,12 @@ public class EditProfileAction extends HttpServlet implements PropertiesLoader {
         User userToUpdate = (User)userDao.getById(userId);
         // check to see if user clicked "Delete Account"
         if(req.getParameter("submit").equals("Delete Account")) {
+            if(!req.isUserInRole("admin")) {
+                session.invalidate();
+            }
             userDao.delete(userToUpdate);
             req.setAttribute("userDeleted", userToUpdate);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/deleteProfileSuccess.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/deleteProfile.jsp");
             dispatcher.forward(req, resp);
 
         } else {

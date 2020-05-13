@@ -29,7 +29,6 @@ public class LoginAction extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        logger.debug(req.getRemoteUser());
         HttpSession session = req.getSession();
         String loggedInUser = req.getRemoteUser();
 //        GenericDao userRoleDao = new GenericDao(UserRole.class);

@@ -69,32 +69,35 @@ public class CreatePostAction extends HttpServlet implements URLQueryStringEncod
         user.addPost(newPost);
 
         List<Tag> newTagsToAdd = new ArrayList<>();
-        List<Tag> existingTagsToAdd = new ArrayList<>();
+//        List<Tag> existingTagsToAdd = new ArrayList<>();
         // Check database to see if tags entered in form already exist in database
         for (String tagString: tagStrings) {
             String trimmedTagString = tagString.trim();
-            List<Tag> matchingTags = (List<Tag>)tagDao.findByPropertyEqual("tagName", trimmedTagString);
-            if(matchingTags.size() == 0) { // tag is not yet in database. create new tag with tag name
+            logger.error("trimmed tag string: {}",trimmedTagString);
+//            List<Tag> matchingTags = (List<Tag>)tagDao.findByPropertyEqual("tagName", trimmedTagString);
+//            logger.error("matching tags: {}", matchingTags);
+//            if(matchingTags.size() == 0) { // tag is not yet in database. create new tag with tag name
                 Tag newTag = new Tag(trimmedTagString);
+//                logger.error("not in database, newTag to add: {}",newTag);
                 newTagsToAdd.add(newTag);
-            } else { // tag already in database. add to array list of existing tags that match entered tag name
-                for(Tag matchingTag: matchingTags) {
-                    existingTagsToAdd.add(matchingTag);
-                }
-            }
+//            } else { // tag already in database. add to array list of existing tags that match entered tag name
+//                for(Tag matchingTag: matchingTags) {
+//                    existingTagsToAdd.add(matchingTag);
+//                }
+//            }
         }
 
-        if(newTagsToAdd.size() > 0) { // if any new tags not already in database exist, add to new post
+        if(newTagsToAdd.size() > 0) { // if any tags, add to post
             for (Tag newTag: newTagsToAdd) {
                 newPost.addTag(newTag);
             }
         }
 
-        if(existingTagsToAdd.size() > 0) { // if any matching tags found already existing in database, add to new post
-            for (Tag existingTag: existingTagsToAdd) {
-                newPost.addTag(existingTag);
-            }
-        }
+//        if(existingTagsToAdd.size() > 0) { // if any matching tags found already existing in database, add to new post
+//            for (Tag existingTag: existingTagsToAdd) {
+//                newPost.addTag(existingTag);
+//            }
+//        }
 
 
         int newPostId = postDao.insert(newPost);

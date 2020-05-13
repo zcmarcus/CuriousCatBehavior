@@ -36,9 +36,7 @@ public class YoutubeSearchTest {
     public void getSnippetsThumbnailsMediumUrlsSuccess() throws Exception {
         YoutubeSearchDao dao = new YoutubeSearchDao();
         for(ItemsItem item : dao.getSearchData("cats").getItems()) {
-            logger.debug(item.getSnippet().getThumbnails().getMedium().getUrl());
             String mediumThumbnailUrl = item.getSnippet().getThumbnails().getMedium().getUrl();
-//            assertThat(mediumThumbnailUrl, CoreMatchers.containsString(".jpg"));
             assertThat(mediumThumbnailUrl, Matchers.anyOf(Matchers.containsString(".jpg"), Matchers.containsString(".png")));
         }
 

@@ -13,7 +13,7 @@
             <div class="col-6 offset-3">
                 <%--TODO: add 5-sec JavaScript auto-redirect for either situation--%>
                     <p>
-                        Logged out successfully!! <a href="home">Click here</a> if you are not redirected after 5 seconds.
+                        Logged out successfully!! <a href="homeAction">Click here</a> if you are not redirected after 5 seconds.
                     </p>
             </div>
         </div>
