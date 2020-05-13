@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Servlet for searching for posts based on search term.
@@ -51,11 +52,20 @@ public class SearchPostsAction extends HttpServlet {
             }
         }
 
-        List<Tag> allTags = tagDao.findAll();
+        int maxTags = 20;
+
+        List<Tag> popularTags = tagDao.findMostRecentlyCreatedDistinct(maxTags);
+        List<String> tagNames = new ArrayList<>();
+        for(Tag tag: popularTags) {
+            tagNames.add(tag.getTagName());
+        }
+        List<String> distinctTagNames = tagNames.stream()
+                .distinct()
+                .collect(Collectors.toList());
 
         req.setAttribute("matchingPosts", allMatchingPosts);
         req.setAttribute("searchTerm", searchTerm);
-        req.setAttribute("allTags", allTags);
+        req.setAttribute("distinctTagNames", distinctTagNames);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("search.jsp");
         dispatcher.forward(req, resp);

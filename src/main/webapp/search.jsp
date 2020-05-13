@@ -44,6 +44,7 @@
                                 <th></th>
                                 <th class="p-3">Title</th>
                                 <th class="p-3">Posted</th>
+                                <th class="p-3">Comments</th>
                                 <th class="p-3"></th>
                                 <th class="p-3"></th>
                                 <th class="p-3"></th>
@@ -56,6 +57,7 @@
                                     <td class="p-3"><img class="tableThumbnail" src="https://i.ytimg.com/vi/${post.videoUrl}/default.jpg" alt="youtube video thumbnail"/></td>
                                     <td class="font-weight-bold p-3 postTitleText">${post.title}</td>
                                     <td class="p-3">${post.getTimeElapsedSinceCreated() > 1 ? post.getTimeElapsedSinceCreated().concat(' days ago') : 'less than a day ago'}</td>
+                                    <td class="p-3">${post.getTags().size()}</td>
                                     <td class="p-3">
                                         ${post.createdDate}
                                     </td>

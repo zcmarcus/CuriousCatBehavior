@@ -31,7 +31,7 @@ public class SignupAction extends HttpServlet {
         GenericDao userDao = new GenericDao(User.class);
 
         List<User> users = (List<User>)userDao.findByPropertyEqual("userName", req.getParameter("username"));
-        // check to see if username already exists OR username =/=
+        // check to see if username already taken
         if (users.size() != 0) {
             req.setAttribute("email", req.getParameter("email"));
             req.setAttribute("lastName", req.getParameter("lastName"));

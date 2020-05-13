@@ -57,8 +57,8 @@ public class EditProfileAction extends HttpServlet implements PropertiesLoader {
         int userId = Integer.parseInt(req.getParameter("userId"));
         User userToUpdate = (User)userDao.getById(userId);
         // check to see if user clicked "Delete Account"
-        if(req.getParameter("submit").equals("Delete Account")) {
-            if(!req.isUserInRole("admin")) {
+        if(req.getParameter("submit").equals("Delete Account")) { // delete user
+            if(!req.isUserInRole("admin")) { // if not an admin deleting, invalidate session
                 session.invalidate();
             }
             userDao.delete(userToUpdate);
@@ -66,9 +66,9 @@ public class EditProfileAction extends HttpServlet implements PropertiesLoader {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/deleteProfile.jsp");
             dispatcher.forward(req, resp);
 
-        } else {
+        } else { // update user
 
-            if(req.isUserInRole("admin")) { // handle role names if admin is updating the account
+            if (req.getParameterMap().containsKey("roleNames")) { // handle role names if included in form (i.e.: admin is updating user)
 
                 String roleNamesSemicolonDelimited = (String)req.getParameter("roleNames");
                 //split roleNames by semicolon

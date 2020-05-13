@@ -5,18 +5,18 @@ const initializeDataTables = () => {
         "info":     false,
         "pagingType": "full",
         "lengthChange": false,
-        "order": [[3, "desc" ]],
+        "order": [[4, "desc" ]],
         "columnDefs": [
             {
                 "targets": [ 2 ],
-                "orderData" : 3
+                "orderData" : 4
             },
             {
-                "targets": [ 3 ],
+                "targets": [ 4 ],
                 "className" : 'hiddenColumn'
             },
             {
-                "targets": [ 5 ],
+                "targets": [ 6 ],
                 "className": 'hiddenColumn'
             }
         ],

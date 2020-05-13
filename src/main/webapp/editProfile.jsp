@@ -27,7 +27,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="username">Username: </label>
-                                <input class="form-control" type="text" name="username" id="username" disabled>
+                                <input class="form-control" type="text" name="username" id="username" disabled
+                                       value="${not empty user.userName ? user.userName : ''}">
                             </div>
 
                             <div class="form-group">

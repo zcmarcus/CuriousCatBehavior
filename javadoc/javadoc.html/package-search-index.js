@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"entjava.zcmarcus.ccb.controller"},{"l":"entjava.zcmarcus.ccb.entity"},{"l":"entjava.zcmarcus.ccb.persistence"},{"l":"entjava.zcmarcus.ccb.test.util"},{"l":"entjava.zcmarcus.ccb.util"},{"l":"entjava.zcmarcus.ccb.youtube"}]

@@ -62,8 +62,9 @@
                             <th></th>
                             <th class="p-3">Title</th>
                             <th class="p-3">Posted</th>
+                            <th class="p-3">Comments</th>
                             <th class="p-3"></th>
-                            <th class="p-3"></th>
+                            <th class="p-3">Author</th>
                             <th class="p-3"></th>
                         </tr>
 
@@ -74,11 +75,12 @@
                                 <td class="p-3"><img class="tableThumbnail" src="https://i.ytimg.com/vi/${post.videoUrl}/default.jpg" alt="youtube video thumbnail"/></td>
                                 <td class="font-weight-bold p-3 postTitleText">${post.title}</td>
                                 <td class="p-3">${post.getTimeElapsedSinceCreated() > 1 ? post.getTimeElapsedSinceCreated().concat(' days ago') : 'less than a day ago'}</td>
+                                <td class="p-3">${post.getTags().size()}</td>
                                 <td class="p-3">
                                     ${post.createdDate}
                                 </td>
                                 <td class="p-3">
-                                    by <span class="font-weight-bold text-underline">${post.user.userName}</span>
+                                    <span class="font-weight-bold text-underline">${post.user.userName}</span>
                                 </td>
 
                                 <td class="p-3">

@@ -65,11 +65,12 @@ answers or advice from other users
 
 * Independent Research Topic(s)
     + YouTube Data API 
-    + Google Sign-In
-    + [Hibernate Validator](https://hibernate.org/validator/)
-    + (tentative) [Hibernate Search](https://hibernate.org/search/)
-    + (tentative) [Project Lombok](https://projectlombok.org/) for eliminating boilerplate code
-    + (stretch goal) [Amazon Rekognition](https://aws.amazon.com/rekognition/) for recognition of animals and objects in videos. This will require user uploads to S3 bucket. 
+    + Maven Build Profiles
+    + Dicebear Avatars API
+    + 
+    + (stretch goal) [Amazon Rekognition](https://aws.amazon.com/rekognition/) for recognition of animals and objects in videos.
+    + (stretch goal) [Amazon S3](https://aws.amazon.com/s3/) for hosting of user videos. Required for Amazon Rekognition.
+ 
 
     
 * Unit Testing

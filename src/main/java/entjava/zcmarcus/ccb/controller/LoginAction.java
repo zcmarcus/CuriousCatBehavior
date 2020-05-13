@@ -40,20 +40,9 @@ public class LoginAction extends HttpServlet {
             userId = users.get(0).getId();
         }
 
-
         // TODO: Remember to comment out following line in tomcat/conf/logging.properties when not debugging:
         // 1catalina.org.apache.juli.FileHandler.bufferSize = -1
 
-        // TODO: try/catch block in case of no user or no role?
-//        List<User> users = (List<User>)userDao.findByPropertyEqual("userName", loggedInUser);
-//        Set<UserRole> userRoles = users.get(0).getUserRoles();
-
-//        List<String> roleNames = new ArrayList<String>();
-//        for(UserRole role : userRoles) {
-//            roleNames.add(role.getRoleName());
-//        }
-
-//        String userAccessLevel; // for possible future usage with additional role-based functionality
         List<String> userRoleNames = new ArrayList<>();
         if (req.isUserInRole("admin")) {
             userRoleNames.add("admin");
@@ -62,15 +51,12 @@ public class LoginAction extends HttpServlet {
             userRoleNames.add("user");
         }
 
-        // set userID in session for use in calls to web service
-        session.setAttribute("userId", userId);
-
         // FIXME: variable not needed. delete safely when possible and simply use isUserInRole()
         session.setAttribute("userRoleNames", userRoleNames);
 
-        // FIXME: Delete unused variables
-//        session.setAttribute("username", req.getRemoteUser());
-//        req.setAttribute("loggedInUsername", req.getRemoteUser());
+        // set userID in session for use in calls to web service
+        session.setAttribute("userId", userId);
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/loginSuccess.jsp");
         dispatcher.forward(req, resp);
