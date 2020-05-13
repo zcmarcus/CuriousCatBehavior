@@ -52,24 +52,26 @@ public class GenericDao<T> {
 
     }
 
-    //FIXME: Delete if unused
-//    /**
-//     * Gets all entities ordered by date created in descending order
-//     *
-//     * @return all entities
-//     */
-//    public List<T> findAllOrderByDateDesc() {
-//        Session session = getSession();
-//
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//
-//        CriteriaQuery<T> query = builder.createQuery(type);
-//        Root<T> root = query.from(type);
-//        query.orderBy(builder.desc(root.get("createdDate")));
-//        List<T> list = session.createQuery(query).getResultList();
-//        session.close();
-//        return list;
-//    }
+    /**
+     * Gets all entities ordered by date created in descending order
+     *
+     * @return all entities
+     */
+    public List<T> findMostRecentlyCreatedDistinct(int maxResults) {
+        Session session = getSession();
+
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+        query.orderBy(builder.desc(root.get("id")));
+        query.distinct(true);
+        List<T> list = session.createQuery(query)
+                .setMaxResults(maxResults)
+                .getResultList();
+        session.close();
+        return list;
+    }
 
 
     //FIXME: move to separate class, as this does not apply to all entities

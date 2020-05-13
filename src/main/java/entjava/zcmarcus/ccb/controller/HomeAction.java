@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 /**
  * Home page servlet. Also welcome page servlet - user navigation to webapp root redirects here.
@@ -35,14 +37,23 @@ public class HomeAction extends HttpServlet {
         GenericDao tagDao = new GenericDao(Tag.class);
 
         // Find 'X' number of newest posts sorted by date; Currently set at 50 posts
-        int maxResults = 50;
-        List<Post> newestPosts = postDao.findNewestPostsComments(maxResults);
+        int maxPosts = 50;
+        int maxTags = 20;
+        List<Post> newestPosts = postDao.findNewestPostsComments(maxPosts);
 
-        List<Tag> allTags = tagDao.findAll();
+        List<Tag> popularTags = tagDao.findMostRecentlyCreatedDistinct(maxTags);
+        List<String> tagNames = new ArrayList<>();
+        for(Tag tag: popularTags) {
+            tagNames.add(tag.getTagName());
+        }
+        List<String> distinctTagNames = tagNames.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
 
         req.setAttribute("newestPosts", newestPosts);
-        req.setAttribute("allTags", allTags);
-        req.setAttribute("maxResults", maxResults);
+        req.setAttribute("distinctTagNames", distinctTagNames);
+        req.setAttribute("maxResults", maxPosts);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/home.jsp");
         dispatcher.forward(req, resp);

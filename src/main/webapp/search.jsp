@@ -13,12 +13,12 @@
             <div class="col-2 tagContainer">
                 <h3 class="mb-5 text-center">Popular Tags</h3>
                 <c:choose>
-                    <c:when test="${not empty allTags}">
+                    <c:when test="${not empty distinctTagNames}">
 
                         <p class="bg-light">
-                            <c:forEach var="tag" items="${allTags}">
+                            <c:forEach var="tagName" items="${distinctTagNames}">
                                     <span class="text-info px-1 mx-2 font-weight-bold border rounded">
-                                        <a href="searchTags?tagName=${tag.tagName}">${tag.tagName}</a>
+                                        <a href="searchTags?tagName=${tagName}">${tagName}</a>
                                     </span>
                             </c:forEach>
                         </p>
