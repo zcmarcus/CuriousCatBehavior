@@ -1,3 +1,3 @@
 <footer class="text-center">
-    <span>CuriousCatIndustries, Inc. &#84712020</span>
+    <span>CuriousCatIndustries, Inc. &copy; 2020</span>
 </footer>
