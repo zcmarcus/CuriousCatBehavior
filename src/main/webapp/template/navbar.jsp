@@ -62,7 +62,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-user">
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/editProfileAction?userId=${userId}">Edit Profile</a>
-                        <a class="dropdown-item" href="logoutAction" onclick="signOut();">Log Out</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/logoutAction" onclick="signOut();">Log Out</a>
                     </div>
                 </li>
 
