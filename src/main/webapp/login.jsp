@@ -6,6 +6,7 @@
 <div class="contentBody d-flex flex-column">
     <%@include file="template/navbar.jsp"%>
     <div class="container">
+
         <div class="row">
             <div class="col-6 offset-3">
                 <form class="form" action="j_security_check" method="POST">

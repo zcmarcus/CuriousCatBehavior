@@ -1,6 +1,5 @@
-# Zeph Marcus Individual Project
-
-//TODO One-line description here
+#Catsplain Me This!
+Niche Video Posting platform
 
 ### Problem Statement
 
@@ -17,12 +16,13 @@ insatiable lust for cat videos in general._)
 
 
 This application aims to provide a useful and user-friendly
-solution to the two problems outlined above by
+solution to the issue outlined above by
 offering a platform upon which users can:
 * Author videos of their cat exhibiting unusual behavior and request
 answers or advice from other users
-* Search efficiently within application and on other social media platforms utilizing media tags and keywords
+* Search efficiently within application  tags and post keywords.
 * Comment on user videos
+* (Stretch) Subscribe to posts and receive notifications when new comments are added.
 * (Stretch) View 'expert' comments. {Implement user role with elevated 'rank' (badge next to username?)}
 
 
@@ -67,7 +67,7 @@ answers or advice from other users
     + YouTube Data API 
     + Maven Build Profiles
     + Dicebear Avatars API
-    + 
+    + Tomcat Password Encryption (MessageDigestCredentialHandler - SHA-256)
     + (stretch goal) [Amazon Rekognition](https://aws.amazon.com/rekognition/) for recognition of animals and objects in videos.
     + (stretch goal) [Amazon S3](https://aws.amazon.com/s3/) for hosting of user videos. Required for Amazon Rekognition.
  
@@ -77,6 +77,11 @@ answers or advice from other users
     + JUnit tests
 
 * IDE: IntelliJ IDEA
+
+#### Demonstration
+
+#### [Demo video showing off application functions](https://1drv.ms/v/s!AuSD-lATXSsclCKVY6rUAQT07u2A?e=RuwoBh)
+
 
 #### Design
 

@@ -13,10 +13,16 @@
 
         <h3 class="text-center">User Profile Updated!</h3>
         <c:choose>
-            <c:when test="${not empty userId}">
+            <c:when test="${not empty userId && (empty userDeleted)}">
                 <p>
                     Changes successfully saved! View updated profile <a href="editProfileAction?userId=${userId}">here</a>.
                 </p>
+            </c:when>
+            <c:when test="${not empty userDeleted}">
+                <div id="userDeletedMessage">
+                    User ${userDeleted.name} successfully deleted. Head on back to the <a href="homeAction">home page</a>.
+                </div>
+
             </c:when>
             <c:otherwise>
                 <p>

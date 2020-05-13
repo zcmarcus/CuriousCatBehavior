@@ -26,7 +26,7 @@
         </div>
 
         <div class="my-5">
-<%--            placeholder for additional home page content--%>
+            <%--placeholder for future informational content--%>
         </div>
 
         <div class="row mt-5 px-2">

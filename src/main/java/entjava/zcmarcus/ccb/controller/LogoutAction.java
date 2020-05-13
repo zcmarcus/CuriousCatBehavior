@@ -29,4 +29,5 @@ public class LogoutAction extends HttpServlet {
 
         resp.sendRedirect(req.getContextPath() + "/logoutSuccess.jsp");
     }
+
 }

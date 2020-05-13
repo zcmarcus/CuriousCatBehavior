@@ -63,7 +63,8 @@ public class EditProfileAction extends HttpServlet implements PropertiesLoader {
             }
             userDao.delete(userToUpdate);
             req.setAttribute("userDeleted", userToUpdate);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/deleteProfile.jsp");
+            //FIXME: forward to deleteProfileSuccess
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/editProfileSuccess.jsp");
             dispatcher.forward(req, resp);
 
         } else { // update user

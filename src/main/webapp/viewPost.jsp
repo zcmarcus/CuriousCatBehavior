@@ -102,9 +102,9 @@
                                                         <td></td>
                                                         <td>
                                                             <small>Delete Comment</small> -
-                                                            <button type="submit" name="submit" id="deleteCommentButton">
+                                                            <a href="deleteCommentAction?commentId=${comment.id}&postId=${post.id}" id="deleteCommentButton">
                                                                 <i class="fa fa-trash" aria-hidden="true"></i>
-                                                            </button>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     </c:if>
