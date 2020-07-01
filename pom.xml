@@ -21,7 +21,7 @@
     <hamcrest-version>2.2</hamcrest-version>
     <junit-platform-surefire-provider-version>1.0.0</junit-platform-surefire-provider-version>
     <javax-version>8.0.1</javax-version>
-    <log4j-version>2.13.0</log4j-version>
+    <log4j-version>2.13.3</log4j-version>
     <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
     <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
     <mysql-version>8.0.18</mysql-version>
